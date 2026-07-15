@@ -1,0 +1,36 @@
+опасность" },
+    { hz: 285, name: "Solfeggio 285 — регенерация тканей" },
+    { hz: 396, name: "Solfeggio 396 — освобождение от страха" },
+    { hz: 417, name: "Solfeggio 417 — перемены" },
+    { hz: 432, name: "432 — натуральный строй" },
+    { hz: 528, name: "Solfeggio 528 — трансформация/ДНК" },
+    { hz: 639, name: "Solfeggio 639 — связь/отношения" },
+    { hz: 741, name: "Solfeggio 741 — выражение/решения" },
+    { hz: 852, name: "Solfeggio 852 — интуиция" },
+    { hz: 963, name: "Solfeggio 963 — источник/шишковидная" }
+  ];
+  function nearestFreq(hz) {
+    var best = FREQS[0];
+    for (var i = 0; i < FREQS.length; i++)
+      if (Math.abs(FREQS[i].hz - hz) < Math.abs(best.hz - hz)) best = FREQS[i];
+    return best;
+  }
+
+  // ---------- 62-node ИДСЗ geo-crystal (икосаэдро-додекаэдрическая сетка) ----------
+  function buildNodes() {
+    var p = PHI, ip = INV_PHI;
+    function perms(a, b, c) { return [[a, b, c], [c, a, b], [b, c, a]]; }
+    function signs(base) {
+      var out = [], idx = [];
+      for (var i = 0; i < 3; i++) if (base[i] !== 0) idx.push(i);
+      var combos = 1 << idx.length;
+      for (var m = 0; m < combos; m++) {
+        var v = base.slice();
+        for (var k = 0; k < idx.length; k++) if (m & (1 << k)) v[idx[k]] = -v[idx[k]];
+        out.push(v);
+      }
+      return out;
+    }
+    function expand(triples) {
+      var out = [];
+      triples.forEach(fun
