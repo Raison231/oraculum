@@ -1,28 +1,41 @@
-СТРОЙКИ", "НЕ ЗВУЧИТ"].indexOf(r.verdict) >= 0);
-});
-
-t("fieldRead: geo добавляет линзу ИДСЗ", () => {
-  const r = ORC.fieldRead("41.72, 44.83");
-  assert.ok(r.ok);
-  assert.ok(r.lenses.some(l => l.key === "geo"));
-});
-
-t("fieldRead: дата добавляет луну", () => {
-  const r = ORC.fieldRead("10.04.1998");
+fieldRead("10.04.1998");
   assert.ok(r.ok);
   assert.ok(r.lenses.some(l => l.key === "luna"));
 });
-
-t("fieldRead: overall в диапазоне 0..100", () => {
+t("fieldRead: overall 0..100", () => {
   ["42", "Weeekend", "432hz", "2026-08-12", "41.72, 44.83"].forEach(v => {
     const r = ORC.fieldRead(v);
     assert.ok(r.overall >= 0 && r.overall <= 100, v + " => " + r.overall);
   });
 });
+t("fieldRead: empty ok=false", () => assert.strictEqual(ORC.fieldRead("").ok, false));
 
-t("fieldRead: пустой ввод — ok=false", () => {
-  assert.strictEqual(ORC.fieldRead("").ok, false);
+// v2 Deep Birth
+t("birthProfile returns deep numbers", () => {
+  const b = ORC.birthProfile({name: "Максим Мигай", date: "1998-04-10"});
+  assert.ok(b.ok);
+  assert.strictEqual(b.numbers.dr, 5);
+  assert.strictEqual(b.numbers.lifePath, 5);
+  assert.ok(b.numbers.soul > 0);
+  assert.ok(b.numbers.destiny > 0);
+  assert.ok(b.spectrum && Object.keys(b.spectrum).length === 9);
+  assert.ok(b.dominant >= 1 && b.dominant <= 9);
+  assert.ok(b.insight.length > 5);
+  assert.ok(b.field.nearestNode.node);
 });
 
-console.log("\n" + passed + " passed, " + failed + " failed\n");
-process.exit(failed ? 1 : 0);
+// v2 Triple-Ring Event
+t("eventScore returns rings", () => {
+  const e = ORC.eventScore({date: "2026-07-16", birth: "1998-04-10"});
+  assert.ok(e.ok);
+  assert.ok(e.scores.overall >= 0 && e.scores.overall <= 100);
+  assert.ok(e.rings >= 0 && e.rings <= 4);
+  assert.ok(e.money && e.money.score >= 0);
+  assert.ok(e.verdict && typeof e.verdict === "string");
+});
+
+// v2 Predict
+t("predict returns 27 days", () => {
+  const p = ORC.predict({from: "2026-07-16", days: 27, birth: "1998-04-10"});
+  assert.ok(p.ok);
+  asse
