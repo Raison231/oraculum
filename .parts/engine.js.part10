@@ -1,0 +1,16 @@
+,personalMonth:pm,personalDay:pd,personalYearMeaning:DR_MEANING[py],nineYearPhase:age.nineYearPhase,nineYearMeaning:DR_MEANING[age.nineYearPhase],step21:st,planetToday:planetDay(now)},
+      field:{nearestNode:nn,nodePhase:np,lunaBirth:lunaBirth,lunaNow:lunaNow},spectrum:amps,dominant:dominant,
+      formula:"DR="+dr+" · LP="+lp+" · Soul="+soul+" · Dest="+destiny+" · Axis="+ax.id+" · PY"+now.getUTCFullYear()+"="+py,insight:insight};
+  }
+
+  // === TRIPLE-RING EVENT ===
+  function eventScore(opts){opts=opts||{};var date=parseDate(opts.date)||new Date();
+    var lat=opts.lat!=null?opts.lat:DEFAULT_BIRTH.lat,lon=opts.lon!=null?opts.lon:DEFAULT_BIRTH.lon;
+    var birth=parseDate(opts.birth||DEFAULT_BIRTH.date);
+    var dr=dateDR(date),luna=lunarPhase(date),nn=nearestNode(lat,lon),np=nodePhase(nn.node,date);
+    var pd=birth?personalDay(birth,date.getUTCFullYear(),date.getUTCMonth()+1,date.getUTCDate()):dr;
+    var sDR=AXIS.indexOf(dr)>=0?(dr===9?92:78):(RING.indexOf(dr)>=0?70:50);if(dr===5||dr===8)sDR=90;
+    var sLuna=Math.round(40+60*(1-Math.min(1,luna.phiDistance*8)));if(luna.name==="Новолуние"||luna.name==="Полнолуние")sLuna=Math.max(sLuna,88);
+    var sNode=Math.round(np.heat*100);var sPersonal=(pd===dr)?95:(mirrorPair(pd)===dr?82:60);var sMoney=MONEY_DR[dr].score;
+    var rings=0;if(sDR>=70)rings++;if(sLuna>=70)rings++;if(sNode>=55)rings++;if(sPersonal>=80)rings++;
+    var overall=Math.round(sDR*0.25+s
