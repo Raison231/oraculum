@@ -1,0 +1,46 @@
+(all, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+});
+
+t("Fibonacci: nearest и isFib", () => {
+  assert.strictEqual(ORC.nearestFib(13), 13);
+  assert.ok(ORC.isFib(21));
+  assert.ok(!ORC.isFib(20));
+  assert.strictEqual(ORC.nearestFib(100), 89);
+});
+
+t("Кеплерова лестница пропорции", () => {
+  const kl = ORC.keplerLadder(1);
+  assert.ok(Math.abs(kl.high / kl.mid - kl.mid / kl.low) < 1e-9);
+  assert.ok(Math.abs(kl.high - ORC.PHI) < 1e-9);
+});
+
+t("62 узла ИДСЗ (12+20+30)", () => {
+  assert.strictEqual(ORC.NODES.length, 62);
+  assert.strictEqual(ORC.NODES.filter(n => n.cls === "icosa").length, 12);
+  assert.strictEqual(ORC.NODES.filter(n => n.cls === "dodeca").length, 20);
+  assert.strictEqual(ORC.NODES.filter(n => n.cls === "mid").length, 30);
+});
+
+t("все узлы в валидных широтах/долготах", () => {
+  ORC.NODES.forEach(n => {
+    assert.ok(n.lat >= -90 && n.lat <= 90, "lat " + n.lat);
+    assert.ok(n.lon >= -180 && n.lon <= 180, "lon " + n.lon);
+  });
+});
+
+t("nearestNode для Тбилиси возвращает узел", () => {
+  const r = ORC.nearestNode(41.72, 44.83);
+  assert.ok(r.node && typeof r.distanceKm === "number");
+  assert.ok(r.distanceKm >= 0);
+});
+
+t("haversine ноль на той же точке", () => {
+  assert.ok(ORC.haversine(10, 20, 10, 20) < 1e-6);
+});
+
+t("nearestFreq ловит 528", () => {
+  assert.strictEqual(ORC.nearestFreq(530).hz, 528);
+  assert.strictEqual(ORC.nearestFreq(8).hz, 7.83);
+});
+
+t("step21 в диа
