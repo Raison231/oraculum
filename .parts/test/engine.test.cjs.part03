@@ -1,0 +1,28 @@
+СТРОЙКИ", "НЕ ЗВУЧИТ"].indexOf(r.verdict) >= 0);
+});
+
+t("fieldRead: geo добавляет линзу ИДСЗ", () => {
+  const r = ORC.fieldRead("41.72, 44.83");
+  assert.ok(r.ok);
+  assert.ok(r.lenses.some(l => l.key === "geo"));
+});
+
+t("fieldRead: дата добавляет луну", () => {
+  const r = ORC.fieldRead("10.04.1998");
+  assert.ok(r.ok);
+  assert.ok(r.lenses.some(l => l.key === "luna"));
+});
+
+t("fieldRead: overall в диапазоне 0..100", () => {
+  ["42", "Weeekend", "432hz", "2026-08-12", "41.72, 44.83"].forEach(v => {
+    const r = ORC.fieldRead(v);
+    assert.ok(r.overall >= 0 && r.overall <= 100, v + " => " + r.overall);
+  });
+});
+
+t("fieldRead: пустой ввод — ok=false", () => {
+  assert.strictEqual(ORC.fieldRead("").ok, false);
+});
+
+console.log("\n" + passed + " passed, " + failed + " failed\n");
+process.exit(failed ? 1 : 0);
