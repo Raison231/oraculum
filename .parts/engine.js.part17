@@ -1,0 +1,15 @@
+ет: "+Math.round(lp.illumination*100)+"%"]});
+      lenses.push({key:"event",title:"Triple-Ring",lines:[ev.formula,"Кольца: "+ev.rings+"/4 · "+ev.scores.overall,ev.verdict,"Деньги: "+ev.money.label+" ("+ev.money.score+")"]});scores.push(ev.scores.overall);}
+    lenses.push({key:"money",title:"Деньги×Время",lines:["DR "+dr+": "+MONEY_DR[dr].label,"Score: "+MONEY_DR[dr].score+"/100",DR_ACTION[dr]]});
+    var overall=scores.reduce(function(a,b){return a+b;},0)/scores.length;
+    var verdict=overall>=61.8?"ЗВУЧИТ":(overall>=38.2?"ТРЕБУЕТ НАСТРОЙКИ":"НЕ ЗВУЧИТ");
+    return{ok:true,input:p,seed:seed,dr:dr,axis:ax,overall:Math.round(overall*10)/10,verdict:verdict,lenses:lenses,money:MONEY_DR[dr],meaning:DR_MEANING[dr],action:DR_ACTION[dr]};
+  }
+
+  // === CUBE / OPERATORS ===
+  function operatorTable(){var rows=[];for(var k=1;k<=9;k++){var orbit=[],x=1;for(var i=0;i<6;i++){orbit.push(x);x=mulMod9(x,k);if(x===1&&i>0)break;}rows.push({k:k,archetype:opArchetype(k),orbit:orbit,meaning:DR_MEANING[k]});}return rows;}
+  function fibMod9Day(hour){var fib=[0,1];for(var i=2;i<24;i++)fib.push((fib[i-1]+fib[i-2])%9);var v=fib[((hour%24)+24)%24];return v===0?9:v;}
+
+  // === EXPORT ===
+  return {version:"2.0.0",PHI:PHI,INV_PHI:INV_PHI,SQRT_PHI:SQRT_PHI,GOLDEN_ANGLE:GOLDEN_ANGLE,AXIS:AXIS,RING:RING,TRI_A:TRI_A,TRI_B:TRI_B,
+    DR_MEANING:DR_MEANING,DR_ACTION:DR_ACTION,MONEY_DR:MONEY_DR,FREQS:
