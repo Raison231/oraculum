@@ -1,0 +1,33 @@
+ction (t) {
+        perms(t[0], t[1], t[2]).forEach(function (pp) {
+          signs(pp).forEach(function (s) { out.push(s); });
+        });
+      });
+      var seen = {}, res = [];
+      out.forEach(function (v) {
+        var key = v.map(function (x) { return x.toFixed(6); }).join(",");
+        if (!seen[key]) { seen[key] = 1; res.push(v); }
+      });
+      return res;
+    }
+    var ico = expand([[0, 1, p]]);            // 12 вершин икосаэдра
+    var dodec = expand([[1, 1, 1]]).concat(expand([[0, ip, p]])); // 20 вершин додекаэдра
+    function d2(a, b) {
+      return (a[0]-b[0])*(a[0]-b[0])+(a[1]-b[1])*(a[1]-b[1])+(a[2]-b[2])*(a[2]-b[2]);
+    }
+    var mids = [], seenM = {};
+    for (var i = 0; i < ico.length; i++)
+      for (var j = i + 1; j < ico.length; j++)
+        if (Math.abs(d2(ico[i], ico[j]) - 4) < 1e-6) {
+          var m = [(ico[i][0]+ico[j][0])/2,(ico[i][1]+ico[j][1])/2,(ico[i][2]+ico[j][2])/2];
+          var key = m.map(function (x) { return x.toFixed(4); }).join(",");
+          if (!seenM[key]) { seenM[key] = 1; mids.push(m); }
+        }
+    function toLatLon(v, id, cls) {
+      var r = Math.sqrt(v[0]*v[0]+v[1]*v[1]+v[2]*v[2]);
+      return { id: id, cls: cls,
+        lat: Math.asin(v[2]/r) * 180/Math.PI,
+        lon: Math.atan2(v[1], v[0]) * 180/Math.PI };
+    }
+    var nodes = [];
+    ico.forEach(function (v, i) { nodes.push(toLatLon(v, "A" + (i+1), "icosa")); })
