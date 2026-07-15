@@ -1,0 +1,42 @@
+nt-size: 14px; line-height: 1.5; }
+    .lens li { margin: 4px 0; }
+    .empty {
+      color: var(--muted); font-size: 14px; line-height: 1.5;
+      padding: 24px 8px; text-align: center;
+    }
+
+    .map-card canvas {
+      width: 100%; height: auto; display: block;
+      border-radius: 10px; background: #0d0f16;
+      border: 1px solid var(--border);
+    }
+    .map-meta { margin-top: 10px; font-size: 12px; color: var(--muted); }
+
+    footer {
+      margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; line-height: 1.5;
+      display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between;
+    }
+    footer code { color: var(--cyan); font-family: var(--mono); }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">Natural Code · MIGI</div>
+      <h1>ORACULUM <span>∞</span></h1>
+      <p class="lede">
+        Единый считыватель поля. Любой вход — дата, координаты, частота, число или слово —
+        проходит через <strong style="color:var(--text);font-weight:600">Mod9 · φ · ИДСЗ · Второй Ключ · Solfeggio · Луну</strong>
+        и отвечает: <em>звучит</em> или нет.
+      </p>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Вход</h2>
+        <label for="
