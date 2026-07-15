@@ -1,34 +1,10 @@
-x] };
-  }
-
-  // ---------- Второй Ключ — 21 шаг (3 фазы × 7) ----------
-  var PHASES = ["Nigredo (растворение)","Albedo (очищение)","Rubedo (соединение)"];
-  var OPS = ["Calcinatio","Solutio","Separatio","Coniunctio","Fermentatio","Distillatio","Coagulatio"];
-  function step21(n) {
-    var s = ((((Math.trunc(n) - 1) % 21) + 21) % 21) + 1; // 1..21
-    var phase = Math.ceil(s / 7);
-    var op = ((s - 1) % 7) + 1;
-    return { step: s, phase: phase, phaseName: PHASES[phase-1], operation: OPS[op-1] };
-  }
-
-  // ---------- Имя/слово → число ----------
-  function nameToNumber(str) {
-    var sum = 0, s = String(str).toLowerCase();
-    for (var i = 0; i < s.length; i++) {
-      var ch = s[i], code = ch.charCodeAt(0);
-      if (code >= 97 && code <= 122) sum += code - 96;           // a-z
-      else if (code >= 1072 && code <= 1103) sum += code - 1071; // а-я
-      else if (ch === "ё") sum += 7;
-      else if (code >= 48 && code <= 57) sum += code - 48;       // цифры
-    }
-    return sum;
-  }
-
-  // ---------- Парсинг ввода ----------
-  function parseInput(raw) {
-    var s = String(raw == null ? "" : raw).trim();
-    if (!s) return { type: "empty" };
-    var coord = s.match(/^(-?\d+(?:\.\d+)?)\s*[,;]\s*(-?\d+(?:\.\d+)?)$/);
-    if (coord) return { type: "geo", lat: parseFloat(coord[1]), lon: parseFloat(coord[2]) };
-    var freq = s.match(/^(\d+(?:\.\d+)?)\s*(hz|гц)$/i);
-    if (freq) r
+ar(birth,year){var b=ymd(birth);return digitalRoot(digitalRoot(b.m)+digitalRoot(b.day)+digitalRoot(year));}
+  function personalMonth(birth,year,month){return digitalRoot(personalYear(birth,year)+digitalRoot(month));}
+  function personalDay(birth,year,month,day){return digitalRoot(personalMonth(birth,year,month)+digitalRoot(day));}
+  function planetDay(d){return PLANETS[d.getUTCDay()];}
+  function daysBetween(a,b){return Math.floor((b.getTime()-a.getTime())/86400000);}
+  function ageYears(birth,now){now=now||new Date();var days=daysBetween(birth,now);var yf=Math.floor(days/365.2425);return{days:days,years:days/365.2425,yearsFloor:yf,nineYearCycle:Math.floor(yf/9),nineYearPhase:yf%9+1,cycle27:Math.floor(days/27)%9+1,cycle81:Math.floor(days/81)%9+1,cycle243:Math.floor(days/243)%9+1};}
+  function lunarPhase(date){var days=(date.getTime()-NEW_MOON_REF)/86400000;var pos=((days%SYNODIC)+SYNODIC)%SYNODIC;var frac=pos/SYNODIC;
+    var names=["Новолуние","Растущий серп","Первая четверть","Растущая горбатая","Полнолуние","Убывающая горбатая","Последняя четверть","Убывающий серп"];var idx=Math.floor(frac*8+0.5)%8;
+    var phiPts=[0,0.382,0.5,0.618,1],nearestPhi=0,best=1;for(var i=0;i<phiPts.length;i++){var dd=Math.abs(frac-phiPts[i]);if(dd<best){best=dd;nearestPhi=phiPts[i];}}
+    return{fraction:frac,ageDays:pos,name:names[idx],ill
