@@ -1,0 +1,39 @@
+: 7, 7: 2, 4: 5, 5: 4, 3: 6, 6: 3, 9: 9 };
+    return pairs[dr];
+  }
+  var DR_MEANING = {
+    1: "Старт, инициация, воля, новое направление",
+    2: "Партнёрство, баланс, зеркало, дипломатия",
+    3: "Творчество, публикация, рост, самовыражение",
+    4: "Структура, фундамент, дисциплина, система",
+    5: "Сделка, перемена, свобода, движение",
+    6: "Дом, гармония, забота, клиент, сервис",
+    7: "Анализ, уединение, исследование, глубина",
+    8: "Деньги, власть, переговоры, масштаб",
+    9: "Завершение, релиз, отдача, целостность"
+  };
+
+  // ---------- Fibonacci / φ ----------
+  function fibUpTo(limit) {
+    var a = 1, b = 1, arr = [1, 1];
+    while (b <= limit) { var c = a + b; arr.push(c); a = b; b = c; }
+    return arr;
+  }
+  function nearestFib(n) {
+    var arr = fibUpTo(Math.max(Math.abs(n), 2) * 2 + 5);
+    var best = arr[0];
+    for (var i = 0; i < arr.length; i++)
+      if (Math.abs(arr[i] - n) < Math.abs(best - n)) best = arr[i];
+    return best;
+  }
+  function isFib(n) { return nearestFib(n) === n; }
+  // Кеплерова лестница 1 : √φ : φ
+  function keplerLadder(base) {
+    return { low: base, mid: base * SQRT_PHI, high: base * PHI };
+  }
+  var PHI_SCALE = [8, 13, 21, 34, 55, 89, 144];
+
+  // ---------- Frequencies (Solfeggio + Schumann + canonical) ----------
+  var FREQS = [
+    { hz: 7.83, name: "Шуман (несущая Земли)" },
+    { hz: 174, name: "Solfeggio 174 — основа/без
