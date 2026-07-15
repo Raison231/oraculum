@@ -1,31 +1,18 @@
-ex-wrap: wrap; gap: 12px 20px; align-items: baseline; }
-    .verdict .tag {
-      font-size: 13px; font-weight: 800; letter-spacing: 0.08em;
-      padding: 6px 10px; border-radius: 8px;
-    }
-    .verdict.ok .tag { background: rgba(114,188,143,0.16); color: var(--green); }
-    .verdict.mid .tag { background: rgba(222,146,85,0.16); color: var(--orange); }
-    .verdict.bad .tag { background: rgba(233,115,102,0.16); color: var(--red); }
-    .meta { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-    .score {
-      margin-left: auto; font-size: 28px; font-weight: 700; color: var(--gold);
-      font-variant-numeric: tabular-nums;
-    }
-    .score small { font-size: 13px; color: var(--muted); font-weight: 500; }
-
-    .lenses { display: grid; gap: 12px; }
-    .lens {
-      border: 1px solid var(--border); border-radius: 12px;
-      background: rgba(255,255,255,0.02); overflow: hidden;
-    }
-    .lens head, .lens-head {
-      display: flex; align-items: center; gap: 10px;
-      padding: 12px 14px; border-bottom: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-    }
-    .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gold); box-shadow: 0 0 10px rgba(212,168,83,0.6);
-    }
-    .lens-head h3 { margin: 0; font-size: 14px; font-weight: 650; }
-    .lens ul { margin: 0; padding: 12px 14px 14px 32px; color: var(--muted); fo
+x}
+.verdict.ok .tag{background:rgba(120,198,147,0.16);color:var(--green)}.verdict.mid .tag{background:rgba(226,152,94,0.16);color:var(--orange)}.verdict.bad .tag{background:rgba(236,123,110,0.16);color:var(--red)}
+.meta{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.score{margin-left:auto;font-size:32px;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
+.score small{font-size:14px;color:var(--muted);font-weight:500}
+.lenses{display:grid;gap:14px}
+.lens{border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,0.02);overflow:hidden}
+.lens-head{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(215,176,90,0.8)}
+.lens-head h3{margin:0;font-size:14px;font-weight:700}
+.lens ul{margin:0;padding:13px 16px 15px 34px;color:var(--muted);font-size:14px;line-height:1.55}
+.lens li{margin:4px 0}
+.empty{color:var(--muted);font-size:15px;line-height:1.55;padding:30px 10px;text-align:center}
+.canvas-wrap{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#0b0d12}
+canvas{display:block;width:100%;height:auto}
+.map-meta{margin-top:12px;font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+.map-meta span{padding:4px 8px;background:var(--raised);border-radius:6px}
+.result{display:none;
