@@ -1,0 +1,33 @@
+eturn { type: "freq", hz: parseFloat(freq[1]) };
+    var iso = s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (iso) return { type: "date", date: new Date(Date.UTC(+iso[1], +iso[2]-1, +iso[3])) };
+    var ru = s.match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+    if (ru) return { type: "date", date: new Date(Date.UTC(+ru[3], +ru[2]-1, +ru[1])) };
+    if (/^-?\d+(?:\.\d+)?$/.test(s)) return { type: "number", value: parseFloat(s) };
+    return { type: "name", text: s };
+  }
+
+  // ---------- Главное чтение поля ----------
+  function fieldRead(raw) {
+    var p = parseInput(raw);
+    var lenses = [], scores = [], seed = 0;
+    if (p.type === "empty")
+      return { ok: false, message: "Пусто — введи дату, число, координаты, частоту или слово." };
+
+    if (p.type === "number") seed = p.value;
+    else if (p.type === "freq") seed = p.hz;
+    else if (p.type === "name") seed = nameToNumber(p.text);
+    else if (p.type === "date") {
+      var d = p.date;
+      seed = d.getUTCFullYear() + (d.getUTCMonth()+1) + d.getUTCDate();
+    } else if (p.type === "geo") {
+      seed = Math.round(Math.abs(p.lat) + Math.abs(p.lon));
+    }
+
+    var dr = digitalRoot(Math.round(seed));
+    lenses.push({ key: "mod9", title: "Mod9 · Резонансная алгебра", lines: [
+      "Цифровой корень: " + dr,
+      "Класс: " + mod9Class(dr),
+      "Зеркальная пара: " + dr + " ↔ " + mirrorPair(dr),
+      "Смысл: " + DR_MEANING[dr]
+   
