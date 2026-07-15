@@ -1,0 +1,9 @@
+   digitalRoot: digitalRoot, mod9Class: mod9Class, mirrorPair: mirrorPair,
+    DR_MEANING: DR_MEANING, AXIS: AXIS, RING: RING,
+    fibUpTo: fibUpTo, nearestFib: nearestFib, isFib: isFib, keplerLadder: keplerLadder,
+    FREQS: FREQS, nearestFreq: nearestFreq,
+    NODES: NODES, nearestNode: nearestNode, haversine: haversine,
+    lunarPhase: lunarPhase, step21: step21, nameToNumber: nameToNumber,
+    parseInput: parseInput, fieldRead: fieldRead
+  };
+});
