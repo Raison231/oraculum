@@ -1,0 +1,15 @@
+Luna*0.25+sNode*0.2+sPersonal*0.15+sMoney*0.15);
+    var verdict=rings>=3&&overall>=75?"СОБЫТИЕ · три кольца в резонансе":rings>=2&&overall>=60?"ОКНО · два кольца — действуй":overall>=45?"ФОН · один слой — готовь":"ТИШИНА · копи силу";
+    return{ok:true,date:date,dr:dr,personalDay:pd,planet:planetDay(date),luna:luna,node:nn,nodePhase:np,
+      scores:{dr:sDR,luna:sLuna,node:sNode,personal:sPersonal,money:sMoney,overall:overall},rings:rings,verdict:verdict,
+      money:MONEY_DR[dr],meaning:DR_MEANING[dr],action:DR_ACTION[dr],
+      formula:"E=Luna("+luna.name+")×Node("+nn.node.id+":"+np.label+")×DR("+dr+")×PD("+pd+")"};
+  }
+
+  // === PREDICT ===
+  function predict(opts){opts=opts||{};var days=opts.days||27;var start=parseDate(opts.from)||new Date();
+    start=new Date(Date.UTC(start.getUTCFullYear(),start.getUTCMonth(),start.getUTCDate()));
+    var birth=parseDate(opts.birth||DEFAULT_BIRTH.date);var lat=opts.lat!=null?opts.lat:DEFAULT_BIRTH.lat;var lon=opts.lon!=null?opts.lon:DEFAULT_BIRTH.lon;
+    var calendar=[],peaks=[],moneyDays=[],personalMirrors=[];
+    for(var i=0;i<days;i++){var d=new Date(start.getTime()+i*86400000);var ev=eventScore({date:d,birth:birth,lat:lat,lon:lon});
+      var row={date:d.toISOString().slice(0,10),dr:ev.dr,pd:ev.personalDay,planet:ev.planet,luna:ev.luna.name,overall:ev.scores.overall,rings:ev.rings,verdict:ev
