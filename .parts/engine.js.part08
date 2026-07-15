@@ -1,34 +1,16 @@
-: 61.8);
-
-    if (p.type === "geo") {
-      var nn = nearestNode(p.lat, p.lon);
-      lenses.push({ key: "geo", title: "ИДСЗ · Гео-кристалл (62 узла)", lines: [
-        "Точка: " + p.lat.toFixed(3) + ", " + p.lon.toFixed(3),
-        "Ближайший узел: " + nn.node.id + " (" + nn.node.cls + ")",
-        "Координаты узла: " + nn.node.lat.toFixed(2) + ", " + nn.node.lon.toFixed(2),
-        "Дистанция: " + Math.round(nn.distanceKm) + " км"
-      ]});
-      scores.push(Math.max(0, 100 - nn.distanceKm / 40));
-    }
-
-    if (p.type === "date") {
-      var lp = lunarPhase(p.date);
-      lenses.push({ key: "luna", title: "Луна · Селено-кристалл", lines: [
-        "Фаза: " + lp.name,
-        "Возраст Луны: " + lp.ageDays.toFixed(1) + " дн",
-        "Позиция цикла: " + (lp.fraction * 100).toFixed(0) + "%"
-      ]});
-      var gp = Math.min(Math.abs(lp.fraction - 0.382), Math.abs(lp.fraction - 0.618));
-      scores.push(Math.max(0, 100 - gp * 300));
-    }
-
-    var overall = scores.reduce(function (a, b) { return a + b; }, 0) / scores.length;
-    var verdict = overall >= 61.8 ? "ЗВУЧИТ" : (overall >= 38.2 ? "ТРЕБУЕТ НАСТРОЙКИ" : "НЕ ЗВУЧИТ");
-
-    return { ok: true, input: p, seed: seed, dr: dr,
-      overall: Math.round(overall * 10) / 10, verdict: verdict, lenses: lenses };
-  }
-
-  return {
-    PHI: PHI, INV_PHI: INV_PHI, SQRT_PHI: SQRT_PHI, GOLDEN_ANGLE: GOLDEN_ANGLE, PHI_SCALE: PHI_SCALE,
- 
+T_BIRTH.lon,place=opts.place||DEFAULT_BIRTH.place;
+    var now=opts.now?parseDate(opts.now):new Date();
+    var birth=parseDate(dateStr+(time?" "+time:""));if(!birth)return{ok:false,message:"Невалидная дата рождения"};
+    var p=ymd(birth),rawSum=sumDigits(p.y)+sumDigits(p.m)+sumDigits(p.day),dr=digitalRoot(rawSum);
+    var lp=lifePath(birth),soul=digitalRoot(nameToNumber(name)),destiny=digitalRoot(soul+dr),hourDR=digitalRoot(p.h*60+p.min);
+    var ax=axisOf(dr),age=ageYears(birth,now);
+    var py=personalYear(birth,now.getUTCFullYear()),pm=personalMonth(birth,now.getUTCFullYear(),now.getUTCMonth()+1);
+    var pd=personalDay(birth,now.getUTCFullYear(),now.getUTCMonth()+1,now.getUTCDate());
+    var nn=nearestNode(lat,lon),np=nodePhase(nn.node,now),lunaBirth=lunarPhase(birth),lunaNow=lunarPhase(now),st=step21(age.days);
+    var amps={};for(var k=1;k<=9;k++)amps[k]=0.08;amps[dr]+=0.28;amps[lp]+=0.18;amps[soul]+=0.14;amps[py]+=0.10;amps[pd]+=0.08;amps[mirrorPair(dr)]+=0.06;
+    var sumA=0;for(k=1;k<=9;k++)sumA+=amps[k];for(k=1;k<=9;k++)amps[k]=Math.round((amps[k]/sumA)*1000)/1000;
+    var dominant=1;for(k=2;k<=9;k++)if(amps[k]>amps[dominant])dominant=k;
+    var insight=[];
+    insight.push("Личный оператор DR: "+dr+" — "+DR_MEANING[dr]);
+    insight.push("Life Path: "+lp+" · Soul (имя): "+soul+" · Destiny: "+destiny);
+    insight.push("Ось куба: "+ax.name+" · зеркало "+dr+"
