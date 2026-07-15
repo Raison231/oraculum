@@ -1,0 +1,32 @@
+.x, q2.y); ctx.stroke();
+        }
+
+        // equator / prime
+        ctx.strokeStyle = "rgba(212,168,83,0.18)";
+        var e1 = project(0, -180, w, h), e2 = project(0, 180, w, h);
+        ctx.beginPath(); ctx.moveTo(e1.x, e1.y); ctx.lineTo(e2.x, e2.y); ctx.stroke();
+        var m1 = project(90, 0, w, h), m2 = project(-90, 0, w, h);
+        ctx.beginPath(); ctx.moveTo(m1.x, m1.y); ctx.lineTo(m2.x, m2.y); ctx.stroke();
+
+        var colors = { icosa: "#5ec8d8", dodeca: "#d4a853", mid: "rgba(244,241,234,0.35)" };
+        ORC.NODES.forEach(function (n) {
+          var p = project(n.lat, n.lon, w, h);
+          ctx.fillStyle = colors[n.cls] || "#fff";
+          var r = n.cls === "mid" ? 1.4 : 2.4;
+          ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.fill();
+        });
+
+        if (focus && typeof focus.lat === "number") {
+          var nn = ORC.nearestNode(focus.lat, focus.lon);
+          var fp = project(focus.lat, focus.lon, w, h);
+          var np = project(nn.node.lat, nn.node.lon, w, h);
+
+          ctx.strokeStyle = "rgba(114,188,143,0.7)";
+          ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(fp.x, fp.y); ctx.lineTo(np.x, np.y); ctx.stroke();
+
+          ctx.fillStyle = "#72bc8f";
+          ctx.beginPath(); ctx.arc(fp.x, fp.y, 4, 0, Math.PI * 2); ctx.fill();
+          ctx.strokeStyle = "rgba(114,188,143,0.5)";
+          ctx.lineWidth = 2;
+     
