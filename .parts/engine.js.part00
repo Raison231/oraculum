@@ -1,0 +1,36 @@
+/*
+ * ORACULUM ∞ — Unified Field Engine (Natural Code core)
+ * ------------------------------------------------------------
+ * Один движок, который читает «поле» любого объекта через единый
+ * Natural Code: Mod9 · φ/Fibonacci · Кеплерова лестница · 62 узла ИДСЗ ·
+ * Solfeggio/Шуман · 21 шаг Второго Ключа · фаза Луны.
+ *
+ * Pure, dependency-free. UMD: работает в браузере (window.ORC) и в Node (require).
+ */
+(function (root, factory) {
+  if (typeof module === "object" && module.exports) module.exports = factory();
+  else root.ORC = factory();
+})(typeof self !== "undefined" ? self : this, function () {
+  "use strict";
+
+  var PHI = (1 + Math.sqrt(5)) / 2; // 1.6180339887...
+  var INV_PHI = 1 / PHI; // 0.6180339887...
+  var SQRT_PHI = Math.sqrt(PHI); // средняя ступень Кеплера
+  var GOLDEN_ANGLE = 360 * (1 - INV_PHI); // 137.507...
+
+  // ---------- Mod9 Resonance Algebra ----------
+  function digitalRoot(n) {
+    n = Math.abs(Math.trunc(n));
+    if (n === 0) return 0;
+    var r = n % 9;
+    return r === 0 ? 9 : r;
+  }
+  var AXIS = [3, 6, 9];
+  var RING = [1, 2, 4, 8, 7, 5]; // кольцо удвоения
+  function mod9Class(dr) {
+    if (dr === 9) return "ОСЬ · Источник (9 — возврат/целое)";
+    if (dr === 3 || dr === 6) return "ОСЬ · " + (dr === 3 ? "исток (3)" : "заземление (6)");
+    return "КОЛЬЦО · ток материи (1-2-4-8-7-5)";
+  }
+  function mirrorPair(dr) {
+    var pairs = { 1: 8, 8: 1, 2
