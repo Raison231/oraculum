@@ -1,33 +1,13 @@
-;
-    dodec.forEach(function (v, i) { nodes.push(toLatLon(v, "B" + (i+1), "dodeca")); });
-    mids.forEach(function (v, i) { nodes.push(toLatLon(v, "C" + (i+1), "mid")); });
-    return nodes;
-  }
-  var NODES = buildNodes();
-  function haversine(lat1, lon1, lat2, lon2) {
-    var R = 6371, toR = Math.PI/180;
-    var dLat = (lat2-lat1)*toR, dLon = (lon2-lon1)*toR;
-    var a = Math.sin(dLat/2)*Math.sin(dLat/2) +
-      Math.cos(lat1*toR)*Math.cos(lat2*toR)*Math.sin(dLon/2)*Math.sin(dLon/2);
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-  }
-  function nearestNode(lat, lon) {
-    var best = null, bestD = Infinity;
-    for (var i = 0; i < NODES.length; i++) {
-      var d = haversine(lat, lon, NODES[i].lat, NODES[i].lon);
-      if (d < bestD) { bestD = d; best = NODES[i]; }
-    }
-    return { node: best, distanceKm: bestD };
-  }
+unction nearestFreq(hz){var best=FREQS[0];for(var i=0;i<FREQS.length;i++)if(Math.abs(FREQS[i].hz-hz)<Math.abs(best.hz-hz))best=FREQS[i];return best;}
+  function step21(n){var s=((((Math.trunc(n)-1)%21)+21)%21)+1;var phase=Math.ceil(s/7);var op=((s-1)%7)+1;return{step:s,phase:phase,phaseName:PHASES21[phase-1],operation:OPS[op-1]};}
+  function nameToNumber(str){var sum=0,s=String(str).toLowerCase();for(var i=0;i<s.length;i++){var ch=s[i],c=ch.charCodeAt(0);if(c>=97&&c<=122)sum+=c-96;else if(c>=1072&&c<=1103)sum+=c-1071;else if(ch==="ё")sum+=7;else if(c>=48&&c<=57)sum+=c-48;}return sum;}
 
-  // ---------- Lunar phase ----------
-  function lunarPhase(date) {
-    var ref = Date.UTC(2000, 0, 6, 18, 14, 0); // известное новолуние
-    var syn = 29.530588853;
-    var days = (date.getTime() - ref) / 86400000;
-    var pos = ((days % syn) + syn) % syn;
-    var frac = pos / syn;
-    var names = ["Новолуние","Растущий серп","Первая четверть","Растущая горбатая",
-      "Полнолуние","Убывающая горбатая","Последняя четверть","Убывающий серп"];
-    var idx = Math.floor(frac * 8 + 0.5) % 8;
-    return { fraction: frac, ageDays: pos, name: names[id
+  // === DATE / TIME / LUNAR ===
+  function parseDate(raw){if(raw instanceof Date)return raw;var s=String(raw||"").trim();
+    var iso=s.match(/^(\d{4})-(\d{2})-(\d{2})(?:[T\s](\d{2}):(\d{2}))?/);if(iso)return new Date(Date.UTC(+iso[1],+iso[2]-1,+iso[3],+(iso[4]||0),+(iso[5]||0)));
+    var ru=s.match(/^(\d{2})\.(\d{2})\.(\d{4})(?:\s+(\d{2}):(\d{2}))?/);if(ru)return new Date(Date.UTC(+ru[3],+ru[2]-1,+ru[1],+(ru[4]||0),+(ru[5]||0)));
+    var d=new Date(s);return isNaN(d.getTime())?null:d;}
+  function ymd(d){return{y:d.getUTCFullYear(),m:d.getUTCMonth()+1,day:d.getUTCDate(),h:d.getUTCHours(),min:d.getUTCMinutes()};}
+  function dateDR(d){var p=ymd(d);return digitalRoot(sumDigits(p.y)+sumDigits(p.m)+sumDigits(p.day));}
+  function lifePath(d){var p=ymd(d);return digitalRoot(digitalRoot(p.y)+digitalRoot(p.m)+digitalRoot(p.day));}
+  function personalYe
