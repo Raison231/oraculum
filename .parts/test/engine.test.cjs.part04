@@ -1,0 +1,18 @@
+rt.strictEqual(p.calendar.length, 27);
+  assert.ok(p.best.launch && p.best.money && p.best.release && p.best.deal && p.best.deepWork);
+  assert.ok(p.peaks.length >= 0);
+});
+
+// v2 Create Design
+t("createDesign returns 9 modules and 21 roadmap", () => {
+  const c = ORC.createDesign({intent: "ORACULUM v2 release"});
+  assert.ok(c.ok);
+  assert.strictEqual(c.modules.length, 9);
+  assert.strictEqual(c.roadmap.length, 21);
+  assert.ok(c.dr >= 1 && c.dr <= 9);
+  assert.ok(c.timing && c.timing.bestLaunch);
+  assert.ok(c.checklist && c.checklist.axis369);
+});
+
+console.log("\n" + passed + " passed, " + failed + " failed\n");
+process.exit(failed ? 1 : 0);
