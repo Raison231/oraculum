@@ -1,0 +1,20 @@
+     ctx.beginPath(); ctx.arc(np.x, np.y, 7, 0, Math.PI * 2); ctx.stroke();
+
+          mapMeta.textContent =
+            "Фокус " + focus.lat.toFixed(2) + ", " + focus.lon.toFixed(2) +
+            " → узел " + nn.node.id + " · " + Math.round(nn.distanceKm) + " км";
+        } else {
+          mapMeta.textContent = "Гео-кристалл Земли · 12 icosa + 20 dodeca + 30 mid = 62";
+        }
+      }
+
+      drawGlobe(null);
+      window.addEventListener("resize", function () { drawGlobe(null); });
+
+      // auto-demo: birthday of Max
+      q.value = "10.04.1998";
+      run();
+    })();
+  </script>
+</body>
+</html>
