@@ -1,38 +1,6 @@
-q">Что считываем</label>
-        <div class="input-row">
-          <input id="q" type="text" placeholder="10.04.1998 · 41.72, 44.83 · 528hz · Weeekend" autocomplete="off" />
-          <button class="primary" id="go" type="button">Считать</button>
-        </div>
-        <div class="chips" id="chips"></div>
-        <p class="hint">
-          Форматы: дата <code>ДД.ММ.ГГГГ</code> / <code>YYYY-MM-DD</code>,
-          координаты <code>lat, lon</code>, частота <code>528hz</code>,
-          число или любое слово/бренд.
-        </p>
-
-        <div class="map-card" style="margin-top:18px">
-          <h2>ИДСЗ · 62 узла</h2>
-          <canvas id="globe" width="640" height="360" aria-label="Карта 62 узлов ИДСЗ"></canvas>
-          <div class="map-meta" id="mapMeta">Гео-кристалл Земли · 12 + 20 + 30 = 62</div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Поле</h2>
-        <div id="verdict" class="verdict" aria-live="polite"></div>
-        <div id="out" class="lenses">
-          <div class="empty">Введи что угодно слева — и поле ответит всеми линзами сразу.</div>
-        </div>
-      </section>
-    </div>
-
-    <footer>
-      <div>ORACULUM ∞ · pure Natural Code · zero deps · engine.js</div>
-      <div>φ = <code id="phi"></code> · nodes = <code id="ncount"></code></div>
-    </footer>
-  </div>
-
-  <script src="./engine.js"></script>
-  <script>
-    (function () {
-     
+muted)}
+.module{padding:12px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;background:rgba(255,255,255,0.01)}
+.module .num{display:inline-block;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#1a160d;font-weight:800;font-size:12px;line-height:24px;text-align:center;margin-right:8px}
+.spectrum{display:grid;grid-template-columns:repeat(auto-fit,minmax(52px,1fr));gap:6px;margin-top:10px}
+.spectrum .bar{height:80px;background:var(--panel);border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--border)}
+.spectrum .fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,var(--gold),rgba(215,176,90,0.25));border-radius:0 0 8px
