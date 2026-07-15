@@ -1,0 +1,15 @@
+name: Assemble
+on:
+  push:
+    paths:
+      - '.parts/**'
+      - 'scripts/assemble-all.js'
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node scripts/assemble-all.js
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: assemble ORACULUM sources from parts"
