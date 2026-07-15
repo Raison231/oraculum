@@ -1,0 +1,14 @@
+.verdict,money:ev.money.label,moneyScore:ev.money.score,action:ev.action,node:ev.node.node.id,nodeHeat:Math.round(ev.nodePhase.heat*100)};
+      calendar.push(row);if(ev.scores.overall>=78)peaks.push(row);if(ev.money.score>=90)moneyDays.push(row);if(ev.personalDay===ev.dr)personalMirrors.push(row);}
+    function bestFor(fn){var best=calendar[0];for(var j=1;j<calendar.length;j++)if(fn(calendar[j])>fn(best))best=calendar[j];return best;}
+    return{ok:true,from:start.toISOString().slice(0,10),days:days,calendar:calendar,peaks:peaks,moneyDays:moneyDays,personalMirrors:personalMirrors,
+      best:{launch:bestFor(function(r){return(r.dr===1||r.pd===1?30:0)+r.overall;}),money:bestFor(function(r){return r.moneyScore+r.overall*0.3;}),
+        release:bestFor(function(r){return(r.dr===9||r.pd===9?30:0)+r.overall;}),deal:bestFor(function(r){return(r.dr===5||r.pd===5?25:0)+r.moneyScore*0.5+r.overall*0.3;}),
+        deepWork:bestFor(function(r){return(r.dr===7||r.pd===7?35:0)+r.overall*0.4;})},
+      birth:birthProfile({date:opts.birth||DEFAULT_BIRTH.date,now:start,lat:lat,lon:lon})};
+  }
+
+  // === CREATE ===
+  function createDesign(opts){opts=opts||{};var intent=String(opts.intent||"").trim();if(!intent)return{ok:false,message:"Введи намерение / проект"};
+    var seed=nameToNumber(intent),dr=digitalRoot(seed),ax=axisOf(dr),st=step21(seed),kl=keplerLadder(1),fr=nearestFreq(seed%900+60);
+    var birth=birthProfile(opts.
