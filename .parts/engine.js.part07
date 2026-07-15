@@ -1,0 +1,30 @@
+ ]});
+    scores.push(AXIS.indexOf(dr) >= 0 ? (dr === 9 ? 100 : 82) : 61.8);
+
+    var baseN = Math.round(Math.abs(seed)) || 1;
+    var nf = nearestFib(baseN);
+    var kl = keplerLadder(Math.abs(seed) || 1);
+    var fibClose = nf === 0 ? 1 : Math.abs(nf - baseN) / nf;
+    lenses.push({ key: "phi", title: "φ · Золото и Фибоначчи", lines: [
+      "Ближайшее Фибоначчи: " + nf + (isFib(baseN) ? " (точное попадание ✦)" : ""),
+      "Кеплерова лестница 1:√φ:φ → " + kl.low.toFixed(2) + " : " + kl.mid.toFixed(2) + " : " + kl.high.toFixed(2),
+      "Золотой угол: " + GOLDEN_ANGLE.toFixed(2) + "°"
+    ]});
+    scores.push(Math.max(0, 100 - fibClose * 120));
+
+    var st = step21(baseN);
+    lenses.push({ key: "key21", title: "Второй Ключ · 21 шаг", lines: [
+      "Шаг " + st.step + " из 21",
+      "Фаза: " + st.phaseName,
+      "Операция: " + st.operation
+    ]});
+    scores.push(st.step % 7 === 0 ? 90 : 61.8);
+
+    var mappedHz = (seed % 900 + 900) % 900 + 60;
+    var fr = nearestFreq(p.type === "freq" ? p.hz : mappedHz);
+    lenses.push({ key: "freq", title: "Частота · Solfeggio / Шуман", lines: [
+      (p.type === "freq" ? "Введено: " + p.hz + " Гц" : "seed → " + mappedHz.toFixed(1) + " Гц"),
+      "Ближайший канон: " + fr.hz + " Гц — " + fr.name,
+      "DR частоты: " + digitalRoot(Math.round(fr.hz))
+    ]});
+    scores.push(p.type === "freq" ? Math.max(0, 100 - Math.abs(fr.hz - p.hz)) 
