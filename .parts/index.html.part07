@@ -1,0 +1,34 @@
+replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function render(r) {
+        if (!r.ok) {
+          verdictEl.className = "verdict show bad";
+          verdictEl.innerHTML = "<div class=\"row\"><span class=\"tag\">ПУСТО</span><span class=\"meta\">" + esc(r.message) + "</span></div>";
+          out.innerHTML = "<div class=\"empty\">" + esc(r.message) + "</div>";
+          return;
+        }
+
+        var cls = r.verdict === "ЗВУЧИТ" ? "ok" : (r.verdict === "ТРЕБУЕТ НАСТРОЙКИ" ? "mid" : "bad");
+        verdictEl.className = "verdict show " + cls;
+        verdictEl.innerHTML =
+          "<div class=\"row\">" +
+          "<span class=\"tag\">" + esc(r.verdict) + "</span>" +
+          "<span class=\"meta\">seed " + esc(String(r.seed)) + " · DR " + r.dr + " · type " + esc(r.input.type) + "</span>" +
+          "<span class=\"score\">" + r.overall + "<small>/100</small></span>" +
+          "</div>";
+
+        out.innerHTML = r.lenses.map(function (L) {
+          return (
+            "<article class=\"lens\">" +
+            "<div class=\"lens-head\"><span class=\"dot\"></span><h3>" + esc(L.title) + "</h3></div>" +
+            "<ul>" + L.lines.map(function (line) { return "<li>" + esc(line) + "</li>"; }).join("") + "</ul>" +
+            "</article>"
+          );
+        }).join("");
+
+        drawGlobe(r.input.type === "geo" ? r.input : null);
+      }
+
+      function r
