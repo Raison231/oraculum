@@ -1,0 +1,39 @@
+ var ORC = window.ORC;
+      var q = document.getElementById("q");
+      var go = document.getElementById("go");
+      var out = document.getElementById("out");
+      var verdictEl = document.getElementById("verdict");
+      var chips = document.getElementById("chips");
+      var canvas = document.getElementById("globe");
+      var mapMeta = document.getElementById("mapMeta");
+
+      document.getElementById("phi").textContent = ORC.PHI.toFixed(10);
+      document.getElementById("ncount").textContent = String(ORC.NODES.length);
+
+      var PRESETS = [
+        { label: "ДР Макса", value: "10.04.1998" },
+        { label: "Тбилиси", value: "41.72, 44.83" },
+        { label: "Батуми", value: "41.64, 41.64" },
+        { label: "528 Гц", value: "528hz" },
+        { label: "432 Гц", value: "432hz" },
+        { label: "Weeekend", value: "Weeekend" },
+        { label: "MIGI", value: "MIGI" },
+        { label: "Сегодня", value: new Date().toISOString().slice(0, 10) }
+      ];
+
+      PRESETS.forEach(function (p) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "chip";
+        b.textContent = p.label;
+        b.addEventListener("click", function () {
+          q.value = p.value;
+          run();
+        });
+        chips.appendChild(b);
+      });
+
+      function esc(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .
