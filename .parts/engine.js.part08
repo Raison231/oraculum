@@ -1,0 +1,34 @@
+: 61.8);
+
+    if (p.type === "geo") {
+      var nn = nearestNode(p.lat, p.lon);
+      lenses.push({ key: "geo", title: "ИДСЗ · Гео-кристалл (62 узла)", lines: [
+        "Точка: " + p.lat.toFixed(3) + ", " + p.lon.toFixed(3),
+        "Ближайший узел: " + nn.node.id + " (" + nn.node.cls + ")",
+        "Координаты узла: " + nn.node.lat.toFixed(2) + ", " + nn.node.lon.toFixed(2),
+        "Дистанция: " + Math.round(nn.distanceKm) + " км"
+      ]});
+      scores.push(Math.max(0, 100 - nn.distanceKm / 40));
+    }
+
+    if (p.type === "date") {
+      var lp = lunarPhase(p.date);
+      lenses.push({ key: "luna", title: "Луна · Селено-кристалл", lines: [
+        "Фаза: " + lp.name,
+        "Возраст Луны: " + lp.ageDays.toFixed(1) + " дн",
+        "Позиция цикла: " + (lp.fraction * 100).toFixed(0) + "%"
+      ]});
+      var gp = Math.min(Math.abs(lp.fraction - 0.382), Math.abs(lp.fraction - 0.618));
+      scores.push(Math.max(0, 100 - gp * 300));
+    }
+
+    var overall = scores.reduce(function (a, b) { return a + b; }, 0) / scores.length;
+    var verdict = overall >= 61.8 ? "ЗВУЧИТ" : (overall >= 38.2 ? "ТРЕБУЕТ НАСТРОЙКИ" : "НЕ ЗВУЧИТ");
+
+    return { ok: true, input: p, seed: seed, dr: dr,
+      overall: Math.round(overall * 10) / 10, verdict: verdict, lenses: lenses };
+  }
+
+  return {
+    PHI: PHI, INV_PHI: INV_PHI, SQRT_PHI: SQRT_PHI, GOLDEN_ANGLE: GOLDEN_ANGLE, PHI_SCALE: PHI_SCALE,
+ 
