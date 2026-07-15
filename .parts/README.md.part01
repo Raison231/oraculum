@@ -1,0 +1,34 @@
+ci.yml
+```
+
+## API (engine)
+
+```js
+const ORC = require('./engine.js');
+
+ORC.fieldRead('10.04.1998');
+// → { ok, seed, dr, overall, verdict, lenses[] }
+
+ORC.fieldRead('41.72, 44.83'); // Тбилиси → nearest ИДСЗ node
+ORC.fieldRead('528hz');
+ORC.fieldRead('Weeekend');
+
+ORC.digitalRoot(1998);        // 9
+ORC.nearestNode(41.72, 44.83);
+ORC.step21(13);               // { step, phase, phaseName, operation }
+ORC.keplerLadder(1);          // { low, mid, high }
+```
+
+## Принципы
+
+1. **Суть выше формы** — сначала поле, потом UI.
+2. **Тройная архитектура** — Data (`engine`) / Logic (`fieldRead`) / Interface (`index.html`).
+3. **Аномалия = вход** — неожиданный тип ввода не сглаживается, а открывает доп. линзу.
+4. **Малая окружность** — каждый reading завершается вердиктом и seed'ом следующей октавы.
+
+## Рождение
+
+Собрано MIG AI в Notion-песочнице 15–16.07.2026  
+из живого контекста memories + ATHANOR ∞ + MIG Coder Hub.
+
+MIT
