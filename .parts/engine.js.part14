@@ -1,0 +1,13 @@
+,frequency:fr,archetype:opArchetype(dr),
+      modules:modules,roadmap:roadmap,
+      checklist:{axis369:"Ось 3-6-9: data/logic/release",ring:"Кольцо 1-2-4-8-7-5: семя→рост→экспансия→feedback→интеграция→виток",mirrors:"Пары 1↔8,2↔7,4↔5",returns9:"Финал в 9: релиз сеет следующую октаву"},
+      timing:{bestLaunch:pred.best.launch,bestMoney:pred.best.money,personalYear:birth.ok?birth.cycles.personalYear:null,note:"Запуск DR1/PD1 · деньги DR8/5 · релиз DR9"},
+      birthAlign:birth.ok?{yourDR:birth.numbers.dr,resonance:digitalRoot(birth.numbers.dr+dr),note:birth.numbers.dr===dr?"Прямой резонанс — проект «твой»":(mirrorPair(birth.numbers.dr)===dr?"Зеркальный резонанс — дополняет тебя":"Нейтральный — держи ось 3-6-9")}:null,
+      mantra:"Семя("+dr+") → кольцо 1-2-4-8-7-5 → 9 · «"+intent+"»"};
+  }
+
+  // === FIELD READ (enhanced) ===
+  function parseInput(raw){var s=String(raw==null?"":raw).trim();if(!s)return{type:"empty"};
+    var coord=s.match(/^(-?\d+(?:\.\d+)?)\s*[,;]\s*(-?\d+(?:\.\d+)?)$/);if(coord)return{type:"geo",lat:parseFloat(coord[1]),lon:parseFloat(coord[2])};
+    var freq=s.match(/^(\d+(?:\.\d+)?)\s*(hz|гц)$/i);if(freq)return{type:"freq",hz:parseFloat(freq[1])};
+    var iso=s.match(/^(\d{4})-(\d{2})-(\d{2})$/);i
