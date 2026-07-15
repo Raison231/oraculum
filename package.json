@@ -1,0 +1,26 @@
+{
+  "name": "oraculum-infinity",
+  "version": "1.0.0",
+  "description": "ORACULUM ∞ — Unified Field Reader. Natural Code engine that unifies Mod9, φ, ИДСЗ, Second Key, Solfeggio, lunar phase into one field-read of any input.",
+  "private": false,
+  "license": "MIT",
+  "main": "engine.js",
+  "scripts": {
+    "test": "node test/engine.test.cjs",
+    "start": "npx --yes serve . -l 4173",
+    "check": "node -e \"const o=require('./engine'); console.log('nodes',o.NODES.length,'phi',o.PHI)\""
+  },
+  "keywords": [
+    "oraculum",
+    "mod9",
+    "phi",
+    "golden-ratio",
+    "idsz",
+    "field-reader",
+    "natural-code",
+    "migi"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
