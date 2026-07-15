@@ -1,0 +1,8 @@
+FREQS,NODES:NODES,DEFAULT_BIRTH:DEFAULT_BIRTH,
+    digitalRoot:digitalRoot,sumDigits:sumDigits,digitalRootSteps:digitalRootSteps,mod9Class:mod9Class,mirrorPair:mirrorPair,axisOf:axisOf,mulMod9:mulMod9,
+    opArchetype:opArchetype,fibUpTo:fibUpTo,nearestFib:nearestFib,isFib:isFib,keplerLadder:keplerLadder,nearestFreq:nearestFreq,step21:step21,
+    nameToNumber:nameToNumber,parseDate:parseDate,dateDR:dateDR,lifePath:lifePath,personalYear:personalYear,personalMonth:personalMonth,personalDay:personalDay,
+    planetDay:planetDay,ageYears:ageYears,lunarPhase:lunarPhase,haversine:haversine,nearestNode:nearestNode,nodePhase:nodePhase,
+    birthProfile:birthProfile,eventScore:eventScore,predict:predict,createDesign:createDesign,parseInput:parseInput,fieldRead:fieldRead,
+    operatorTable:operatorTable,fibMod9Day:fibMod9Day};
+});
