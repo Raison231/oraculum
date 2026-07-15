@@ -1,30 +1,12 @@
- ]});
-    scores.push(AXIS.indexOf(dr) >= 0 ? (dr === 9 ? 100 : 82) : 61.8);
+cls:cls,lat:Math.asin(v[2]/r)*180/Math.PI,lon:Math.atan2(v[1],v[0])*180/Math.PI};}
+    var nodes=[];ico.forEach(function(v,i){nodes.push(toLatLon(v,"A"+(i+1),"icosa"));});dodec.forEach(function(v,i){nodes.push(toLatLon(v,"B"+(i+1),"dodeca"));});mids.forEach(function(v,i){nodes.push(toLatLon(v,"C"+(i+1),"mid"));});return nodes;
+  }
+  var NODES=buildNodes();
+  function haversine(lat1,lon1,lat2,lon2){var R=6371,toR=Math.PI/180,dLat=(lat2-lat1)*toR,dLon=(lon2-lon1)*toR;var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*toR)*Math.cos(lat2*toR)*Math.sin(dLon/2)*Math.sin(dLon/2);return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));}
+  function nearestNode(lat,lon){var best=null,bestD=Infinity;for(var i=0;i<NODES.length;i++){var d=haversine(lat,lon,NODES[i].lat,NODES[i].lon);if(d<bestD){bestD=d;best=NODES[i];}}return{node:best,distanceKm:bestD};}
+  function nodePhase(node,date){var t=date.getTime()/86400000;var seed=(node.lat+90)*17+(node.lon+180)*31;var cycle=12*PHI;var phase=((t/365.2425+seed)%cycle)/cycle;var heat=0.5+0.5*Math.cos(2*Math.PI*phase);return{phase:phase,heat:heat,label:heat>0.7?"ГОРЯЧИЙ":(heat>0.4?"ТЁПЛЫЙ":"ХОЛОДНЫЙ")};}
 
-    var baseN = Math.round(Math.abs(seed)) || 1;
-    var nf = nearestFib(baseN);
-    var kl = keplerLadder(Math.abs(seed) || 1);
-    var fibClose = nf === 0 ? 1 : Math.abs(nf - baseN) / nf;
-    lenses.push({ key: "phi", title: "φ · Золото и Фибоначчи", lines: [
-      "Ближайшее Фибоначчи: " + nf + (isFib(baseN) ? " (точное попадание ✦)" : ""),
-      "Кеплерова лестница 1:√φ:φ → " + kl.low.toFixed(2) + " : " + kl.mid.toFixed(2) + " : " + kl.high.toFixed(2),
-      "Золотой угол: " + GOLDEN_ANGLE.toFixed(2) + "°"
-    ]});
-    scores.push(Math.max(0, 100 - fibClose * 120));
-
-    var st = step21(baseN);
-    lenses.push({ key: "key21", title: "Второй Ключ · 21 шаг", lines: [
-      "Шаг " + st.step + " из 21",
-      "Фаза: " + st.phaseName,
-      "Операция: " + st.operation
-    ]});
-    scores.push(st.step % 7 === 0 ? 90 : 61.8);
-
-    var mappedHz = (seed % 900 + 900) % 900 + 60;
-    var fr = nearestFreq(p.type === "freq" ? p.hz : mappedHz);
-    lenses.push({ key: "freq", title: "Частота · Solfeggio / Шуман", lines: [
-      (p.type === "freq" ? "Введено: " + p.hz + " Гц" : "seed → " + mappedHz.toFixed(1) + " Гц"),
-      "Ближайший канон: " + fr.hz + " Гц — " + fr.name,
-      "DR частоты: " + digitalRoot(Math.round(fr.hz))
-    ]});
-    scores.push(p.type === "freq" ? Math.max(0, 100 - Math.abs(fr.hz - p.hz)) 
+  // === BIRTH DEEP MODEL ===
+  function birthProfile(opts){opts=opts||{};
+    var name=opts.name||DEFAULT_BIRTH.name,dateStr=opts.date||DEFAULT_BIRTH.date,time=opts.time||DEFAULT_BIRTH.time;
+    var lat=opts.lat!=null?opts.lat:DEFAULT_BIRTH.lat,lon=opts.lon!=null?opts.lon:DEFAUL
