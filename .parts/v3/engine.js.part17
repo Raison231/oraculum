@@ -1,0 +1,11 @@
+[k] / sumA) * 1000) / 1000;
+  var dominant = 1; for (k = 2; k <= 9; k++) if (amps[k] > amps[dominant]) dominant = k;
+  var br = biorhythm(birth, now), gh = goldenHour(birth, now);
+  var insight = [];
+  insight.push("DR: " + dr + " — " + DR_MEANING[dr]); insight.push("LP: " + lp + " · Soul: " + soul + " · Destiny: " + destiny);
+  insight.push("Ось: " + ax.name + " · зеркало " + dr + "↔" + mirrorPair(dr)); insight.push("Личный год " + now.getUTCFullYear() + ": " + py + " — " + DR_MEANING[py]);
+  insight.push("Личный день: " + pd + " — " + DR_ACTION[pd]); insight.push("9-летняя фаза: " + age.nineYearPhase + "/9 — " + DR_MEANING[age.nineYearPhase]);
+  insight.push("Возраст: " + age.yearsFloor + " · шаг21: " + st.step + " " + st.operation);
+  insight.push("ИДСЗ: " + nn.node.id + " · " + Math.round(nn.distanceKm) + " км · " + np.label);
+  insight.push("Луна: " + lunaBirth.name + " → сейчас: " + lunaNow.name);
+  insight.push("Элемент: " + elementOf(dr) + " · Чакра: " + chakraOf(dr) + " · Зоди
