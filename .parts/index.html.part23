@@ -1,0 +1,10 @@
+.random()*pH,r:Math.random()*2+0.5,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3});}
+function drawParticles(){pctx.clearRect(0,0,pW,pH);pctx.fillStyle='rgba(230,196,111,0.45)';particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>pW)p.vx*=-1;if(p.y<0||p.y>pH)p.vy*=-1;pctx.beginPath();pctx.arc(p.x,p.y,p.r,0,Math.PI*2);pctx.fill();});requestAnimationFrame(drawParticles);}
+window.addEventListener('resize',resizeParticles);resizeParticles();drawParticles();
+
+// chips
+const chips=['10.04.1998','41.72, 44.83','528hz','#ff5a5a','Weeekend','1998'];
+const fc=document.getElementById('fieldChips');chips.forEach(c=>{const b=document.createElement('span');b.className='chip';b.textContent=c;b.onclick=()=>{document.getElementById('fieldInput').value=c;runField();};fc.appendChild(b);});
+</script>
+</body>
+</html>
