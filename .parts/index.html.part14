@@ -1,12 +1,3 @@
-sight').innerHTML='<div class="insight">'+prof.insight.slice(0,7).join('<br>')+'</div>';
-  });
-
-  document.getElementById('e-go').addEventListener('click',function(){
-    var ev=ORC.eventScore({date:document.getElementById('e-date').value,birth:document.getElementById('e-birth').value,lat:parseFloat(document.getElementById('e-lat').value),lon:parseFloat(document.getElementById('e-lon').value)});
-    var el=document.getElementById('e-out'); el.className='result show';
-    if(!ev.ok){el.innerHTML='<div class="empty">Ошибка</div>';return;}
-    el.innerHTML='<div class="kv"><span><strong>'+ev.verdict+'</strong></span><span><strong>Overall</strong> '+ev.scores.overall+'</span><span><strong>Кольца</strong> '+ev.rings+'/4</span><span><strong>DR</strong> '+ev.dr+'</span><span><strong>PD</strong> '+ev.personalDay+'</span></div>'+
-      '<div class="meta">'+ev.formula+'</div><div class="insight">Деньги: '+ev.money.label+' ('+ev.money.score+') · Действие: '+ev.action+'</div>';
-    var ring=''; ['DR','Luna','Node','Personal'].forEach(function(k){var v=ev.scores[k.toLowerCase()]; ring+='<div class="ring '+(v>=60?'on':'off')+'">'+k+' '+v+'</div>';});
-    document.getElementById('e-rings').innerHTML='<div class="ring-bar">'+ring+'</div>'+
-      '<div class="kv"><span><strong>Луна</strong> '+ev.luna.name+'</span><span><strong>Узел</strong> '+ev.node.node.id+'</span><span><strong>Фаза узла</strong> '+
+onst r=ORC.fieldRead(raw);const el=document.getElementById('fieldResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}renderVerdict(el,r,r.overall);renderLenses(el,r);}
+function runBirth(){const opts={name:document.getElementById('bName').value,date:document.getElementById('bDate').value,time:document.getElementById('bTime').value};const geo=document.getElementById('bGeo').value.match(/^(-?\d+(?:\.\d+)?)\s*[,;]\s*(-?\d+(?:\.\d+)?)$/);if(geo){opts.lat=parseFloat(geo[1]);opts.lon=parseFloat(geo[2]);}const b=ORC.birthProfile(opts);const el=document.getElementById('birthResult');if(!b.ok){el.innerHTML='<div class="empty">'+h(b.message)+'</div>';return;}el.innerHTML=`<div class="kv">${kv('DR',b.numbers.dr)}${kv('LP',b.numbers.lifePath)}${kv('Soul',b.numbers.soul)}${kv('Destiny',b.numbers.destiny)}${kv('Личный год',b.cycles.personalYear)}${kv('9-лет фаза',b.cycles.nineYearPhase)}${kv('Ось',b.numbers.axis.name)}</div><div class="insight">${b.insight.map(x=>h(x)).join('<br>')}</div>`;const sp=document.getElementById('birthSpectrum');sp.innerHTML='';for(let i=1;i<=9;i++){const pct=b.spectrum[i]*100;sp.innerHTML+=`<div class="bar"><div class="fill" style="height:${pct}%"></div><div class="num">${i}</div></div>`;}}
+function runPredict(){const from=document.getElementById('pFrom').value;const days=+document.getElementById('pDays').value;con
