@@ -1,0 +1,22 @@
+="section active">
+  <div class="grid">
+    <div class="card">
+      <h2>🔮 Универсальный вход</h2>
+      <label>Что считаем?</label>
+      <div class="input-row"><input id="fieldInput" type="text" placeholder="дата, число, координаты, частота, цвет #hex, время, слово..."></div>
+      <div class="chips" id="fieldChips"></div>
+      <button class="primary" style="margin-top:14px" onclick="runField()">Считать поле</button>
+      <p class="hint">Аномалия = вход. Geo, цвет, время, частота открывают дополнительные линзы.</p>
+    </div>
+    <div class="card"><h2>📊 Резонанс</h2><div id="fieldResult"></div></div>
+  </div>
+</section>
+
+<!-- BIRTH -->
+<section id="tab-birth" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🌙 Birth Deep</h2>
+      <label>Имя</label><input id="bName" type="text" value="Максим Мигай">
+      <label>Дата рожде��ия</label><input id="bDate" type="text" value="1998-04-10">
+      <label>Время (опц.)</label><input id="bTime" type="text" value="10:00">
