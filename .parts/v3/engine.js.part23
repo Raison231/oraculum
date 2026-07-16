@@ -1,0 +1,9 @@
+4; })},
+    birth: birthProfile({date: opts.birth || DEFAULT_BIRTH.date, now: start, lat: lat, lon: lon})};
+}
+function createDesign(opts) { opts = opts || {}; var intent = String(opts.intent || "").trim(); if (!intent) return {ok: false, message: "Введи намерение"};
+  var seed = nameToNumber(intent), dr = digitalRoot(seed), ax = axisOf(dr), st = step21(seed), kl = keplerLadder(1), fr = nearestFreq(seed % 900 + 60);
+  var birth = birthProfile(opts.birth || {}); var now = new Date(); var pred = predict({days: 27, birth: opts.birth && opts.birth.date, lat: opts.lat, lon: opts.lon});
+  var roadmap = []; for (var i = 1; i <= 21; i++) { var s = step21(i); var dayOffset = Math.round((i - 1) * (PHI * 1.2)); var d = new Date(now.getTime() + dayOffset * 86400000);
+    roadmap.push({step: i, phase: s.phaseName, operation: s.operation, dayOffset: dayOffset, date: d.toISOString().slice(0, 10), dayDR: dateDR(d), tip: OPS_TIPS[s.operation] || ""}); }
+  var modules = [{n: 1, role: "Инициатор", layer: 
