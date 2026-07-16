@@ -1,4 +1,10 @@
-v></div>
+lick="runText()">Анализ текста</button>
+      <button class="secondary" onclick="runHeadline()">Headline score</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Код</label><textarea id="txCode" placeholder="function example() { ... }"></textarea>
+      <button class="primary" style="margin-top:10px" onclick="runCode()">Code Resonance</button>
+    </div>
+    <div class="card"><h2>🎙 Результат</h2><div id="brandResult"></div></div>
   </div>
 </section>
 
@@ -21,18 +27,4 @@ v></div>
 <section id="tab-health" class="section">
   <div class="grid">
     <div class="card">
-      <h2>🧘 Тело и время</h2>
-      <label>Дата</label><input id="hDate" type="date">
-      <button class="primary" style="margin-top:14px" onclick="runHealth()">Health Rhythm</button>
-      <button class="secondary" onclick="runBodyClock()">Body Clock</button>
-    </div>
-    <div class="card"><h2>⚡ Биоритмы</h2><div id="healthResult"></div></div>
-  </div>
-</section>
-
-<!-- ORACLE -->
-<section id="tab-oracle" class="section">
-  <div class="grid">
-    <div class="card">
-      <h2>🎴 Оракул</h2>
-      <label>Вопрос / намерени�
+      <h2>🧘 Тело и �
