@@ -1,4 +1,18 @@
-�</label><input id="oQuestion" type="text" placeholder="что делать?">
+�ремя</h2>
+      <label>Дата</label><input id="hDate" type="date">
+      <button class="primary" style="margin-top:14px" onclick="runHealth()">Health Rhythm</button>
+      <button class="secondary" onclick="runBodyClock()">Body Clock</button>
+    </div>
+    <div class="card"><h2>⚡ Биоритмы</h2><div id="healthResult"></div></div>
+  </div>
+</section>
+
+<!-- ORACLE -->
+<section id="tab-oracle" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🎴 Оракул</h2>
+      <label>Вопрос / намерение</label><input id="oQuestion" type="text" placeholder="что делать?">
       <button class="primary" style="margin-top:10px" onclick="runIChing()">I Ching</button>
       <button class="secondary" onclick="runTarot()">Tarot 3</button>
       <button class="secondary" onclick="runRandom()">Random Oracle</button>
@@ -7,16 +21,4 @@
       <label>Сон</label><textarea id="oDream" placeholder="я летал над водо�� и увидел золото"></textarea>
       <button class="primary" style="margin-top:10px" onclick="runDream()">Расшифровать сон</button>
     </div>
-    <div class="card"><h2>🔮 Ответ</h2><div id="oracleResult"></div></div>
-  </div>
-</section>
-
-<!-- ROUTE / MANIFEST -->
-<section id="tab-route" class="section">
-  <div class="grid">
-    <div class="card">
-      <h2>🗺 Маршрут / Манифест / Пространство</h2>
-      <label>Маршрут (lat,lon;lat,lon)</label><input id="rRoute" type="text" placeholder="41.72,44.83;46.54,61.17">
-      <button class="primary" style="margin-top:10px" onclick="runRoute()">Route Score</button>
-      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
-      <label>Намерение (369)</label><input id="rIntent" type="text" pla
+    <div class="card"><h2>🔮 Ответ</h2><div id="oracleResult"></
