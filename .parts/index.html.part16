@@ -1,0 +1,12 @@
+ign({intent:document.getElementById('c-intent').value,birth:{date:document.getElementById('c-birth').value}});
+    var el=document.getElementById('c-out');
+    if(!c.ok){el.className='result show'; el.innerHTML='<div class="empty">'+esc(c.message)+'</div>';return;}
+    el.className='result show';
+    el.innerHTML='<h3>'+esc(c.intent)+'</h3>'+
+      '<div class="kv"><span><strong>DR</strong> '+c.dr+'</span><span><strong>Смысл</strong> '+c.meaning+'</span><span><strong>Архетип</strong> '+c.archetype+'</span><span><strong>Axis</strong> '+c.axis.id+'</span></div>'+
+      '<div class="insight">'+c.mantra+'<br><br>Timing: '+c.timing.note+' · Best launch '+c.timing.bestLaunch.date+' · Best money '+c.timing.bestMoney.date+'</div>'+
+      '<div class="insight">'+c.checklist.axis369+'<br>'+c.checklist.ring+'<br>'+c.checklist.mirrors+'<br>'+c.checklist.returns9+'</div>';
+    var modEl=document.getElementById('c-modules');
+    modEl.innerHTML='<div class="kv"><span><strong>21-step roadmap</strong></span><span>'+c.roadmap[0].date+' … '+c.roadmap[20].date+'</span></div>'+
+      c.modules.map(function(m){return '<div class="module"><span class="num">'+m.n+'</span><strong>'+m.role+'</strong> · '+m.layer+'<br>'+m.task+'</div>';}).join('')+
+      '<div style="margin-top:12px;font-size:13px">'+c.roadmap.slice(0,7).map(function(r){return r.step+'. '+r.operation+' <span class="pill">'+r.date+'</span>';}).join('<br>')+'<br>…</div
