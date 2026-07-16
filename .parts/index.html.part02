@@ -1,5 +1,4 @@
-13px;color:var(--muted);margin-bottom:8px;font-weight:500}
-.input-row{display:flex;gap:12px;flex-wrap:wrap}
+wrap:wrap}
 input[type=text],input[type=date],input[type=time],input[type=number]{flex:1;min-width:130px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:15px;outline:none}
 input:focus{border-color:rgba(215,176,90,0.55);box-shadow:0 0 0 4px rgba(215,176,90,0.10)}
 button.primary{background:linear-gradient(180deg,#e5c26f,#c99a3d);color:#1a160d;border:0;border-radius:12px;padding:0 20px;font-weight:800;font-size:14px;cursor:pointer;white-space:nowrap;min-height:46px;box-shadow:0 4px 16px rgba(215,176,90,0.22)}
@@ -10,4 +9,5 @@ button.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
 .chip:hover{color:var(--text);border-color:rgba(215,176,90,0.45);background:var(--raised)}
 .verdict{display:none;margin-bottom:18px;padding:18px 20px;border-radius:14px;border:1px solid var(--border);background:var(--raised)}
 .verdict.show{display:block}.verdict .row{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:baseline}
-.verdict .tag{font-size:13px;font-weight:900;letter-spacing:0.08em;padding:7px 11px;border-radius:8p
+.verdict .tag{font-size:13px;font-weight:900;letter-spacing:0.08em;padding:7px 11px;border-radius:8px}
+.verdict.ok .tag{background:rgba(120,198,147,0.16);color:var(--green)}.verdict.mid .tag{backgr
