@@ -1,18 +1,50 @@
-rt.strictEqual(p.calendar.length, 27);
-  assert.ok(p.best.launch && p.best.money && p.best.release && p.best.deal && p.best.deepWork);
-  assert.ok(p.peaks.length >= 0);
+);
+  assert.ok(d.symbols.length > 0);
 });
-
-// v2 Create Design
-t("createDesign returns 9 modules and 21 roadmap", () => {
-  const c = ORC.createDesign({intent: "ORACULUM v2 release"});
+t("ichingDraw", () => {
+  const i = ORC.ichingDraw("что делать?");
+  assert.ok(i.ok);
+  assert.ok(i.hexagram);
+});
+t("tarotSpread", () => {
+  const t = ORC.tarotSpread(123);
+  assert.ok(t.ok);
+  assert.strictEqual(t.cards.length, 3);
+});
+t("routeScore", () => {
+  const r = ORC.routeScore([{name: "A", lat: 41.72, lon: 44.83}, {name: "B", lat: 46.54, lon: 61.17}]);
+  assert.ok(r.ok);
+  assert.ok(r.score >= 0 && r.score <= 100);
+});
+t("manifestation369", () => {
+  const m = ORC.manifestation369("рост дохода", 21);
+  assert.ok(m.ok);
+  assert.strictEqual(m.plan.length, 21);
+});
+t("foodResonance", () => {
+  const f = ORC.foodResonance("чай");
+  assert.ok(f.ok);
+  assert.ok(f.type);
+});
+t("learningWindow", () => {
+  const l = ORC.learningWindow("JavaScript", {date: "1998-04-10"});
+  assert.ok(l.ok);
+  assert.ok(l.dr >= 1 && l.dr <= 9);
+});
+t("commitTiming", () => {
+  const c = ORC.commitTiming("v3 release", {date: "1998-04-10"});
   assert.ok(c.ok);
-  assert.strictEqual(c.modules.length, 9);
-  assert.strictEqual(c.roadmap.length, 21);
-  assert.ok(c.dr >= 1 && c.dr <= 9);
-  assert.ok(c.timing && c.timing.bestLaunch);
-  assert.ok(c.checklist && c.checklist.axis369);
+  assert.ok(c.score >= 0 && c.score <= 100);
 });
-
-console.log("\n" + passed + " passed, " + failed + " failed\n");
-process.exit(failed ? 1 : 0);
+t("priceResonance", () => {
+  const p = ORC.priceResonance(999);
+  assert.ok(p.ok);
+  assert.ok(p.phiFriendly);
+});
+t("yearlyArc", () => {
+  const y = ORC.yearlyArc({date: "1998-04-10"}, 2026);
+  assert.ok(y.ok);
+  assert.ok(y.personalYear >= 1 && y.personalYear <= 9);
+});
+t("soulContract", () => {
+  const s = ORC.soulContract({
