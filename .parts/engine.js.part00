@@ -1,33 +1,12 @@
-/*
- * ORACULUM ∞ v2.0 — Deep Unified Field Engine
- * ------------------------------------------------------------
- * Full Natural Code: Mod9 · φ · ИДСЗ · Second Key 21 · Solfeggio/Шуман · Luna
- * + Birth Deep Model (DR, LP, Soul, Destiny, 9-year, step21, spectrum)
- * + Triple-Ring Event (Lunar × Node × DR × PD)
- * + Predict (calendar windows, best days)
- * + Create (intent → 9-module arch, 21-step roadmap, timing)
- * + Cube 147-258-369, operator table, fibMod9
- * Pure, zero deps. UMD (window.ORC / require)
- */
-(function (root, factory) {
-  if (typeof module === "object" && module.exports) module.exports = factory();
-  else root.ORC = factory();
-})(typeof self !== "undefined" ? self : this, function () {
-  "use strict";
+/* ORACULUM ∞ v3.0 — Living Unified Field Engine */
+(function (root, factory) { if (typeof module === "object" && module.exports) module.exports = factory(); else root.ORC = factory(); })(typeof self !== "undefined" ? self : this, function () {
+"use strict";
 
-  // === CONSTANTS ===
-  var PHI = (1 + Math.sqrt(5)) / 2;
-  var INV_PHI = 1 / PHI;
-  var SQRT_PHI = Math.sqrt(PHI);
-  var GOLDEN_ANGLE = 360 * (1 - INV_PHI);
-  var PHI_SCALE = [8,13,21,34,55,89,144,233,377];
-  var AXIS = [3,6,9];
-  var RING = [1,2,4,8,7,5];
-  var TRI_A = [1,4,7]; // ▲
-  var TRI_B = [2,5,8]; // ▼
-  var SYNODIC = 29.530588853;
-  var SIDEREAL = 27.321661;
-  var NEW_MOON_REF = Date.UTC(2000,0,6,18,14,0);
-  var OPS = ["Calcinatio","Solutio","Separatio","Coniunctio","Fermentatio","Distillatio","Coagulatio"];
-  var PHASES21 = ["Nigredo (растворение)","Albedo (очищение)","Rubedo (соединение)"];
-  var PLANETS = ["Солнце","Луна","Мар�
+var PHI = (1 + Math.sqrt(5)) / 2, INV_PHI = 1 / PHI, SQRT_PHI = Math.sqrt(PHI), GOLDEN_ANGLE = 360 * (1 - INV_PHI);
+var AXIS = [3, 6, 9], RING = [1, 2, 4, 8, 7, 5], TRI_A = [1, 4, 7], TRI_B = [2, 5, 8];
+var SYNODIC = 29.530588853, SIDEREAL = 27.321661, NEW_MOON_REF = Date.UTC(2000, 0, 6, 18, 14, 0);
+var OPS = ["Calcinatio", "Solutio", "Separatio", "Coniunctio", "Fermentatio", "Distillatio", "Coagulatio"];
+var PHASES21 = ["Nigredo", "Albedo", "Rubedo"];
+var PLANETS = ["Солнце", "Луна", "Марс", "Меркурий", "Юпитер", "Венера", "Сатурн"];
+var ZODIAC = ["Овен", "Телец", "Близнецы", "Рак", "Лев", "Дева", "Весы", "Скорпион", "Стрелец", "Козерог", "Водолей", "Рыбы"];
+var HEXAGRAMS = ["Творческое", "Рецептивное", "Трудности", "Юность", "Умиротворение", "Спор", "Армия", "Содружество", "Умиротворение малого", "Тактика", "Мир", "Стояние", "Товарищество", "Большое имущество", "Скромность",
