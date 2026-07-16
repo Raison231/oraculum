@@ -1,0 +1,7 @@
+({key: "time", title: "Время", lines: ["DR: " + tdr + " — " + DR_MEANING[tdr], "Планетный час: " + PLANETS[(p.h + p.m) % 7], "Совет: " + DR_ACTION[tdr]]}); scores.push(60); }
+  lenses.push({key: "money", title: "Деньги", lines: ["DR " + dr + ": " + MONEY_DR[dr].label, "Score: " + MONEY_DR[dr].score + "/100", DR_ACTION[dr]]});
+  var overall = scores.reduce(function (a, b) { return a + b; }, 0) / scores.length;
+  var verdict = overall >= 61.8 ? "ЗВУЧИТ" : (overall >= 38.2 ? "ТР��БУЕТ НАСТРОЙКИ" : "НЕ ЗВУЧИТ");
+  return {ok: true, input: p, seed: seed, dr: dr, axis: ax, overall: Math.round(overall * 10) / 10, verdict: verdict, lenses: lenses, money: MONEY_DR[dr], meaning: DR_MEANING[dr], action: DR_ACTION[dr]};
+}
+function operatorTable() { var rows = []; for (var k = 1; k <= 9; k++) { var orbit = [], x = 1; for (var i = 0; i < 6; i++) { orbit.push(x); x = mulMod9(x, k); if (x === 1 && i > 0) break; } rows.push({k: k, archetype: opArchetype(k), orbit: orbit, meaning: DR_MEANING[k]}); } ret
