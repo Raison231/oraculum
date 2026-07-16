@@ -1,0 +1,5 @@
+WORDS[i]);
+  return {ok: true, name: name, dr: dr, meaning: DR_MEANING[dr], action: DR_ACTION[dr], axis: ax, archetype: opArchetype(dr), frequency: fr, kepler: kl, vibe: [elementOf(dr), chakraOf(dr)], powerWords: words, suggestedDomain: name.toLowerCase().replace(/\s+/g, "") + suffix, money: MONEY_DR[dr], score: MONEY_DR[dr].score, verdict: dr === 8 || dr === 5 ? "БРЕНД-ДЕНЬГИ" : (dr === 1 || dr === 9 ? "БРЕНД-СИГНАЛ" : "БРЕНД-РАБОТА")}; }
+function colorOfNumber(n) { n = Math.round(Number(n) || 1); var dr = digitalRoot(n); return {ok: true, n: n, dr: dr, hex: COLORS[dr - 1].hex, name: COLORS[dr - 1].name, element: elementOf(dr), chakra: chakraOf(dr), meaning: DR_MEANING[dr]}; }
+function auraPalette(birth) { var B = birthProfile(birth); if (!B.ok) return B; var dr = B.numbers.dr, lp = B.numbers.lifePath, soul = B.numbers.soul, dest = B.numbers.destiny;
+  return {ok: true, core: COLORS[dr - 1], life: COLORS[lp - 1], soul: COLORS[soul - 1], destiny: COLORS[dest - 1], mirror: COLORS[mirror
