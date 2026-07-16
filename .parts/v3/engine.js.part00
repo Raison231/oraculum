@@ -1,0 +1,12 @@
+/* ORACULUM ∞ v3.0 — Living Unified Field Engine */
+(function (root, factory) { if (typeof module === "object" && module.exports) module.exports = factory(); else root.ORC = factory(); })(typeof self !== "undefined" ? self : this, function () {
+"use strict";
+
+var PHI = (1 + Math.sqrt(5)) / 2, INV_PHI = 1 / PHI, SQRT_PHI = Math.sqrt(PHI), GOLDEN_ANGLE = 360 * (1 - INV_PHI);
+var AXIS = [3, 6, 9], RING = [1, 2, 4, 8, 7, 5], TRI_A = [1, 4, 7], TRI_B = [2, 5, 8];
+var SYNODIC = 29.530588853, SIDEREAL = 27.321661, NEW_MOON_REF = Date.UTC(2000, 0, 6, 18, 14, 0);
+var OPS = ["Calcinatio", "Solutio", "Separatio", "Coniunctio", "Fermentatio", "Distillatio", "Coagulatio"];
+var PHASES21 = ["Nigredo", "Albedo", "Rubedo"];
+var PLANETS = ["Солнце", "Луна", "Марс", "Меркурий", "Юпитер", "Венера", "Сатурн"];
+var ZODIAC = ["Овен", "Телец", "Близнецы", "Рак", "Лев", "Дева", "Весы", "Скорпион", "Стрелец", "Козерог", "Водолей", "Рыбы"];
+var HEXAGRAMS = ["Творческое", "Рецептивное", "Трудности", "Юность", "Ум
