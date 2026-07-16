@@ -1,10 +1,8 @@
-.dr === dr ? 15 : 0)) / 2.5);
-    rows.push({option: opt, dr: dr, meaning: DR_MEANING[dr], action: DR_ACTION[dr], eventScore: ev.scores.overall, moneyScore: MONEY_DR[dr].score, total: clamp(score, 0, 100)}); }
-  rows.sort(function (a, b) { return b.total - a.total; });
-  return {ok: true, rows: rows, winner: rows[0], verdict: rows[0].total >= 75 ? "ЕСТЬ ПОБЕДИТЕЛЬ" : "ТРЕБУЕТСЯ ДОРАБОТКА"}; }
-function teamField(members) { if (!members || !members.length) return {ok: false, message: "Добавь участников"}; var drs = [], souls = [], total = 0;
-  for (var i = 0; i < members.length; i++) { var b = birthProfile(members[i]); drs.push(b.ok ? b.numbers.dr : 0); souls.push(b.ok ? b.numbers.soul : 0); total += b.ok ? b.numbers.dr : 0; }
-  var teamDR = digitalRoot(total), missing = [];
-  for (var k = 1; k <= 9; k++) if (drs.indexOf(k) < 0 && k !== mirrorPair(teamDR)) missing.push(k);
-  var dupes = {}; drs.forEach(function (d) { dupes[d] = (dupes[d] || 0) + 1; }); var resonance = Object.keys(dupes).filter(function (k) { return dupes[k] > 1; }).map(function (k) { return "DR" + k + "×" + dupes[k]; });
-  return {ok: true, teamDR: teamDR, meaning: DR_MEANING[teamDR], action: DR_ACTION[teamDR], size: members.length, drProfile: drs, soulProfile: souls, resonances: resonance, missing: missing, verdict: missing.length <= 2 ? "КОМАНДА ЗВУЧИ
+, element: elementOf(dr), archetype: opArchetype(dr), color: COLORS[dr - 1], verdict: dr === 3 || dr === 5 ? "ТЕКСТ ДВИЖЕТ" : (dr === 7 || dr === 4 ? "ТЕКСТ КОПАЕТ" : "ТЕКСТ БАЛАНСИРУЕТ")}; }
+function headlineScore(text) { var t = textResonance(text); if (!t.ok) return t; var len = text.length, power = 0;
+  if (len >= 40 && len <= 90) power += 30; else if (len < 40) power += 15; else power += 10;
+  if (/\d/.test(text)) power += 15; if (/[—:;]/.test(text)) power += 10;
+  var dr = t.dr; if ([1, 5, 8].indexOf(dr) >= 0) power += 25; else if ([3, 9].indexOf(dr) >= 0) power += 20; else power += 10;
+  return {ok: true, text: text, dr: t.dr, score: clamp(power + t.rhythmScore * 5, 0, 100), verdict: power >= 70 ? "ЦЕПЛЯЕТ" : (power >= 45 ? "РАБОТАЕТ" : "ДОПИЛИТЬ"), tips: power >= 70 ? ["Делай A/B", "Запускай"] : ["Короче", "Добавь цифру", "Усиль глагол"]}; }
+function decisionMatrix(options, opts) { opts = opts || {}; var birth = opts.birth ? birthProfile(opts.birth) : null; var rows = [];
+  for (var i = 0; i < options.length; i++) { var opt = options[i]; var seed = nameToNumber(opt), dr = digitalRoot(seed); var ev = eventScore({date: opts.date || new Date(), birth: birth && birth.birthISO || DEFAULT_BIRTH.date, lat: opts.lat, lon: opts
