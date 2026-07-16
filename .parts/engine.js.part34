@@ -1,0 +1,7 @@
+) % RUNES.length]}); }
+  var dr = digitalRoot(seed); return {ok: true, seed: seed, cards: cards, dr: dr, meaning: DR_MEANING[dr], action: DR_ACTION[dr]}; }
+function randomOracle(seed) { seed = seed != null ? seed : Math.floor(Date.now() / 1000); var rng = seededRandom(seed); var dr = digitalRoot(Math.floor(rng * 100) + 1); var rune = RUNES[Math.floor(rng * 100000) % RUNES.length]; var el = elementOf(dr); var advice = DR_ACTION[dr]; return {ok: true, seed: seed, dr: dr, rune: rune, element: el, meaning: DR_MEANING[dr], advice: advice, verdict: rng > 0.61 ? "ЗНАК" : (rng > 0.38 ? "СОВЕТ" : "ПАУЗА")}; }
+function runeDraw(seed) { seed = seed != null ? seed : Math.floor(Date.now() / 1000); return {ok: true, rune: RUNES[Math.floor(seededRandom(seed) * RUNES.length)], dr: digitalRoot(seed)}; }
+function routeScore(places) { if (!places || places.length < 2) return {ok: false, message: "Нужно минимум 2 точки"}; var total = 0, legs = [];
+  for (var i = 0; i < places.length - 1; i++) { var a = places[i], b = places[i + 1]; var leg = leyLine(a.lat, a.lon, b.lat, b.lon); total += leg.nodeScore; legs.push({from: a.name || "A", to: b.name || "B", leg: leg}); }
+  var avg = Math.round(total / (places.length - 1)); return {ok: true, places: places, legs: legs, score: avg, verdict: avg >= 75 ? "МАРШРУТ В РЕЗОНАНСЕ" : (avg >= 50 ? "МАРШРУТ Р�
