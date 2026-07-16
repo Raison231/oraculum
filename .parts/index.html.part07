@@ -1,4 +1,9 @@
-ss="card"><h2>📊 Резонанс</h2><div id="fieldResult"></div></div>
+о..."></div>
+      <div class="chips" id="fieldChips"></div>
+      <button class="primary" style="margin-top:14px" onclick="runField()">Считать поле</button>
+      <p class="hint">Аномалия = вход. Geo, цвет, время, частота открывают дополнительные линзы.</p>
+    </div>
+    <div class="card"><h2>📊 Резонанс</h2><div id="fieldResult"></div></div>
   </div>
 </section>
 
@@ -21,10 +26,4 @@ ss="card"><h2>📊 Резонанс</h2><div id="fieldResult"></div></div>
 <section id="tab-predict" class="section">
   <div class="grid">
     <div class="card">
-      <h2>📅 Прогноз 27 дней</h2>
-      <label>От</label><input id="pFrom" type="date">
-      <label>Дней</label><input id="pDays" type="number" value="27" min="7" max="90">
-      <button class="primary" style="margin-top:14px" onclick="runPredict()">Календарь</button>
-      <div class="result show" id="predictBest" style="margin-top:14px"></div>
-    </div>
-    <div class="card"><h2>🎯 Окна</h2><d
+      <h2>📅 Прогноз 27 �
