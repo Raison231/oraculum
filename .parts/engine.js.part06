@@ -1,11 +1,9 @@
-== n; }
+ a + b; arr.push(c); a = b; b = c; } return arr; }
+function nearestFib(n) { var arr = fibUpTo(Math.max(Math.abs(n), 2) * 2 + 5), best = arr[0]; for (var i = 0; i < arr.length; i++) if (Math.abs(arr[i] - n) < Math.abs(best - n)) best = arr[i]; return best; }
+function isFib(n) { return nearestFib(n) === n; }
 function keplerLadder(base) { return {low: base, mid: base * SQRT_PHI, high: base * PHI}; }
 function nearestFreq(hz) { var best = FREQS[0]; for (var i = 0; i < FREQS.length; i++) if (Math.abs(FREQS[i].hz - hz) < Math.abs(best.hz - hz)) best = FREQS[i]; return best; }
 function step21(n) { var s = ((((Math.trunc(n) - 1) % 21) + 21) % 21) + 1; var phase = Math.ceil(s / 7); var op = ((s - 1) % 7) + 1; return {step: s, phase: phase, phaseName: PHASES21[phase - 1], operation: OPS[op - 1]}; }
 function nameToNumber(str) { var sum = 0, s = String(str || "").toLowerCase(); for (var i = 0; i < s.length; i++) { var ch = s[i], c = ch.charCodeAt(0); if (c >= 97 && c <= 122) sum += c - 96; else if (c >= 1072 && c <= 1103) sum += c - 1071; else if (ch === "ё") sum += 7; else if (c >= 48 && c <= 57) sum += c - 48; } return sum; }
 function hash32(s) { var h = 0; for (var i = 0; i < s.length; i++) { h = (h << 5) - h + s.charCodeAt(i); h |= 0; } return Math.abs(h); }
-function seededRandom(seed) { var x = Math.sin(seed * 9999) * 10000; return x - Math.floor(x); }
-function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
-function lerp(a, b, t) { return a + (b - a) * t; }
-function goldenRatioSplit(n) { return {n: n, small: n * INV_PHI, large: n * (1 - INV_PHI)}; }
-function solarYearProgress(d) { var y = d.getUTCFullYear(), s = new Date(Date.UTC(y, 0, 1)), e = new Date(Date.UTC(y + 1, 0
+function seededRandom(seed) { var x = Math.sin(seed * 9999) * 10000; return x -
