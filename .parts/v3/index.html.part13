@@ -1,0 +1,21 @@
+adline score</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Код</label><textarea id="txCode" placeholder="function example() { ... }"></textarea>
+      <button class="primary" style="margin-top:10px" onclick="runCode()">Code Resonance</button>
+    </div>
+    <div class="card"><h2>🎙 Результат</h2><div id="brandResult"></div></div>
+  </div>
+</section>
+
+<!-- MONEY -->
+<section id="tab-money" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>💰 Деньги × Время</h2>
+      <label>Сумма</label><input id="mAmount" type="number" value="10000">
+      <label>Дата</label><input id="mDate" type="date">
+      <button class="primary" style="margin-top:14px" onclick="runMoney()">Вход / Ждать</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <button class="secondary" onclick="runMoneyMap()">Карта денег 30 дней</button>
+    </div>
+    <div class="card"><h2>📊 Результат</h2><div id="moneyResult
