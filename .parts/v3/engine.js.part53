@@ -1,0 +1,6 @@
+HI, GOLDEN_ANGLE: GOLDEN_ANGLE, AXIS: AXIS, RING: RING, TRI_A: TRI_A, TRI_B: TRI_B,
+  DR_MEANING: DR_MEANING, DR_ACTION: DR_ACTION, MONEY_DR: MONEY_DR, FREQS: FREQS, COLORS: COLORS, NODES: NODES, DEFAULT_BIRTH: DEFAULT_BIRTH, FOOD: FOOD, CHAKRAS: CHAKRAS, ELEMENTS: ELEMENTS, PLANETS: PLANETS, ZODIAC: ZODIAC, HEXAGRAMS: HEXAGRAMS, TAROT_MAJOR: TAROT_MAJOR, RUNES: RUNES, BODY_SYSTEMS: BODY_SYSTEMS,
+  digitalRoot: digitalRoot, sumDigits: sumDigits, digitalRootSteps: digitalRootSteps, mod9Class: mod9Class, mirrorPair: mirrorPair, axisOf: axisOf, mulMod9: mulMod9,
+  opArchetype: opArchetype, fibUpTo: fibUpTo, nearestFib: nearestFib, isFib: isFib, keplerLadder: keplerLadder, nearestFreq: nearestFreq, step21: step21,
+  nameToNumber: nameToNumber, hash32: hash32, seededRandom: seededRandom, clamp: clamp, lerp: lerp, goldenRatioSplit: goldenRatioSplit, letterDR: letterDR,
+  parseDate: parseDate, dateDR: dateDR, lifePath: lifePath, personalYear: personalYear, personalMonth: personalMonth, person
