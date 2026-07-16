@@ -1,4 +1,6 @@
-ert.strictEqual(ORC.nearestFib(13), 13);
+/ Fib / phi
+t("nearestFib и isFib", () => {
+  assert.strictEqual(ORC.nearestFib(13), 13);
   assert.ok(ORC.isFib(21));
   assert.ok(!ORC.isFib(20));
   assert.strictEqual(ORC.nearestFib(100), 89);
@@ -34,6 +36,4 @@ t("step21", () => {
 t("parseInput", () => {
   assert.strictEqual(ORC.parseInput("42").type, "number");
   assert.strictEqual(ORC.parseInput("41.72, 44.83").type, "geo");
-  assert.strictEqual(ORC.parseInput("528hz").type, "freq");
-  assert.strictEqual(ORC.parseInput("2026-08-12").type, "date");
-  assert.stri
+  assert.strictEqual(ORC.parseInput("5
