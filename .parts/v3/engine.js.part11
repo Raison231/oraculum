@@ -1,0 +1,6 @@
+Phi = phiPts[i]; } }
+  return {fraction: frac, ageDays: pos, name: names[idx], illumination: 0.5 * (1 - Math.cos(2 * Math.PI * frac)), nearestPhiPoint: nearestPhi, phiDistance: best, isPhiWindow: best < 0.04, siderealAge: ((days % SIDEREAL) + SIDEREAL) % SIDEREAL}; }
+function retroHint(d) { var pd = planetDay(d); return pd === "Меркурий" ? "Ретро-тон: проверяй 2x" : pd === "Марс" ? "Марс: прямота" : pd === "Сатурн" ? "Сатурн: структура" : ""; }
+function voidOfCourseHint(d) { var lp = lunarPhase(d); return lp.fraction > 0.48 && lp.fraction < 0.52 ? "Луна в последней четверти — затишье" : ""; }
+function biorhythm(birth, date) { var days = daysBetween(birth, date); return {physical: Math.sin(2 * Math.PI * days / 23), emotional: Math.sin(2 * Math.PI * days / 28), intellectual: Math.sin(2 * Math.PI * days / 33), intuitive: Math.sin(2 * Math.PI * days / 38)}; }
+function goldenHour(birth, date) { var br = biorhythm(birth, date); var score = (br.physical + br.emotional + br.intellectual + 3) /
