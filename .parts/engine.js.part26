@@ -1,0 +1,6 @@
+ birthNode: nnBirth.node, relocatedNode: nn.node, distanceFromBirth: Math.round(haversine(B.lat, B.lon, newLat, newLon)), score: clamp(score, 0, 100), verdict: score >= 80 ? "ПЕРЕЕЗД ЗВУЧИТ" : (score >= 55 ? "ТРЕНИРУЙ МЕСТО" : "ЛУЧШЕ НЕТ"), note: "Новый узел " + nn.node.id + " · " + np.label}; }
+function brandProfile(name) { var seed = nameToNumber(name), dr = digitalRoot(seed), ax = axisOf(dr), fr = nearestFreq(seed % 900 + 60), kl = keplerLadder(seed || 1);
+  var domains = [".com", ".io", ".ai", ".app"]; var suffix = domains[seed % domains.length];
+  var words = []; for (var i = 1; i <= 9; i++) if (i !== dr && digitalRoot(dr * i) === dr) words.push(MEANING_WORDS[i]);
+  return {ok: true, name: name, dr: dr, meaning: DR_MEANING[dr], action: DR_ACTION[dr], axis: ax, archetype: opArchetype(dr), frequency: fr, kepler: kl, vibe: [elementOf(dr), chakraOf(dr)], powerWords: words, suggestedDomain: name.toLowerCase().replace(/\s+/g, "") + suffix, money: MONEY_DR[dr], score: MONEY_DR[dr].score, verdict: dr === 8 || dr === 5 ? "БРЕНД-ДЕНЬГИ" : (dr === 1 || dr === 9 ? "БРЕНД-СИГНАЛ" : "БРЕНД-РАБОТА")}; }
+function colorOfNumber(n) { n = Math.round(Number(n) || 1); var dr = digitalRoot(n); return {ok: true, n: n, dr: dr, hex: COLORS[dr - 1].hex, name: COLORS[dr - 1].name, element: elementOf(dr), chakra: chakraOf(dr
