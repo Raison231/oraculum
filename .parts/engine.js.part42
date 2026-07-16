@@ -1,0 +1,7 @@
+});
+  return {ok: true, flow: flow, best: map.best, verdict: map.peaks.length > 0 ? "ЕСТЬ ПИКОВЫЕ ДНИ" : "ПЛАВНЫЙ ПЕРИОД"}; }
+function signatureTone(name, birth) { var B = birthProfile(birth); if (!B.ok) return B; var n = nameToNumber(name); var dr = digitalRoot(n + B.numbers.dr); var fr = nearestFreq((n + B.numbers.soul) % 900 + 60); var note = ["До", "Ре", "Ми", "Фа", "Соль", "Ля", "Си"][(dr - 1) % 7]; return {ok: true, name: name, dr: dr, note: note, frequency: fr, meaning: DR_MEANING[dr], color: COLORS[dr - 1]}; }
+function crystalOf(dr) { var map = {1: "красный яспис", 2: "оранжевый сердолик", 3: "жёлтый цитрин", 4: "зелёный авантюрин", 5: "синий лазурит", 6: "индиго содалит", 7: "фиолетовый аметист", 8: "розовый кварц", 9: "прозрачный кварц"}; return {dr: dr, crystal: map[dr], element: elementOf(dr)}; }
+// === EXPORT ===
+return {version: "3.0.0", PHI: PHI, INV_PHI: INV_PHI, SQRT_PHI: SQRT_PHI, GOLDEN_ANGLE: GOLDEN_ANGLE, AXIS: AXIS, RING: RING, TRI_A: TRI_A, TRI_B: TRI_B,
+  DR_MEANING: DR_MEANING, DR_ACTION: DR_ACTION, MONEY_DR: MONEY_DR, FREQS: FREQS, COLORS: COLORS, NODES: NODES, DEFAULT_BIRTH: DEFAULT_BIRTH, FOOD: FOOD, CHAKRAS: CHAKRAS, ELEMENTS: ELEMENT
