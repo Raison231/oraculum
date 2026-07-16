@@ -1,0 +1,5 @@
+"Data", task: "Семя: one-liner «" + intent + "»"}, {n: 2, role: "Зеркало", layer: "Data", task: "Парный feedback"}, {n: 3, role: "Заземлитель", layer: "Data", task: "Спека + constraints"}, {n: 4, role: "Архитектор", layer: "Logic", task: "1:√φ:φ · core/field/bridge"}, {n: 5, role: "Критик", layer: "Logic", task: "Аномалия-как-вход"}, {n: 6, role: "Соединитель", layer: "Logic", task: "API · интеграции"}, {n: 7, role: "Хранитель", layer: "Interface", task: "Docs · ADR · tests"}, {n: 8, role: "Реализатор", layer: "Interface", task: "Ship MVP · money"}, {n: 9, role: "Визионер", layer: "Interface", task: "Релиз + next octave"}];
+  return {ok: true, intent: intent, seed: seed, dr: dr, meaning: DR_MEANING[dr], action: DR_ACTION[dr], axis: ax, step21: st, kepler: kl, frequency: fr, archetype: opArchetype(dr),
+    modules: modules, roadmap: roadmap,
+    checklist: {axis369: "Ось 3-6-9: data/logic/release", ring: "Кольцо 1-2-4-8-7-5", mirrors: "Пары 1↔8,2↔7,4↔5", returns9: "Финал в 9"},
+    timi
