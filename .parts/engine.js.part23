@@ -1,0 +1,8 @@
+ет: " + Math.round(lp.illumination * 100) + "%"]});
+    lenses.push({key: "event", title: "Triple-Ring", lines: [ev.formula, "Кольца: " + ev.rings + "/4 · " + ev.scores.overall, ev.verdict, "Деньги: " + ev.money.label + " (" + ev.money.score + ")"]}); scores.push(ev.scores.overall); }
+  if (p.type === "color") { var cdr = digitalRoot(p.r + p.g + p.b); lenses.push({key: "color", title: "Цвет", lines: ["RGB: " + p.r + "," + p.g + "," + p.b, "DR: " + cdr + " — " + DR_MEANING[cdr], "Цвет: " + COLORS[dr - 1].name]}); scores.push(72); }
+  if (p.type === "time") { var tdr = digitalRoot(p.h * 60 + p.m); lenses.push({key: "time", title: "Время", lines: ["DR: " + tdr + " — " + DR_MEANING[tdr], "Планетный час: " + PLANETS[(p.h + p.m) % 7], "Совет: " + DR_ACTION[tdr]]}); scores.push(60); }
+  lenses.push({key: "money", title: "Деньги", lines: ["DR " + dr + ": " + MONEY_DR[dr].label, "Score: " + MONEY_DR[dr].score + "/100", DR_ACTION[dr]]});
+  var overall = scores.reduce(function (a, b) { return a + b; }, 0) / scores.length;
+  var verdict = overall >= 61.8 ? "ЗВУЧИТ" : (overall >= 38.2 ? "ТР��БУЕТ НАСТРОЙКИ" : "НЕ ЗВУЧИТ");
+  return {ok: true, input: p, seed: seed, dr: dr, axis: ax, overall: Math.round(overall * 10) / 10, verdict: verdict, lenses: lenses, money: MONEY_DR[dr], meaning: DR_MEANING[dr], acti
