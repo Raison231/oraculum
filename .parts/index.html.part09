@@ -1,24 +1,23 @@
->φ = <code id="phi"></code> · nodes = <code id="ncount"></code> · tests <code>23/23</code></div>
-</footer>
-</div>
-<script src="./engine.js"></script>
-<script>
-(function(){
-  var ORC=window.ORC; if(!ORC){alert('engine.js не загружен');return;}
-  document.getElementById('phi').textContent=ORC.PHI.toFixed(10);
-  document.getElementById('ncount').textContent=String(ORC.NODES.length);
+ 1990-05-15, 1985-12-01">
+      <button class="primary" style="margin-top:10px" onclick="runTeam()">Поле команды</button>
+    </div>
+    <div class="card"><h2>📈 Резонанс</h2><div id="synastryResult"></div></div>
+  </div>
+</section>
 
-  document.querySelectorAll('.tab').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-      document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-    });
-  });
-
-  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-  var q=document.getElementById('q'), go=document.getElementById('go'), out=document.getElementById('out'), verdictEl=document.getElementById('verdict'), chips=document.getElementById('chips'), canvas=document.getElementById('globe'), mapMeta=document.getElementById('mapMeta');
-  var PRESETS=[{label:'ДР Макса',value:'10.04.1998'},{label:'Тбилиси',value:'41.72, 44.83'},{label:'528 Гц',value:'528hz'},{label:'Weeekend',value:'Weeekend'},{label:'MIGI',value:'MIGI'},{label:'Сегодня',value:new Date().toISOString().slice(0,10)}];
-  PRE
+<!-- BRAND / TEXT -->
+<section id="tab-brand" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🏷 Бренд / Текст / Код</h2>
+      <label>Бренд / имя</label><input id="brName" type="text" value="ORACULUM">
+      <button class="primary" style="margin-top:10px" onclick="runBrand()">Профиль бренда</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Заголовок / текст</label><textarea id="txText" placeholder="Как удвоить доход за 30 дней"></textarea>
+      <button class="primary" style="margin-top:10px" onclick="runText()">Анализ текста</button>
+      <button class="secondary" onclick="runHeadline()">Headline score</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Код</label><textarea id="txCode" placeholder="function example() { ... }"></textarea>
+      <button class="primary" style="margin-top:10px" onclick="runCode()">Code Resonance</button>
+    </div>
+    <div class="card"><h2>🎙 Результат</h2><div id="brandResult"></di
