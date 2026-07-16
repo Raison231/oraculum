@@ -1,4 +1,10 @@
-iv class="table-wrap"><table id="predictTable"><thead><tr><th>Дата</th><th>DR</th><th>Луна</th><th>Score</th><th>Кольца</th><th>Деньги</th><th>Вердикт</th></tr></thead><tbody></tbody></table></div></div>
+�ней</h2>
+      <label>От</label><input id="pFrom" type="date">
+      <label>Дней</label><input id="pDays" type="number" value="27" min="7" max="90">
+      <button class="primary" style="margin-top:14px" onclick="runPredict()">Календарь</button>
+      <div class="result show" id="predictBest" style="margin-top:14px"></div>
+    </div>
+    <div class="card"><h2>🎯 Окна</h2><div class="table-wrap"><table id="predictTable"><thead><tr><th>Дата</th><th>DR</th><th>Луна</th><th>Score</th><th>Кольца</th><th>Деньги</th><th>Вердикт</th></tr></thead><tbody></tbody></table></div></div>
   </div>
 </section>
 
@@ -19,8 +25,4 @@ iv class="table-wrap"><table id="predictTable"><thead><tr><th>Дата</th><th>D
   <div class="grid">
     <div class="card">
       <h2>🔗 Синастрия / Команда</h2>
-      <label>Человек A</label><input id="sA" type="text" value="1998-04-10">
-      <label>Человек B</label><input id="sB" type="text" value="2000-01-01">
-      <button class="primary" style="margin-top:14px" onclick="runSynastry()">Совместимость</button>
-      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
-      <label>Команда (даты через запятую)</label><input id="tMembers" type="text" placeholder="1998-04-10,
+      <label>Человек A</label><
