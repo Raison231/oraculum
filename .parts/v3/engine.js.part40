@@ -1,0 +1,7 @@
+N[ev.dr]}; }
+function healthRhythm(birth, date) { var B = birthProfile(birth); if (!B.ok) return B; var br = biorhythm(B.birth, parseDate(date) || new Date()), dr = B.numbers.dr;
+  var systems = {}; for (var i = 0; i < 9; i++) { systems[BODY_SYSTEMS[i]] = Math.round((Math.sin((br.physical + i) * Math.PI / 4.5) + 1) * 50); }
+  var weak = BODY_SYSTEMS[8 - ((dr - 1) % 9)];
+  return {ok: true, dr: dr, physical: Math.round((br.physical + 1) * 50), emotional: Math.round((br.emotional + 1) * 50), intellectual: Math.round((br.intellectual + 1) * 50), intuitive: Math.round((br.intuitive + 1) * 50), systems: systems, watch: weak, verdict: br.physical > 0.3 ? "ТЕЛО В ПОТОКЕ" : "БЕРЕГИ " + weak}; }
+function chronobiology(birth, date) { var B = birthProfile(birth); if (!B.ok) return B; var d = parseDate(date) || new Date(), br = biorhythm(B.birth, d);
+  var schedule = [{t: 6, label: "Подъём", score: (br.physical + br.emotional + 2) / 4 * 100}, {t: 9, label: "Глубокая работа", score: (br.physical + 
