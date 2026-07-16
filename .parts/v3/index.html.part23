@@ -1,0 +1,5 @@
+n);renderBrandText(b);}
+function runText(){const t=ORC.textResonance(document.getElementById('txText').value);renderBrandText(t);}
+function runHeadline(){const h2=ORC.headlineScore(document.getElementById('txText').value);renderBrandText(h2);}
+function runCode(){const c=ORC.codeResonance(document.getElementById('txCode').value);renderBrandText(c);}
+function renderBrandText(r){const el=document.getElementById('brandResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}if(r.score!=null)renderVerdict(el,r,r.score);else el.innerHTML='';let html='<div class="kv">';if(r.dr!=null)html+=kv('DR',r.dr);if(r.words!=null)html+=kv('Слов',r.words);if(r.lines!=null)html+=kv('Строк',r.lines);if(r.functions!=null)html+=kv('Функций',r.functions);if(r.frequency)html+=kv('Частота',r.frequency.hz+' '+r.frequency.name);if(r.suggestedDomain)html+=kv('Домен',r.suggestedDomain);if(r.verdict)html+=kv('Вердикт',r.verdict);html+='</div>';if(r.meaning)html+=`<div class="insight">${h(r
