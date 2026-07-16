@@ -1,4 +1,7 @@
-radient(90deg,var(--gold),var(--cyan));transition:width .6s ease}
+eight:700}
+.color-swatch{display:inline-block;width:26px;height:26px;border-radius:6px;border:1px solid var(--border);vertical-align:middle;margin:2px 4px 2px 0}
+.live-bar{height:6px;border-radius:3px;background:var(--panel);overflow:hidden;margin:8px 0}
+.live-bar>div{height:100%;background:linear-gradient(90deg,var(--gold),var(--cyan));transition:width .6s ease}
 footer{margin-top:50px;text-align:center;color:var(--muted);font-size:13px}
 </style>
 </head>
@@ -18,9 +21,4 @@ footer{margin-top:50px;text-align:center;color:var(--muted);font-size:13px}
     <div class="card">
       <h2>🔮 Универсальный вход</h2>
       <label>Что считаем?</label>
-      <div class="input-row"><input id="fieldInput" type="text" placeholder="дата, число, координаты, частота, цвет #hex, время, слово..."></div>
-      <div class="chips" id="fieldChips"></div>
-      <button class="primary" style="margin-top:14px" onclick="runField()">Считать поле</button>
-      <p class="hint">Аномалия = вход. Geo, цвет, время, частота открывают дополнительные линзы.</p>
-    </div>
-    <div cla
+      <div class="input-row"><input id="fieldInput" type="text" placeholder="дата, число, координаты, частота, цвет #hex, время, слов
