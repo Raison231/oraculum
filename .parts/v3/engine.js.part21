@@ -1,0 +1,9 @@
+e), voidHint: voidOfCourseHint(date),
+    formula: "E=Luna×Node×DR×PD"};
+}
+function predict(opts) { opts = opts || {}; var days = opts.days || 27; var start = parseDate(opts.from) || new Date();
+  start = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
+  var birth = parseDate(opts.birth || DEFAULT_BIRTH.date); var lat = opts.lat != null ? opts.lat : DEFAULT_BIRTH.lat; var lon = opts.lon != null ? opts.lon : DEFAULT_BIRTH.lon;
+  var calendar = [], peaks = [], moneyDays = [], personalMirrors = [];
+  for (var i = 0; i < days; i++) { var d = new Date(start.getTime() + i * 86400000); var ev = eventScore({date: d, birth: birth, lat: lat, lon: lon});
+    var row = {date: d.toISOString().slice(0, 10), dr: ev.dr, pd: ev.personalDay, planet: ev.planet, luna: ev.luna.name, overall: ev.scores.overall, rings: ev.rings, verdict: ev.verdict, money: ev.money.label, moneyScore: ev.money.score, action: ev.action, node: ev.node.node.id, nodeHeat: Math.round(ev.nodePha
