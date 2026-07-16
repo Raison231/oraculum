@@ -1,0 +1,29 @@
+rictEqual(ORC.mirrorPair(1), 8);
+  assert.strictEqual(ORC.mirrorPair(2), 7);
+  assert.strictEqual(ORC.mirrorPair(4), 5);
+  assert.strictEqual(ORC.mirrorPair(9), 9);
+});
+t("axis/ring cover 1..9", () => {
+  const all = ORC.AXIS.concat(ORC.RING).sort((a, b) => a - b);
+  assert.deepStrictEqual(all, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+});
+
+// Fib / phi
+t("nearestFib и isFib", () => {
+  assert.strictEqual(ORC.nearestFib(13), 13);
+  assert.ok(ORC.isFib(21));
+  assert.ok(!ORC.isFib(20));
+  assert.strictEqual(ORC.nearestFib(100), 89);
+});
+t("kepler ladder proportions", () => {
+  const kl = ORC.keplerLadder(1);
+  assert.ok(Math.abs(kl.high / kl.mid - kl.mid / kl.low) < 1e-9);
+  assert.ok(Math.abs(kl.high - ORC.PHI) < 1e-9);
+});
+
+// ИДСЗ
+t("62 nodes", () => {
+  assert.strictEqual(ORC.NODES.length, 62);
+  assert.strictEqual(ORC.NODES.filter(n => n.cls === "icosa").length, 12);
+  assert.strictEqual(ORC.NODES.filter(n => n.cls === "dodeca").length, 20);
+  assert.strictEqual(ORC.NODES.filter(n => n.cls ===
