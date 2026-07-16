@@ -1,11 +1,7 @@
-){const r=ORC.commitTiming(document.getElementById('rIntent').value,{date:'1998-04-10'});renderRoute(r);}
-function renderRoute(r){const el=document.getElementById('routeResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}if(r.score!=null)renderVerdict(el,r,r.score);else el.innerHTML='<div class="insight">'+h(r.verdict||r.focus||r.tip||r.meaning||r.ritual||r.action||'')+'</div>';if(r.legs){el.innerHTML+=`<div class="kv">${r.legs.map(l=>pill(l.from+'→'+l.to+' '+l.leg.nodeScore,'#62cfdf')).join('')}</div>`;}}
-
-// map of 62 nodes
-const mapCanvas=document.getElementById('map'),mapCtx=mapCanvas.getContext('2d');
-function resizeMap(){const rect=mapCanvas.parentElement.getBoundingClientRect();mapCanvas.width=rect.width;mapCanvas.height=340;drawMap();}
-function drawMap(){const w=mapCanvas.width,h=mapCanvas.height,ctx=mapCtx;ctx.fillStyle='#0b0d12';ctx.fillRect(0,0,w,h);const cx=w/2,cy=h/2,scale=Math.min(w,h)/3.2;ctx.strokeStyle='rgba(230,196,111,0.15)';ctx.beginPath();for(let i=0;i<ORC.NODES.length;i++){const n=ORC.NODES[i];const x=cx+n.lon/180*scale*1.8;const y=cy-n.lat/90*scale;ctx.moveTo(x,cy);ctx.lineTo(x,y);ctx.stroke();ctx.fillStyle=n.cls==='icosa'?'#e6c46f':(n.cls==='dodeca'?'#62cfdf':'#c75aff');ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fill();}}
-window.addEventListener('resize',resizeMap);setTimeout(resizeMap,100);
-
-// particles
-const pc=
+ll?kv('Гексаграмма',r.hexagram):''}${r.rune!=null?kv('Руна',r.rune):''}${r.element!=null?kv('Стихия',r.element):''}</div><div class="insight">${h(r.meaning||r.message||r.advice||'')}</div>${r.cards?`<div class="kv">${r.cards.map(c=>pill(c.position+': '+c.card,'#c75aff')).join('')}</div>`:''}${r.symbols?`<div class="kv">${r.symbols.map(s=>pill(s,'#e2985e')).join('')}</div>`:''}`;}
+function runRoute(){const raw=document.getElementById('rRoute').value;const pts=raw.split(';').map((s,i)=>{const m=s.match(/^(-?\d+(?:\.\d+)?)\s*[,;]\s*(-?\d+(?:\.\d+)?)$/);return m?{name:'T'+(i+1),lat:parseFloat(m[1]),lon:parseFloat(m[2])}:null;}).filter(Boolean);const r=ORC.routeScore(pts);renderRoute(r);}
+function runManifest(){const r=ORC.manifestation369(document.getElementById('rIntent').value,21);renderRoute(r);}
+function runSpace(){const r=ORC.spacePlan(document.getElementById('rSpace').value);renderRoute(r);}
+function runFood(){const r=ORC.foodResonance(document.getElementById('rSpace').value);renderRoute(r);}
+function runCommit(){const r=ORC.commitTiming(document.getElementById('rIntent').value,{date:'1998-04-10'});renderRoute(r);}
+function renderRoute(r){const el=document.getElementById('routeResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}if(r.score!=null)renderVerdict(el,r,r.score);el
