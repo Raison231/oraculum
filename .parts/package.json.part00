@@ -1,0 +1,33 @@
+{
+  "name": "oraculum-infinity",
+  "version": "3.0.0",
+  "description": "ORACULUM ∞ v3 — Living Unified Field Engine. 12 perspectives, 40+ functions, zero deps. Mod9, φ, ИДСЗ, Second Key, Solfeggio, lunar, birth deep, synastry, brand, money, health, code, I Ching, tarot, route, manifestation and more.",
+  "private": false,
+  "license": "MIT",
+  "main": "engine.js",
+  "scripts": {
+    "test": "node test/engine.test.cjs",
+    "start": "npx --yes serve . -l 4173",
+    "check": "node -e \"const o=require('./engine.js'); console.log('v3', o.version, 'nodes', o.NODES.length, 'functions', Object.keys(o).filter(k=>typeof o[k]==='function').length);\""
+  },
+  "keywords": [
+    "oraculum",
+    "mod9",
+    "phi",
+    "golden-ratio",
+    "idsz",
+    "field-reader",
+    "natural-code",
+    "migi",
+    "birth-profile",
+    "predict",
+    "design",
+    "synastry",
+    "brand",
+    "tarot",
+    "iching"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
