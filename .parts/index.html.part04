@@ -1,4 +1,4 @@
-margin-top:16px;background:var(--raised);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.55}
+g:16px;font-size:14px;line-height:1.55}
 .result.show{display:block}
 .insight{background:var(--gold-glow);border-left:3px solid var(--gold);padding:12px 16px;margin:10px 0;border-radius:0 10px 10px 0;color:var(--text)}
 .kv{display:flex;flex-wrap:wrap;gap:8px 18px;margin:8px 0}
@@ -13,4 +13,5 @@ tr:hover td{background:rgba(255,255,255,0.03)}
 .ring-bar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
 .ring{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:8px;font-size:12px;border:1px solid var(--border)}
 .ring.on{background:rgba(120,198,147,0.12);border-color:rgba(120,198,147,0.35);color:var(--green)}
-.ring.off{background:var(--panel);color:var(--
+.ring.off{background:var(--panel);color:var(--muted)}
+.module{padding:12px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;
