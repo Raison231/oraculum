@@ -1,0 +1,8 @@
+v class="fill" style="height:${v/3}%"></div><div class="num">${i+1}</div></div>`).join('')}</div>`;}
+function runHealth(){const r=ORC.healthRhythm({date:'1998-04-10'},document.getElementById('hDate').value||new Date());renderHealth(r);}
+function runBodyClock(){const r=ORC.bodyClock({date:'1998-04-10'},document.getElementById('hDate').value||new Date());renderHealth(r);}
+function renderHealth(r){const el=document.getElementById('healthResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}if(r.health){el.innerHTML=`<div class="kv">${kv('Физ',r.health.physical)}${kv('Эмо',r.health.emotional)}${kv('Интел',r.health.intellectual)}${kv('Инту',r.health.intuitive)}</div><div class="insight">${h(r.health.verdict)}<br>${h(r.summary)}</div>`;return;}el.innerHTML=`<div class="verdict show ${r.physical>50?'ok':'mid'}"><div class="row"><span class="tag">${r.verdict}</span></div></div><div class="kv">${kv('Физ',r.physical)}${kv('Эмо',r.emotional)}${kv('Интел',r.intellectual)}${kv('Инту',r.intuitive)}${kv('Береги',r.watch)}</div>`;}
+function runIChing(){const r=ORC.ichingDraw(document.getElementById('oQuestion').value);renderOracle(r);}
+function runTarot(){const r=ORC.tarotSpread(Date.now());renderOracle(r);}
+function runRandom(){const r=ORC.randomOracle(Date.now());renderOracle(r);}
+function runRune(){const r=ORC.runeDraw(Date.n
