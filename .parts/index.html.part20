@@ -1,8 +1,7 @@
-ow());renderOracle(r);}
+nst el=document.getElementById('healthResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}if(r.health){el.innerHTML=`<div class="kv">${kv('Физ',r.health.physical)}${kv('Эмо',r.health.emotional)}${kv('Интел',r.health.intellectual)}${kv('Инту',r.health.intuitive)}</div><div class="insight">${h(r.health.verdict)}<br>${h(r.summary)}</div>`;return;}el.innerHTML=`<div class="verdict show ${r.physical>50?'ok':'mid'}"><div class="row"><span class="tag">${r.verdict}</span></div></div><div class="kv">${kv('Физ',r.physical)}${kv('Эмо',r.emotional)}${kv('Интел',r.intellectual)}${kv('Инту',r.intuitive)}${kv('Береги',r.watch)}</div>`;}
+function runIChing(){const r=ORC.ichingDraw(document.getElementById('oQuestion').value);renderOracle(r);}
+function runTarot(){const r=ORC.tarotSpread(Date.now());renderOracle(r);}
+function runRandom(){const r=ORC.randomOracle(Date.now());renderOracle(r);}
+function runRune(){const r=ORC.runeDraw(Date.now());renderOracle(r);}
 function runDream(){const r=ORC.dreamRead(document.getElementById('oDream').value);renderOracle(r);}
-function renderOracle(r){const el=document.getElementById('oracleResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}el.innerHTML=`<div class="kv">${r.dr!=null?kv('DR',r.dr):''}${r.hexagram!=null?kv('Гексаграмма',r.hexagram):''}${r.rune!=null?kv('Руна',r.rune):''}${r.element!=null?kv('Стихия',r.element):''}</div><div class="insight">${h(r.meaning||r.message||r.advice||'')}</div>${r.cards?`<div class="kv">${r.cards.map(c=>pill(c.position+': '+c.card,'#c75aff')).join('')}</div>`:''}${r.symbols?`<div class="kv">${r.symbols.map(s=>pill(s,'#e2985e')).join('')}</div>`:''}`;}
-function runRoute(){const raw=document.getElementById('rRoute').value;const pts=raw.split(';').map((s,i)=>{const m=s.match(/^(-?\d+(?:\.\d+)?)\s*[,;]\s*(-?\d+(?:\.\d+)?)$/);return m?{name:'T'+(i+1),lat:parseFloat(m[1]),lon:parseFloat(m[2])}:null;}).filter(Boolean);const r=ORC.routeScore(pts);renderRoute(r);}
-function runManifest(){const r=ORC.manifestation369(document.getElementById('rIntent').value,21);renderRoute(r);}
-function runSpace(){const r=ORC.spacePlan(document.getElementById('rSpace').value);renderRoute(r);}
-function runFood(){const r=ORC.foodResonance(document.getElementById('rSpace').value);renderRoute(r);}
-function runCommit(
+function renderOracle(r){const el=document.getElementById('oracleResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}el.innerHTML=`<div class="kv">${r.dr!=null?kv('DR',r.dr):''}${r.hexagram!=nu
