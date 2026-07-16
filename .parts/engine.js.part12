@@ -1,9 +1,5 @@
-th.cos(2 * Math.PI * phase); return {phase: phase, heat: heat, label: heat > 0.7 ? "ГОРЯЧИЙ" : (heat > 0.4 ? "ТЁПЛЫЙ" : "ХОЛОДНЫЙ")}; }
+s(lat2 * toR) * Math.sin(dLon / 2) * Math.sin(dLon / 2); return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); }
+function nearestNode(lat, lon) { var best = null, bestD = Infinity; for (var i = 0; i < NODES.length; i++) { var d = haversine(lat, lon, NODES[i].lat, NODES[i].lon); if (d < bestD) { bestD = d; best = NODES[i]; } } return {node: best, distanceKm: bestD}; }
+function nodePhase(node, date) { var t = date.getTime() / 86400000; var seed = (node.lat + 90) * 17 + (node.lon + 180) * 31; var cycle = 12 * PHI; var phase = ((t / 365.2425 + seed) % cycle) / cycle; var heat = 0.5 + 0.5 * Math.cos(2 * Math.PI * phase); return {phase: phase, heat: heat, label: heat > 0.7 ? "ГОРЯЧИЙ" : (heat > 0.4 ? "ТЁПЛЫЙ" : "ХОЛОДНЫЙ")}; }
 function leyLine(lat1, lon1, lat2, lon2) { var d = haversine(lat1, lon1, lat2, lon2); var midLat = (lat1 + lat2) / 2, midLon = (lon1 + lon2) / 2; var nn = nearestNode(midLat, midLon); var score = Math.max(0, 100 - d / 50); return {distanceKm: d, nearestNode: nn.node, nodeScore: Math.round(score), dr: digitalRoot(Math.round(d))}; }
-function nodesInRadius(lat, lon, km) { var out = []; for (var i = 0; i < NODES.length; i++) { var d = haversine(lat, lon, NODES[i].lat, NODES[i].lon); if (d <= km) out.push({node: NODES[i], distanceKm: d}); } out.sort(function (a, b) { return a.distanceKm - b.distanceKm; }); return out; }
-function birthProfile(opts) { opts = opts || {};
-  var name = opts.name || DEFAULT_BIRTH.name, dateStr = opts.date || DEFAULT_BIRTH.date, time = opts.time || DEFAULT_BIRTH.time;
-  var lat = opts.lat != null ? opts.lat : DEFAULT_BIRTH.lat, lon = opts.lon != null ? opts.lon : DEFAULT_BIRTH.lon, place = opts.place || DEFAULT_BIRTH.place;
-  var now = opts.now ? parseDate(opts.now) : new Date();
-  var birth = parseDate(dateStr + (time ? " " + time : "")); if (!birth) return {ok: false, message: "Невалидная дата рождения"};
-  var p = ymd(birth), rawSum = sumDigits(p.y) + sumDigits(p.m) + sumDigits
+function nodesInRadius(lat, lon, km) { var out = []; for (var i = 0; i < NODES.length; i++) { var d = haversine(lat, lon, NODES[i].lat, NODES[i].lon); if (d <= km) out.push({node: NODES[i], distanceKm: d}); } out.sort(function (a, b) { return a.distanceKm - b.
