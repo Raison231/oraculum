@@ -1,9 +1,12 @@
-lon != null ? opts.lon : DEFAULT_BIRTH.lon;
+ >= 45 ? "ФОН · готовь" : "ТИШИНА · копи силу";
+  return {ok: true, date: date, dr: dr, personalDay: pd, planet: planetDay(date), luna: luna, node: nn, nodePhase: np,
+    scores: {dr: sDR, luna: sLuna, node: sNode, personal: sPersonal, money: sMoney, overall: overall}, rings: rings, verdict: verdict,
+    money: MONEY_DR[dr], meaning: DR_MEANING[dr], action: DR_ACTION[dr], retroHint: retroHint(date), voidHint: voidOfCourseHint(date),
+    formula: "E=Luna×Node×DR×PD"};
+}
+function predict(opts) { opts = opts || {}; var days = opts.days || 27; var start = parseDate(opts.from) || new Date();
+  start = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
+  var birth = parseDate(opts.birth || DEFAULT_BIRTH.date); var lat = opts.lat != null ? opts.lat : DEFAULT_BIRTH.lat; var lon = opts.lon != null ? opts.lon : DEFAULT_BIRTH.lon;
   var calendar = [], peaks = [], moneyDays = [], personalMirrors = [];
   for (var i = 0; i < days; i++) { var d = new Date(start.getTime() + i * 86400000); var ev = eventScore({date: d, birth: birth, lat: lat, lon: lon});
-    var row = {date: d.toISOString().slice(0, 10), dr: ev.dr, pd: ev.personalDay, planet: ev.planet, luna: ev.luna.name, overall: ev.scores.overall, rings: ev.rings, verdict: ev.verdict, money: ev.money.label, moneyScore: ev.money.score, action: ev.action, node: ev.node.node.id, nodeHeat: Math.round(ev.nodePhase.heat * 100)};
-    calendar.push(row); if (ev.scores.overall >= 78) peaks.push(row); if (ev.money.score >= 90) moneyDays.push(row); if (ev.personalDay === ev.dr) personalMirrors.push(row); }
-  function bestFor(fn) { var best = calendar[0]; for (var j = 1; j < calendar.length; j++) if (fn(calendar[j]) > fn(best)) best = calendar[j]; return best; }
-  return {ok: true, from: start.toISOString().slice(0, 10), days: days, calendar: calendar, peaks: peaks, moneyDays: moneyDays, personalMirrors: personalMirrors,
-    best: {launch: bestFor(function (r) { return (r.dr === 1 || r.pd === 1 ? 30 : 0) + r.overall; }), money: bestFor(function (r) { return r.moneyScore + r.overall * 0.3; }),
-      release: bestFor(function (r) { return (r.dr === 9 || r.pd === 9 ? 30 : 0) + r.overall; }), deal: bestFor(function (r) { return (
+    var row = {date: d.toISOString().slice(0, 10), dr: ev.dr, pd: ev.personalDay, planet: ev.planet, luna: ev.luna.name, overall: ev.scores.overall, rings: ev.rings, verdict: ev.verdict, money: ev.money.label, moneyScore: ev.money.sco
