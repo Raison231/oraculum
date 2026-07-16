@@ -1,0 +1,8 @@
+r), archetype: opArchetype(dr), color: COLORS[dr - 1], verdict: dr === 3 || dr === 5 ? "ТЕКСТ ДВИЖЕТ" : (dr === 7 || dr === 4 ? "ТЕКСТ КОПАЕТ" : "ТЕКСТ БАЛАНСИРУЕТ")}; }
+function headlineScore(text) { var t = textResonance(text); if (!t.ok) return t; var len = text.length, power = 0;
+  if (len >= 40 && len <= 90) power += 30; else if (len < 40) power += 15; else power += 10;
+  if (/\d/.test(text)) power += 15; if (/[—:;]/.test(text)) power += 10;
+  var dr = t.dr; if ([1, 5, 8].indexOf(dr) >= 0) power += 25; else if ([3, 9].indexOf(dr) >= 0) power += 20; else power += 10;
+  return {ok: true, text: text, dr: t.dr, score: clamp(power + t.rhythmScore * 5, 0, 100), verdict: power >= 70 ? "ЦЕПЛЯЕТ" : (power >= 45 ? "РАБОТАЕТ" : "ДОПИЛИТЬ"), tips: power >= 70 ? ["Делай A/B", "Запускай"] : ["Короче", "Добавь цифру", "Усиль глагол"]}; }
+function decisionMatrix(options, opts) { opts = opts || {}; var birth = opts.birth ? birthProfile(opts.birth) : null; var rows = [];
+  for (var i = 0; i < optio
