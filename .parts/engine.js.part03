@@ -1,11 +1,5 @@
-r(n)||0))];while(steps[steps.length-1]>9)steps.push(sumDigits(steps[steps.length-1]));return steps;}
-  function mod9Class(dr){if(dr===9)return"ОСЬ · Источник (9)";if(dr===3||dr===6)return"ОСЬ · "+(dr===3?"исток (3)":"заземление (6)");return"КОЛЬЦО · ток материи (1-2-4-8-7-5)";}
-  function mirrorPair(dr){return {1:8,8:1,2:7,7:2,4:5,5:4,3:6,6:3,9:9,0:0}[dr];}
-  function axisOf(dr){if(TRI_A.indexOf(dr)>=0)return{id:"147",name:"▲ 147 · дух/инициация"};if(TRI_B.indexOf(dr)>=0)return{id:"258",name:"▼ 258 · материя/поток"};if(AXIS.indexOf(dr)>=0)return{id:"369",name:"⬯ 369 · ось источника"};return{id:"?",name:"—"};}
-  function mulMod9(a,b){var p=(a*b)%9;return p===0?9:p;}
-  function opArchetype(k){if(k===1)return"Самость";if(k===2||k===5)return"Ток/Цикл";if(k===4||k===7)return"Гармоники";if(k===8)return"Инверсия";if(k===3||k===6)return"Коллапс";if(k===9)return"Аннигиляция";return"?";}
-  function fibUpTo(limit){var a=1,b=1,arr=[1,1];while(b<=limit){var c=a+b;arr.push(c);a=b;b=c;}return arr;}
-  function nearestFib(n){var arr=fibUpTo(Math.max(Math.abs(n),2)*2+5),best=arr[0];for(var i=0;i<arr.length;i++)if(Math.abs(arr[i]-n)<Math.abs(best-n))best=arr[i];return best;}
-  function isFib(n){return nearestFib(n)===n;}
-  function keplerLadder(base){return{low:base,mid:base*SQRT_PHI,high:base*PHI};}
-  f
+"Двигай сделки", 6: "Сервись", 7: "Исследуй", 8: "Торгуйся", 9: "Закрывай"};
+var MONEY_DR = {1: {score: 88, label: "Посев"}, 2: {score: 72, label: "Партнёрства"}, 3: {score: 70, label: "Креатив→деньги"}, 4: {score: 65, label: "Инфра"}, 5: {score: 92, label: "Сделки"}, 6: {score: 80, label: "Клиенты"}, 7: {score: 55, label: "DD"}, 8: {score: 96, label: "Пик денег"}, 9: {score: 78, label: "Отдача"}};
+var OPS_TIPS = {Calcinatio: "Огонь: сожги лишнее", Solutio: "Вода: раствори", Separatio: "Раздели", Coniunctio: "Соедини", Fermentatio: "Дай созреть", Distillatio: "Чистый экстракт", Coagulatio: "Релиз/деньги"};
+var FREQS = [{hz: 7.83, name: "Шуман"}, {hz: 174, name: "174"}, {hz: 285, name: "285"}, {hz: 396, name: "396"}, {hz: 417, name: "417"}, {hz: 432, name: "432"}, {hz: 528, name: "528"}, {hz: 639, name: "639"}, {hz: 741, name: "741"}, {hz: 852, name: "852"}, {hz: 963, name: "963"}];
+var COLORS = [{n: 1, hex: "#ff5a5a", name: "Алый"}, {n: 2, hex: "#ff9f5a", name: "Янтарный"}, {n: 3, hex: "#ffd75a", name: "Золотой"}, {n: 4, hex: "#5aff8a", name: "Изумрудный"}, {n: 5, hex: "#5a9fff", name: "Электрик"}, {n: 6, hex: "#c75aff", name: "Аметист"}, {n: 7, hex:
