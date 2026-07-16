@@ -1,15 +1,9 @@
-ет: "+Math.round(lp.illumination*100)+"%"]});
-      lenses.push({key:"event",title:"Triple-Ring",lines:[ev.formula,"Кольца: "+ev.rings+"/4 · "+ev.scores.overall,ev.verdict,"Деньги: "+ev.money.label+" ("+ev.money.score+")"]});scores.push(ev.scores.overall);}
-    lenses.push({key:"money",title:"Деньги×Время",lines:["DR "+dr+": "+MONEY_DR[dr].label,"Score: "+MONEY_DR[dr].score+"/100",DR_ACTION[dr]]});
-    var overall=scores.reduce(function(a,b){return a+b;},0)/scores.length;
-    var verdict=overall>=61.8?"ЗВУЧИТ":(overall>=38.2?"ТРЕБУЕТ НАСТРОЙКИ":"НЕ ЗВУЧИТ");
-    return{ok:true,input:p,seed:seed,dr:dr,axis:ax,overall:Math.round(overall*10)/10,verdict:verdict,lenses:lenses,money:MONEY_DR[dr],meaning:DR_MEANING[dr],action:DR_ACTION[dr]};
-  }
-
-  // === CUBE / OPERATORS ===
-  function operatorTable(){var rows=[];for(var k=1;k<=9;k++){var orbit=[],x=1;for(var i=0;i<6;i++){orbit.push(x);x=mulMod9(x,k);if(x===1&&i>0)break;}rows.push({k:k,archetype:opArchetype(k),orbit:orbit,meaning:DR_MEANING[k]});}return rows;}
-  function fibMod9Day(hour){var fib=[0,1];for(var i=2;i<24;i++)fib.push((fib[i-1]+fib[i-2])%9);var v=fib[((hour%24)+24)%24];return v===0?9:v;}
-
-  // === EXPORT ===
-  return {version:"2.0.0",PHI:PHI,INV_PHI:INV_PHI,SQRT_PHI:SQRT_PHI,GOLDEN_ANGLE:GOLDEN_ANGLE,AXIS:AXIS,RING:RING,TRI_A:TRI_A,TRI_B:TRI_B,
-    DR_MEANING:DR_MEANING,DR_ACTION:DR_ACTION,MONEY_DR:MONEY_DR,FREQS:
+lon != null ? opts.lon : DEFAULT_BIRTH.lon;
+  var calendar = [], peaks = [], moneyDays = [], personalMirrors = [];
+  for (var i = 0; i < days; i++) { var d = new Date(start.getTime() + i * 86400000); var ev = eventScore({date: d, birth: birth, lat: lat, lon: lon});
+    var row = {date: d.toISOString().slice(0, 10), dr: ev.dr, pd: ev.personalDay, planet: ev.planet, luna: ev.luna.name, overall: ev.scores.overall, rings: ev.rings, verdict: ev.verdict, money: ev.money.label, moneyScore: ev.money.score, action: ev.action, node: ev.node.node.id, nodeHeat: Math.round(ev.nodePhase.heat * 100)};
+    calendar.push(row); if (ev.scores.overall >= 78) peaks.push(row); if (ev.money.score >= 90) moneyDays.push(row); if (ev.personalDay === ev.dr) personalMirrors.push(row); }
+  function bestFor(fn) { var best = calendar[0]; for (var j = 1; j < calendar.length; j++) if (fn(calendar[j]) > fn(best)) best = calendar[j]; return best; }
+  return {ok: true, from: start.toISOString().slice(0, 10), days: days, calendar: calendar, peaks: peaks, moneyDays: moneyDays, personalMirrors: personalMirrors,
+    best: {launch: bestFor(function (r) { return (r.dr === 1 || r.pd === 1 ? 30 : 0) + r.overall; }), money: bestFor(function (r) { return r.moneyScore + r.overall * 0.3; }),
+      release: bestFor(function (r) { return (r.dr === 9 || r.pd === 9 ? 30 : 0) + r.overall; }), deal: bestFor(function (r) { return (
