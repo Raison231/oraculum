@@ -1,0 +1,5 @@
+br.intellectual + 2) / 4 * 100}, {t: 12, label: "Коммуникации", score: (br.emotional + 1) * 50}, {t: 15, label: "Движение", score: (br.physical + 1) * 50}, {t: 18, label: "Переговоры", score: (br.emotional + br.intellectual + 2) / 4 * 100}, {t: 21, label: "Творчество", score: (br.intuitive + 1) * 50}, {t: 23, label: "Отбой", score: (br.physical + br.emotional + 2) / 4 * 100}];
+  schedule.forEach(function (x) { x.score = Math.round(x.score); });
+  return {ok: true, date: d, schedule: schedule, best: schedule.reduce(function (a, b) { return a.score > b.score ? a : b; }), worst: schedule.reduce(function (a, b) { return a.score < b.score ? a : b; })}; }
+function codeResonance(code) { var t = textResonance(code); if (!t.ok) return t; var lines = code.split("\n").length, funcs = (code.match(/function\s+/g) || []).length, loops = (code.match(/(for|while|forEach)/g) || []).length;
+  var dr = t.dr; var verdict = dr === 4 || dr === 7 ? "СТРУКТУРНЫЙ" : (dr === 5 || dr === 3 ? "ГИБКИЙ" : (dr === 8
