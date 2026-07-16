@@ -1,10 +1,9 @@
-ar(birth,year){var b=ymd(birth);return digitalRoot(digitalRoot(b.m)+digitalRoot(b.day)+digitalRoot(year));}
-  function personalMonth(birth,year,month){return digitalRoot(personalYear(birth,year)+digitalRoot(month));}
-  function personalDay(birth,year,month,day){return digitalRoot(personalMonth(birth,year,month)+digitalRoot(day));}
-  function planetDay(d){return PLANETS[d.getUTCDay()];}
-  function daysBetween(a,b){return Math.floor((b.getTime()-a.getTime())/86400000);}
-  function ageYears(birth,now){now=now||new Date();var days=daysBetween(birth,now);var yf=Math.floor(days/365.2425);return{days:days,years:days/365.2425,yearsFloor:yf,nineYearCycle:Math.floor(yf/9),nineYearPhase:yf%9+1,cycle27:Math.floor(days/27)%9+1,cycle81:Math.floor(days/81)%9+1,cycle243:Math.floor(days/243)%9+1};}
-  function lunarPhase(date){var days=(date.getTime()-NEW_MOON_REF)/86400000;var pos=((days%SYNODIC)+SYNODIC)%SYNODIC;var frac=pos/SYNODIC;
-    var names=["Новолуние","Растущий серп","Первая четверть","Растущая горбатая","Полнолуние","Убывающая горбатая","Последняя четверть","Убывающий серп"];var idx=Math.floor(frac*8+0.5)%8;
-    var phiPts=[0,0.382,0.5,0.618,1],nearestPhi=0,best=1;for(var i=0;i<phiPts.length;i++){var dd=Math.abs(frac-phiPts[i]);if(dd<best){best=dd;nearestPhi=phiPts[i];}}
-    return{fraction:frac,ageDays:pos,name:names[idx],ill
+) { var steps = [Math.abs(Math.trunc(Number(n) || 0))]; while (steps[steps.length - 1] > 9) steps.push(sumDigits(steps[steps.length - 1])); return steps; }
+function mod9Class(dr) { if (dr === 9) return "ОСЬ(9)"; if (dr === 3 || dr === 6) return "ОС��(" + dr + ")"; return "КОЛЬЦО"; }
+function mirrorPair(dr) { return {1: 8, 8: 1, 2: 7, 7: 2, 4: 5, 5: 4, 3: 6, 6: 3, 9: 9, 0: 0}[dr]; }
+function axisOf(dr) { if (TRI_A.indexOf(dr) >= 0) return {id: "147", name: "147"}; if (TRI_B.indexOf(dr) >= 0) return {id: "258", name: "258"}; if (AXIS.indexOf(dr) >= 0) return {id: "369", name: "369"}; return {id: "?", name: "?"}; }
+function mulMod9(a, b) { var p = (a * b) % 9; return p === 0 ? 9 : p; }
+function opArchetype(k) { if (k === 1) return "Самость"; if (k === 2 || k === 5) return "Ток"; if (k === 4 || k === 7) return "Гармоники"; if (k === 8) return "Инверсия"; if (k === 3 || k === 6) return "Коллапс"; if (k === 9) return "Аннигиляция"; return "?"; }
+function fibUpTo(limit) { var a = 1, b = 1, arr = [1, 1]; while (b <= limit) { var c = a + b; arr.push(c); a = b; b = c; } return arr; }
+function nearestFib(n) { var arr = fibUpTo(Math.max(Math.abs(n), 2) * 2 + 5), best = arr[0]; for (var i = 0; i < arr.length; i++) if (Math.abs(arr[i] - n) < Math.abs(best - n)) best = arr[i]; return best; }
+function isFib(n) { return nearestFib(n) =
