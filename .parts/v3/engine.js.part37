@@ -1,0 +1,7 @@
+ns.length; i++) { var opt = options[i]; var seed = nameToNumber(opt), dr = digitalRoot(seed); var ev = eventScore({date: opts.date || new Date(), birth: birth && birth.birthISO || DEFAULT_BIRTH.date, lat: opts.lat, lon: opts.lon});
+    var score = Math.round((MONEY_DR[dr].score + ev.scores.overall + (birth && birth.numbers.dr === dr ? 15 : 0)) / 2.5);
+    rows.push({option: opt, dr: dr, meaning: DR_MEANING[dr], action: DR_ACTION[dr], eventScore: ev.scores.overall, moneyScore: MONEY_DR[dr].score, total: clamp(score, 0, 100)}); }
+  rows.sort(function (a, b) { return b.total - a.total; });
+  return {ok: true, rows: rows, winner: rows[0], verdict: rows[0].total >= 75 ? "ЕСТЬ ПОБЕДИТЕЛЬ" : "ТРЕБУЕТСЯ ДОРАБОТКА"}; }
+function teamField(members) { if (!members || !members.length) return {ok: false, message: "Добавь участников"}; var drs = [], souls = [], total = 0;
+  for (var i = 0; i < members.length; i++) { var b = birthProfile(members[i]); drs.push(b.ok ? b.numbers.dr : 0); souls.push(b.ok 
