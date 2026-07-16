@@ -1,9 +1,9 @@
-on: DR_ACTION[dr]};
+Деньги: " + ev.money.label + " (" + ev.money.score + ")"]}); scores.push(ev.scores.overall); }
+  if (p.type === "color") { var cdr = digitalRoot(p.r + p.g + p.b); lenses.push({key: "color", title: "Цвет", lines: ["RGB: " + p.r + "," + p.g + "," + p.b, "DR: " + cdr + " — " + DR_MEANING[cdr], "Цвет: " + COLORS[dr - 1].name]}); scores.push(72); }
+  if (p.type === "time") { var tdr = digitalRoot(p.h * 60 + p.m); lenses.push({key: "time", title: "Время", lines: ["DR: " + tdr + " — " + DR_MEANING[tdr], "Планетный час: " + PLANETS[(p.h + p.m) % 7], "Совет: " + DR_ACTION[tdr]]}); scores.push(60); }
+  lenses.push({key: "money", title: "Деньги", lines: ["DR " + dr + ": " + MONEY_DR[dr].label, "Score: " + MONEY_DR[dr].score + "/100", DR_ACTION[dr]]});
+  var overall = scores.reduce(function (a, b) { return a + b; }, 0) / scores.length;
+  var verdict = overall >= 61.8 ? "ЗВУЧИТ" : (overall >= 38.2 ? "ТР��БУЕТ НАСТРОЙКИ" : "НЕ ЗВУЧИТ");
+  return {ok: true, input: p, seed: seed, dr: dr, axis: ax, overall: Math.round(overall * 10) / 10, verdict: verdict, lenses: lenses, money: MONEY_DR[dr], meaning: DR_MEANING[dr], action: DR_ACTION[dr]};
 }
-function operatorTable() { var rows = []; for (var k = 1; k <= 9; k++) { var orbit = [], x = 1; for (var i = 0; i < 6; i++) { orbit.push(x); x = mulMod9(x, k); if (x === 1 && i > 0) break; } rows.push({k: k, archetype: opArchetype(k), orbit: orbit, meaning: DR_MEANING[k]}); } return rows; }
-function fibMod9Day(hour) { var fib = [0, 1]; for (var i = 2; i < 24; i++) fib.push((fib[i - 1] + fib[i - 2]) % 9); var v = fib[((hour % 24) + 24) % 24]; return v === 0 ? 9 : v; }
-function synastry(a, b) { var A = birthProfile(a), B = birthProfile(b); if (!A.ok || !B.ok) return {ok: false, message: "Невалидные данные"};
-  var drA = A.numbers.dr, drB = B.numbers.dr, comp = drA === drB ? "Прямой резонанс" : (mirrorPair(drA) === drB ? "Зеркальное дополнение" : (axisOf(drA).id === axisOf(drB).id ? "Осевой союз" : "Творческое трение"));
-  var score = Math.round(60 + (drA === drB ? 30 : 0) + (mirrorPair(drA) === drB ? 25 : 0) + (axisOf(drA).id === axisOf(drB).id ? 15 : 0) + (A.numbers.soul === B.numbers.lifePath ? 10 : 0));
-  var lines = [A.name + " DR" + drA + " + " + B.name + " DR" + drB + " = " + comp, "Резонанс: " + score + "/100", "Совместный DR: " + digitalRoot(drA + drB) + " — " + DR_MEANING[digitalRoot(drA + drB)]];
-  if (A.numbers.lifePath === B.numbers.lifePath) lines.pus
+function operatorTable() { var rows = []; for (var k = 1; k <= 9; k++) { var orbit = [], x = 1; for (var i = 0; i < 6; i++) { or
