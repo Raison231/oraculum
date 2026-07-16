@@ -1,15 +1,25 @@
-de(focus.lat,focus.lon); var fp=project(focus.lat,focus.lon,w,h),np=project(nn.node.lat,nn.node.lon,w,h);
-      ctx.strokeStyle='rgba(120,198,147,0.75)';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(fp.x,fp.y);ctx.lineTo(np.x,np.y);ctx.stroke();
-      ctx.fillStyle='#78c693';ctx.beginPath();ctx.arc(fp.x,fp.y,4,0,Math.PI*2);ctx.fill();
-      ctx.strokeStyle='rgba(120,198,147,0.55)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(np.x,np.y,8,0,Math.PI*2);ctx.stroke();
-      mapMeta.innerHTML='<span>Фокус '+focus.lat.toFixed(2)+', '+focus.lon.toFixed(2)+'</span><span>→ узел '+nn.node.id+'</span><span>'+Math.round(nn.distanceKm)+' км</span>';
-    } else {mapMeta.innerHTML='<span>12 icosa</span><span>20 dodeca</span><span>30 mid</span>';}
-  }
-  drawGlobe(null); window.addEventListener('resize',function(){drawGlobe(null);});
-  q.value='10.04.1998'; runField();
+div></div>
+  </div>
+</section>
 
-  document.getElementById('b-go').addEventListener('click',function(){
-    var prof=ORC.birthProfile({name:document.getElementById('b-name').value,date:document.getElementById('b-date').value,time:document.getElementById('b-time').value,lat:parseFloat(document.getElementById('b-lat').value),lon:parseFloat(document.getElementById('b-lon').value)});
-    var el=document.getElementById('b-out'); el.className='result show';
-    if(!prof.ok){el.innerHTML='<div class="empty">'+esc(prof.message)+'</div>';return;}
-    el.innerHTML='<div class="kv"><span><strong>DR</strong> '+prof.
+<!-- ROUTE / MANIFEST -->
+<section id="tab-route" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🗺 Маршрут / Манифест / Пространство</h2>
+      <label>Маршрут (lat,lon;lat,lon)</label><input id="rRoute" type="text" placeholder="41.72,44.83;46.54,61.17">
+      <button class="primary" style="margin-top:10px" onclick="runRoute()">Route Score</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Намерение (369)</label><input id="rIntent" type="text" placeholder="рост дохода">
+      <button class="secondary" onclick="runManifest()">369 план</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Помещение / еда</label><input id="rSpace" type="text" placeholder="комната с большим окном на восток">
+      <button class="secondary" onclick="runSpace()">Space Plan</button>
+      <button class="secondary" onclick="runFood()">Food</button>
+      <button class="secondary" onclick="runCommit()">Commit Timing</button>
+    </div>
+    <div class="card"><h2>📍 Ре��ультат</h2><div id="routeResult"></div></div>
+  </div>
+</section>
+
+<canvas id="map" class="canvas-wrap" style="margin-top:24px;heig
