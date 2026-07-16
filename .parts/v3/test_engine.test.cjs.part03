@@ -1,0 +1,38 @@
+time");
+});
+
+// Field Read
+t("fieldRead: number", () => {
+  const r = ORC.fieldRead("9");
+  assert.ok(r.ok);
+  assert.strictEqual(r.dr, 9);
+  assert.ok(r.lenses.length >= 4);
+});
+t("fieldRead: date adds luna", () => {
+  const r = ORC.fieldRead("10.04.1998");
+  assert.ok(r.ok);
+  assert.ok(r.lenses.some(l => l.key === "luna"));
+});
+t("fieldRead: color", () => {
+  const r = ORC.fieldRead("#ff5a5a");
+  assert.ok(r.ok);
+  assert.strictEqual(r.input.type, "color");
+});
+
+// v2/v3 Deep Birth
+t("birthProfile returns deep numbers", () => {
+  const b = ORC.birthProfile({name: "Максим Мигай", date: "1998-04-10"});
+  assert.ok(b.ok);
+  assert.strictEqual(b.numbers.dr, 5);
+  assert.ok(b.numbers.soul > 0);
+  assert.ok(b.spectrum && Object.keys(b.spectrum).length === 9);
+  assert.ok(b.insight.length > 5);
+});
+
+// v3 new functions
+t("synastry", () => {
+  const s = ORC.synastry({date: "1998-04-10"}, {date: "2000-01-01"});
+  assert.ok(s.ok);
+  assert.ok(s.score >= 0 && s.score <= 100);
+});
+t("brandProfi
