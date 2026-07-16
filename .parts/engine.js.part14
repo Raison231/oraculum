@@ -1,10 +1,13 @@
-NING[py]);
+] += 0.14; amps[py] += 0.10; amps[pd] += 0.08; amps[mirrorPair(dr)] += 0.06;
+  var sumA = 0; for (k = 1; k <= 9; k++) sumA += amps[k]; for (k = 1; k <= 9; k++) amps[k] = Math.round((amps[k] / sumA) * 1000) / 1000;
+  var dominant = 1; for (k = 2; k <= 9; k++) if (amps[k] > amps[dominant]) dominant = k;
+  var br = biorhythm(birth, now), gh = goldenHour(birth, now);
+  var insight = [];
+  insight.push("DR: " + dr + " — " + DR_MEANING[dr]); insight.push("LP: " + lp + " · Soul: " + soul + " · Destiny: " + destiny);
+  insight.push("Ось: " + ax.name + " · зеркало " + dr + "↔" + mirrorPair(dr)); insight.push("Личный год " + now.getUTCFullYear() + ": " + py + " — " + DR_MEANING[py]);
   insight.push("Личный день: " + pd + " — " + DR_ACTION[pd]); insight.push("9-летняя фаза: " + age.nineYearPhase + "/9 — " + DR_MEANING[age.nineYearPhase]);
   insight.push("Возраст: " + age.yearsFloor + " · шаг21: " + st.step + " " + st.operation);
   insight.push("ИДСЗ: " + nn.node.id + " · " + Math.round(nn.distanceKm) + " км · " + np.label);
   insight.push("Луна: " + lunaBirth.name + " → сейчас: " + lunaNow.name);
   insight.push("Элемент: " + elementOf(dr) + " · Чакра: " + chakraOf(dr) + " · Зодиак: " + zodiacOf(birth));
-  insight.push("Золотой час: " + gh + "/100 · бодрость " + Math.round((br.physical + 1) * 50) + "%");
-  if (dr === 5) insight.push("DR5 — оператор перемен."); if (py === 1) insight.push("Личный год 1 — закладка систем."); if (py === 8) insight.push("Личный год 8 — масштаб."); if (py === 9) insight.push("Личный год 9 — завершение цикла.");
-  return {ok: true, name: name, place: place, birthISO: dateStr, time: time, lat: lat, lon: lon, birth: birth, now: now,
-    numbers: {rawSum: rawSum, dr: dr, lifePath: lp, soul: soul, destiny: destiny, hourDR: hourDR, steps: digitalRootSteps(rawSum), axis: ax, mirror: mirrorPair(dr), meaning: DR_MEANING[dr], action: DR_ACTION[dr], arche
+  insight.push("Золотой ча
