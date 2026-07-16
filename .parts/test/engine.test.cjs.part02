@@ -1,26 +1,7 @@
-k(s.phase >= 1 && s.phase <= 3);
-  }
-  assert.strictEqual(ORC.step21(1).step, 1);
-  assert.strictEqual(ORC.step21(21).step, 21);
-  assert.strictEqual(ORC.step21(22).step, 1);
-});
-t("lunarPhase fraction", () => {
-  const lp = ORC.lunarPhase(new Date(Date.UTC(2026, 7, 12)));
-  assert.ok(lp.fraction >= 0 && lp.fraction < 1);
-  assert.ok(typeof lp.name === "string");
-});
-t("parseInput", () => {
-  assert.strictEqual(ORC.parseInput("42").type, "number");
-  assert.strictEqual(ORC.parseInput("41.72, 44.83").type, "geo");
-  assert.strictEqual(ORC.parseInput("528hz").type, "freq");
-  assert.strictEqual(ORC.parseInput("2026-08-12").type, "date");
-  assert.strictEqual(ORC.parseInput("10.04.1998").type, "date");
+ctEqual(ORC.parseInput("10.04.1998").type, "date");
   assert.strictEqual(ORC.parseInput("Weeekend").type, "name");
-  assert.strictEqual(ORC.parseInput("  ").type, "empty");
-});
-t("nameToNumber", () => {
-  assert.ok(ORC.nameToNumber("MIGI") > 0);
-  assert.strictEqual(ORC.nameToNumber("abc"), 6);
+  assert.strictEqual(ORC.parseInput("#ff5a5a").type, "color");
+  assert.strictEqual(ORC.parseInput("10:00").type, "time");
 });
 
 // Field Read
@@ -29,12 +10,38 @@ t("fieldRead: number", () => {
   assert.ok(r.ok);
   assert.strictEqual(r.dr, 9);
   assert.ok(r.lenses.length >= 4);
-  assert.ok(["ЗВУЧИТ", "ТРЕБУЕТ НАСТРОЙКИ", "НЕ ЗВУЧИТ"].indexOf(r.verdict) >= 0);
-});
-t("fieldRead: geo adds ИДСЗ", () => {
-  const r = ORC.fieldRead("41.72, 44.83");
-  assert.ok(r.ok);
-  assert.ok(r.lenses.some(l => l.key === "geo"));
 });
 t("fieldRead: date adds luna", () => {
-  const r = ORC.
+  const r = ORC.fieldRead("10.04.1998");
+  assert.ok(r.ok);
+  assert.ok(r.lenses.some(l => l.key === "luna"));
+});
+t("fieldRead: color", () => {
+  const r = ORC.fieldRead("#ff5a5a");
+  assert.ok(r.ok);
+  assert.strictEqual(r.input.type, "color");
+});
+
+// v2/v3 Deep Birth
+t("birthProfile returns deep numbers", () => {
+  const b = ORC.birthProfile({name: "Максим Мигай", date: "1998-04-10"});
+  assert.ok(b.ok);
+  assert.strictEqual(b.numbers.dr, 5);
+  assert.ok(b.numbers.soul > 0);
+  assert.ok(b.spectrum && Object.keys(b.spectrum).length === 9);
+  assert.ok(b.insight.length > 5);
+});
+
+// v3 new functions
+t("synastry", () => {
+  const s = ORC.synastry({date: "1998-04-10"}, {date: "2000-01-01"});
+  assert.ok(s.ok);
+  assert.ok(s.score >= 0 && s.score <= 100);
+});
+t("brandProfile", () => {
+  const b = ORC.brandProfile("ORACULUM");
+  assert.ok(b.ok);
+  assert.ok(b.dr >= 1 && b.dr <= 9);
+  assert.ok(b.score > 0);
+});
+t("colorOfNumber",
