@@ -1,0 +1,8 @@
+el: "Отбой", score: (br.physical + br.emotional + 2) / 4 * 100}];
+  schedule.forEach(function (x) { x.score = Math.round(x.score); });
+  return {ok: true, date: d, schedule: schedule, best: schedule.reduce(function (a, b) { return a.score > b.score ? a : b; }), worst: schedule.reduce(function (a, b) { return a.score < b.score ? a : b; })}; }
+function codeResonance(code) { var t = textResonance(code); if (!t.ok) return t; var lines = code.split("\n").length, funcs = (code.match(/function\s+/g) || []).length, loops = (code.match(/(for|while|forEach)/g) || []).length;
+  var dr = t.dr; var verdict = dr === 4 || dr === 7 ? "СТРУКТУРНЫЙ" : (dr === 5 || dr === 3 ? "ГИБКИЙ" : (dr === 8 ? "МАСШТАБИРУЕМЫЙ" : "БАЛАНСИРОВАННЫЙ"));
+  return {ok: true, dr: dr, meaning: DR_MEANING[dr], lines: lines, functions: funcs, loops: loops, entropy: Math.round(t.words / ((lines || 1)) * 10), verdict: verdict, tips: funcs > loops ? ["Модульность хороша", "Проверь тесты"] : ["Добавь функций", "Упрости циклы"]}; }
+function dreamRead(text) { var t = textResonance(text); if (!t.ok) return t; var seed = nameToNumber(text), dr = digitalRoot(seed), st = step21(seed);
+  var symbols = {"вода": "эмоции", "огонь": "страсть", "дом": "архетип себя", "дорога": "путь", 
