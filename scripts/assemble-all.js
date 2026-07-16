@@ -1,5 +1,5 @@
 const fs=require('fs');const path=require('path');
-const map={"README.md": 2, "engine.js": 39, "index.html": 22, "package.json": 1, "test/engine.test.cjs": 6};
+const map={"README.md": 3, "engine.js": 45, "index.html": 24, "package.json": 1, "test/engine.test.cjs": 6};
 for (const [out,n] of Object.entries(map)){
   let s='';
   for(let i=0;i<n;i++){
