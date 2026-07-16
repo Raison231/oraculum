@@ -1,0 +1,10 @@
+.dr === dr ? 15 : 0)) / 2.5);
+    rows.push({option: opt, dr: dr, meaning: DR_MEANING[dr], action: DR_ACTION[dr], eventScore: ev.scores.overall, moneyScore: MONEY_DR[dr].score, total: clamp(score, 0, 100)}); }
+  rows.sort(function (a, b) { return b.total - a.total; });
+  return {ok: true, rows: rows, winner: rows[0], verdict: rows[0].total >= 75 ? "ЕСТЬ ПОБЕДИТЕЛЬ" : "ТРЕБУЕТСЯ ДОРАБОТКА"}; }
+function teamField(members) { if (!members || !members.length) return {ok: false, message: "Добавь участников"}; var drs = [], souls = [], total = 0;
+  for (var i = 0; i < members.length; i++) { var b = birthProfile(members[i]); drs.push(b.ok ? b.numbers.dr : 0); souls.push(b.ok ? b.numbers.soul : 0); total += b.ok ? b.numbers.dr : 0; }
+  var teamDR = digitalRoot(total), missing = [];
+  for (var k = 1; k <= 9; k++) if (drs.indexOf(k) < 0 && k !== mirrorPair(teamDR)) missing.push(k);
+  var dupes = {}; drs.forEach(function (d) { dupes[d] = (dupes[d] || 0) + 1; }); var resonance = Object.keys(dupes).filter(function (k) { return dupes[k] > 1; }).map(function (k) { return "DR" + k + "×" + dupes[k]; });
+  return {ok: true, teamDR: teamDR, meaning: DR_MEANING[teamDR], action: DR_ACTION[teamDR], size: members.length, drProfile: drs, soulProfile: souls, resonances: resonance, missing: missing, verdict: missing.length <= 2 ? "КОМАНДА ЗВУЧИ
