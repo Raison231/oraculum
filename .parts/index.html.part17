@@ -1,0 +1,15 @@
+>';
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(e.metaKey&&e.key==='Enter'){
+      var active=document.querySelector('.section.active');
+      if(active.id==='field')runField();
+      else if(active.id==='birth')document.getElementById('b-go').click();
+      else if(active.id==='event')document.getElementById('e-go').click();
+      else if(active.id==='predict')document.getElementById('p-go').click();
+      else if(active.id==='create')document.getElementById('c-go').click();
+    }
+  });
+
+  console.log('%c[ORACULUM v2] Loaded. Cmd
