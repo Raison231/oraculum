@@ -1,7 +1,6 @@
-), meaning: DR_MEANING[dr]}; }
-function auraPalette(birth) { var B = birthProfile(birth); if (!B.ok) return B; var dr = B.numbers.dr, lp = B.numbers.lifePath, soul = B.numbers.soul, dest = B.numbers.destiny;
-  return {ok: true, core: COLORS[dr - 1], life: COLORS[lp - 1], soul: COLORS[soul - 1], destiny: COLORS[dest - 1], mirror: COLORS[mirrorPair(dr) - 1], element: elementOf(dr), chakra: chakraOf(dr), palette: [COLORS[dr - 1].hex, COLORS[lp - 1].hex, COLORS[soul - 1].hex, COLORS[mirrorPair(dr) - 1].hex, COLORS[8].hex]}; }
-function textResonance(text) { var s = String(text || "").trim(); if (!s) return {ok: false, message: "Пустой текст"}; var words = s.split(/\s+/).length, chars = s.length, seed = nameToNumber(s), dr = digitalRoot(seed), sentiment = chars % 9 >= 6 ? "подъём" : (chars % 9 >= 3 ? "нейтрал" : "спад");
-  var sentences = s.split(/[.!?]+/).filter(function (x) { return x.trim(); }); var long = sentences.length > 0 ? Math.max.apply(null, sentences.map(function (x) { return x.length; })) : 0;
-  var rhythm = Math.round(words / (sentences.length || 1) * 10) / 10;
-  return {ok: true, seed: seed, dr: dr, meaning: DR_MEANING[dr], words: words, chars: chars, sentences: sentences.length, avgSentence: Math.round(chars / (sentences.length || 1)), longest: long, rhythmScore: rhythm, sentiment: sentiment, element: elementOf(dr), archetype: opArchetype(d
+distanceFromBirth: Math.round(haversine(B.lat, B.lon, newLat, newLon)), score: clamp(score, 0, 100), verdict: score >= 80 ? "ПЕРЕЕЗД ЗВУЧИТ" : (score >= 55 ? "ТРЕНИРУЙ МЕСТО" : "ЛУЧШЕ НЕТ"), note: "Новый узел " + nn.node.id + " · " + np.label}; }
+function brandProfile(name) { var seed = nameToNumber(name), dr = digitalRoot(seed), ax = axisOf(dr), fr = nearestFreq(seed % 900 + 60), kl = keplerLadder(seed || 1);
+  var domains = [".com", ".io", ".ai", ".app"]; var suffix = domains[seed % domains.length];
+  var words = []; for (var i = 1; i <= 9; i++) if (i !== dr && digitalRoot(dr * i) === dr) words.push(MEANING_WORDS[i]);
+  return {ok: true, name: name, dr: dr, meaning: DR_MEANING[dr], action: DR_ACTION[dr], axis: ax, archetype: opArchetype(dr), frequency: fr, kepler: kl, vibe: [elementOf(dr), chakraOf(dr)], powerWords: words, suggestedDomain: name.toLowerCase().replace(/\s+/g, "") + suffix, money: MONEY_DR[dr], score: MONEY_DR[dr].score, verdict: dr === 8 || dr === 5 ? "БРЕНД-ДЕНЬГИ" : (dr === 1 || dr === 9 ? "БРЕНД-СИГНАЛ" : "БРЕНД-РАБОТА")}; }
+function colorOfNumber(n) { n = Math.round(Number(n) || 1); var dr = digitalRoot(n); return {ok: true, n: n, dr: dr, hex: COLORS[dr - 1].hex, name: COLORS[dr - 1].name, element: elementOf(dr), chakra: chakraOf(dr
