@@ -1,0 +1,8 @@
+ng: {bestLaunch: pred.best.launch, bestMoney: pred.best.money, personalYear: birth.ok ? birth.cycles.personalYear : null, note: "Запуск DR1/PD1 · деньги DR8/5 · релиз DR9"},
+    birthAlign: birth.ok ? {yourDR: birth.numbers.dr, resonance: digitalRoot(birth.numbers.dr + dr), note: birth.numbers.dr === dr ? "Прямой резонанс" : (mirrorPair(birth.numbers.dr) === dr ? "Зеркальный резонанс" : "Нейтральный")} : null,
+    mantra: "Семя(" + dr + ") → кольцо → 9 · «" + intent + "»"};
+}
+function parseInput(raw) { var s = String(raw == null ? "" : raw).trim(); if (!s) return {type: "empty"};
+  var coord = s.match(/^(-?\d+(?:\.\d+)?)\s*[,;]\s*(-?\d+(?:\.\d+)?)$/); if (coord) return {type: "geo", lat: parseFloat(coord[1]), lon: parseFloat(coord[2])};
+  var freq = s.match(/^(\d+(?:\.\d+)?)\s*(hz|гц)$/i); if (freq) return {type: "freq", hz: parseFloat(freq[1])};
+  var color = s.match(/^#([0-9a-f]{6})$/i); if (color) { var hex = color[1]; return {type: "color", hex: hex, r: parseInt(hex.slice(0, 2), 16
