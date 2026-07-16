@@ -1,5 +1,13 @@
-birth||{});var now=new Date();var pred=predict({days:27,birth:opts.birth&&opts.birth.date,lat:opts.lat,lon:opts.lon});
-    var roadmap=[];for(var i=1;i<=21;i++){var s=step21(i);var dayOffset=Math.round((i-1)*(PHI*1.2));var d=new Date(now.getTime()+dayOffset*86400000);
-      roadmap.push({step:i,phase:s.phaseName,operation:s.operation,dayOffset:dayOffset,date:d.toISOString().slice(0,10),dayDR:dateDR(d),tip:OPS_TIPS[s.operation]||""});}
-    var modules=[{n:1,role:"Инициатор",layer:"Data/Тело",task:"Семя: one-liner сути «"+intent+"»"},{n:2,role:"Зеркало",layer:"Data/Тело",task:"Парный feedback / research"},{n:3,role:"Заземлитель",layer:"Data/Тело",task:"Спека + constraints + ENV"},{n:4,role:"Архитектор",layer:"Logic/Дух",task:"1:√φ:φ · core/field/bridge"},{n:5,role:"Критик",layer:"Logic/Дух",task:"Аномалия-как-вход · security"},{n:6,role:"Соединитель",layer:"Logic/Дух",task:"API · интеграции · связи"},{n:7,role:"Хранитель",layer:"Interface/Душа",task:"Docs · ADR · tests"},{n:8,role:"Реализатор",layer:"Interface/Душа",task:"Ship MVP · money path"},{n:9,role:"Визионер",layer:"Interface/Душа",task:"Релиз + отдача + next octave"}];
-    return{ok:true,intent:intent,seed:seed,dr:dr,meaning:DR_MEANING[dr],action:DR_ACTION[dr],axis:ax,step21:st,kepler:kl
+(p.day), dr = digitalRoot(rawSum);
+  var lp = lifePath(birth), soul = digitalRoot(nameToNumber(name)), destiny = digitalRoot(soul + dr), hourDR = digitalRoot(p.h * 60 + p.min);
+  var ax = axisOf(dr), age = ageYears(birth, now);
+  var py = personalYear(birth, now.getUTCFullYear()), pm = personalMonth(birth, now.getUTCFullYear(), now.getUTCMonth() + 1);
+  var pd = personalDay(birth, now.getUTCFullYear(), now.getUTCMonth() + 1, now.getUTCDate());
+  var nn = nearestNode(lat, lon), np = nodePhase(nn.node, now), lunaBirth = lunarPhase(birth), lunaNow = lunarPhase(now), st = step21(age.days);
+  var amps = {}; for (var k = 1; k <= 9; k++) amps[k] = 0.08; amps[dr] += 0.28; amps[lp] += 0.18; amps[soul] += 0.14; amps[py] += 0.10; amps[pd] += 0.08; amps[mirrorPair(dr)] += 0.06;
+  var sumA = 0; for (k = 1; k <= 9; k++) sumA += amps[k]; for (k = 1; k <= 9; k++) amps[k] = Math.round((amps[k] / sumA) * 1000) / 1000;
+  var dominant = 1; for (k = 2; k <= 9; k++) if (amps[k] > amps[dominant]) dominant = k;
+  var br = biorhythm(birth, now), gh = goldenHour(birth, now);
+  var insight = [];
+  insight.push("DR: " + dr + " — " + DR_MEANING[dr]); insight.push("LP: " + lp + " · Soul: " + soul + " · Destiny: " + destiny);
+  insight.push("Ось: " + ax.name + " · зеркало " + dr + "↔" + mirrorPair(dr)); insight.push("Личный год " + now.getUTCFullYear() + ": " + py + " — " + DR_MEA
