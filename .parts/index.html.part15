@@ -1,16 +1,2 @@
-ev.nodePhase.label+'</span><span><strong>Планета</strong> '+ev.planet+'</span></div>';
-  });
-
-  document.getElementById('p-go').addEventListener('click',function(){
-    var p=ORC.predict({from:document.getElementById('p-from').value,days:27,birth:document.getElementById('p-birth').value,lat:parseFloat(document.getElementById('p-lat').value),lon:parseFloat(document.getElementById('p-lon').value)});
-    var tbody=document.querySelector('#p-table tbody'); tbody.innerHTML='';
-    document.getElementById('p-best').innerHTML='<strong>Best windows:</strong> Launch <span class="pill">'+p.best.launch.date+'</span> · Money <span class="pill">'+p.best.money.date+'</span> · Release <span class="pill">'+p.best.release.date+'</span> · Deal <span class="pill">'+p.best.deal.date+'</span> · Deep Work <span class="pill">'+p.best.deepWork.date+'</span>';
-    p.calendar.forEach(function(row){
-      var tr=document.createElement('tr'); if(row.overall>=78)tr.className='peak'; else if(row.moneyScore>=90)tr.className='money'; else if(row.overall<38)tr.className='bad';
-      tr.innerHTML='<td>'+row.date+'</td><td>'+row.dr+'</td><td>'+row.pd+'</td><td>'+row.planet+'</td><td>'+row.luna+'</td><td>'+row.overall+'</td><td>'+row.rings+'/4</td><td>'+row.money+' ('+row.moneyScore+')</td><td>'+row.action+'</td>';
-      tbody.appendChild(tr);
-    });
-  });
-
-  document.getElementById('c-go').addEventListener('click',function(){
-    var c=ORC.createDes
+st p=ORC.predict({from:from||new Date(),days:days,birth:'1998-04-10'});const tb=document.querySelector('#predictTable tbody');tb.innerHTML='';p.calendar.forEach(r=>{const cls=r.overall>=78?'peak':(r.moneyScore>=90?'money':'');tb.innerHTML+=`<tr class="${cls}"><td>${h(r.date)}</td><td>${r.dr}</td><td>${h(r.luna)}</td><td>${r.overall}</td><td>${r.rings}</td><td>${h(r.money)}</td><td>${h(r.verdict)}</td></tr>`;});document.getElementById('predictBest').innerHTML=`<div class="kv">${kv('Запуск',p.best.launch.date)}${kv('Деньги',p.best.money.date)}${kv('Релиз',p.best.release.date)}${kv('Сделка',p.best.deal.date)}${kv('Deep Work',p.best.deepWork.date)}</div>`;document.getElementById('predictBest').className='result show';}
+function runCreate(){const i=document.getElementById('cIntent').value;const c=ORC.createDesign({intent:i});const el=document.getElementById('createResult');if(!c.ok){el.innerHTML='<div class="empty">'+h(c.message)+'</div>';return;}el.innerHTML=`<div class="kv">${kv('DR',c.dr)}${kv('Ось',c.axis.name)}${kv('Частота',c.frequency.hz+' '+c.frequency.name)}${kv('Действие',c.action)}</div><div class="insight">${h(c.mantra)}</div><h3>9 модулей</h3>`+c.modules.map(m=>`<div class="module"><span class="num">${m.n}</span><strong>${h(m.role)}</strong> — ${h(m.layer)}: ${h(m.task)}</div>`).join('')+`<h3>21 шаг</h3><div class="ta
