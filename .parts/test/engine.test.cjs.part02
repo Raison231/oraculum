@@ -1,4 +1,6 @@
-ctEqual(ORC.parseInput("10.04.1998").type, "date");
+28hz").type, "freq");
+  assert.strictEqual(ORC.parseInput("2026-08-12").type, "date");
+  assert.strictEqual(ORC.parseInput("10.04.1998").type, "date");
   assert.strictEqual(ORC.parseInput("Weeekend").type, "name");
   assert.strictEqual(ORC.parseInput("#ff5a5a").type, "color");
   assert.strictEqual(ORC.parseInput("10:00").type, "time");
@@ -38,10 +40,4 @@ t("synastry", () => {
   assert.ok(s.ok);
   assert.ok(s.score >= 0 && s.score <= 100);
 });
-t("brandProfile", () => {
-  const b = ORC.brandProfile("ORACULUM");
-  assert.ok(b.ok);
-  assert.ok(b.dr >= 1 && b.dr <= 9);
-  assert.ok(b.score > 0);
-});
-t("colorOfNumber",
+t("brandProfile", () =
