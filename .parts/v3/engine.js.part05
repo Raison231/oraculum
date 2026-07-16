@@ -1,0 +1,8 @@
+ 9; return r === 0 ? 9 : r; }
+function sumDigits(n) { n = Math.abs(Math.trunc(Number(n) || 0)); var s = 0; while (n > 0) { s += n % 10; n = Math.floor(n / 10); } return s; }
+function digitalRootSteps(n) { var steps = [Math.abs(Math.trunc(Number(n) || 0))]; while (steps[steps.length - 1] > 9) steps.push(sumDigits(steps[steps.length - 1])); return steps; }
+function mod9Class(dr) { if (dr === 9) return "ОСЬ(9)"; if (dr === 3 || dr === 6) return "ОС��(" + dr + ")"; return "КОЛЬЦО"; }
+function mirrorPair(dr) { return {1: 8, 8: 1, 2: 7, 7: 2, 4: 5, 5: 4, 3: 6, 6: 3, 9: 9, 0: 0}[dr]; }
+function axisOf(dr) { if (TRI_A.indexOf(dr) >= 0) return {id: "147", name: "147"}; if (TRI_B.indexOf(dr) >= 0) return {id: "258", name: "258"}; if (AXIS.indexOf(dr) >= 0) return {id: "369", name: "369"}; return {id: "?", name: "?"}; }
+function mulMod9(a, b) { var p = (a * b) % 9; return p === 0 ? 9 : p; }
+function opArchetype(k) { if (k === 1) return "Самость"; if (k === 2 || k === 5) return "Ток"; if (k === 4 
