@@ -1,0 +1,6 @@
+ ? "МАСШТАБИРУЕМЫЙ" : "БАЛАНСИРОВАННЫЙ"));
+  return {ok: true, dr: dr, meaning: DR_MEANING[dr], lines: lines, functions: funcs, loops: loops, entropy: Math.round(t.words / ((lines || 1)) * 10), verdict: verdict, tips: funcs > loops ? ["Модульность хороша", "Проверь тесты"] : ["Добавь функций", "Упрости циклы"]}; }
+function dreamRead(text) { var t = textResonance(text); if (!t.ok) return t; var seed = nameToNumber(text), dr = digitalRoot(seed), st = step21(seed);
+  var symbols = {"вода": "эмоции", "огонь": "страсть", "дом": "архетип себя", "дорога": "путь", "число": "Mod9-сигнал", "человек": "зеркало", "летать": "освобождение", "падать": "страх", "змея": "трансформация", "золото": "ценность"};
+  var found = Object.keys(symbols).filter(function (k) { return text.toLowerCase().indexOf(k) >= 0; }).map(function (k) { return k + ": " + symbols[k]; });
+  return {ok: true, dr: dr, meaning: DR_MEANING[dr], phase: st.phaseName, operation: st.operation, symbols: found, message: "Сон в фазе " + st
