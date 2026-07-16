@@ -1,12 +1,7 @@
-type: opArchetype(dr)},
+с: " + gh + "/100 · бодрость " + Math.round((br.physical + 1) * 50) + "%");
+  if (dr === 5) insight.push("DR5 — оператор перемен."); if (py === 1) insight.push("Личный год 1 — закладка систем."); if (py === 8) insight.push("Личный год 8 — масштаб."); if (py === 9) insight.push("Личный год 9 — завершение цикла.");
+  return {ok: true, name: name, place: place, birthISO: dateStr, time: time, lat: lat, lon: lon, birth: birth, now: now,
+    numbers: {rawSum: rawSum, dr: dr, lifePath: lp, soul: soul, destiny: destiny, hourDR: hourDR, steps: digitalRootSteps(rawSum), axis: ax, mirror: mirrorPair(dr), meaning: DR_MEANING[dr], action: DR_ACTION[dr], archetype: opArchetype(dr)},
     cycles: {age: age, personalYear: py, personalMonth: pm, personalDay: pd, personalYearMeaning: DR_MEANING[py], nineYearPhase: age.nineYearPhase, nineYearMeaning: DR_MEANING[age.nineYearPhase], step21: st, planetToday: planetDay(now), zodiac: zodiacOf(birth)},
     field: {nearestNode: nn, nodePhase: np, lunaBirth: lunaBirth, lunaNow: lunaNow}, spectrum: amps, dominant: dominant, biorhythm: br, goldenHour: gh,
-    formula: "DR=" + dr + " · LP=" + lp + " · Soul=" + soul + " · Dest=" + destiny + " · Axis=" + ax.id + " · PY" + now.getUTCFullYear() + "=" + py, insight: insight};
-}
-function eventScore(opts) { opts = opts || {}; var date = parseDate(opts.date) || new Date();
-  var lat = opts.lat != null ? opts.lat : DEFAULT_BIRTH.lat, lon = opts.lon != null ? opts.lon : DEFAULT_BIRTH.lon;
-  var birth = parseDate(opts.birth || DEFAULT_BIRTH.date);
-  var dr = dateDR(date), luna = lunarPhase(date), nn = nearestNode(lat, lon), np = nodePhase(nn.node, date);
-  var pd = birth ? personalDay(birth, date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()) : dr;
-  var sDR = AXIS.indexOf(dr) >= 0 ? (dr === 9 ? 92 : 78) : (RING.indexOf(dr) >= 0 ? 70 : 50); if (dr === 5 || dr === 8) sDR = 90;
-  var sLuna = Math.round(40 + 60 * (1 - Math.min(1, luna.phiDistance * 8))); if (luna.name === "Новолуние" || luna.name === "Полнолуние") sLuna = Mat
+    formula: "DR=" + dr + " · LP=" + lp + " · Soul=" + soul + " · Dest=" + destiny + " · Axis=" + ax.id + " · PY" + now.getUTCFullYear() + "=" + py, insight
