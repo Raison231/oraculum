@@ -1,0 +1,6 @@
+а: " + nph.label + " (" + Math.round(nph.heat * 100) + "%)"]}); scores.push(Math.max(0, 100 - nn.distanceKm / 40)); }
+  if (p.type === "date") { var lp = lunarPhase(p.date), ev = eventScore({date: p.date, birth: opts.birth});
+    lenses.push({key: "luna", title: "Луна", lines: ["Фаза: " + lp.name + " · " + lp.ageDays.toFixed(1) + "д", "φ-окно: " + (lp.isPhiWindow ? "ДА" : "нет"), "Свет: " + Math.round(lp.illumination * 100) + "%"]});
+    lenses.push({key: "event", title: "Triple-Ring", lines: [ev.formula, "Кольца: " + ev.rings + "/4 · " + ev.scores.overall, ev.verdict, "Деньги: " + ev.money.label + " (" + ev.money.score + ")"]}); scores.push(ev.scores.overall); }
+  if (p.type === "color") { var cdr = digitalRoot(p.r + p.g + p.b); lenses.push({key: "color", title: "Цвет", lines: ["RGB: " + p.r + "," + p.g + "," + p.b, "DR: " + cdr + " — " + DR_MEANING[cdr], "Цвет: " + COLORS[dr - 1].name]}); scores.push(72); }
+  if (p.type === "time") { var tdr = digitalRoot(p.h * 60 + p.m); lenses.push
