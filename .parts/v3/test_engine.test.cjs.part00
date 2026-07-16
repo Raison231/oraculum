@@ -1,0 +1,28 @@
+/* ORACULUM ∞ v3 — unit tests (node, zero deps) */
+const assert = require("assert");
+const ORC = require("../engine.js");
+
+let passed = 0, failed = 0;
+function t(name, fn) {
+  try { fn(); passed++; console.log("  ✓ " + name); }
+  catch (e) { failed++; console.log("  ✗ " + name + "\n      " + e.message); }
+}
+
+console.log("\nORACULUM ∞ v3 engine tests\n");
+
+// Core
+t("version 3.0.0", () => assert.strictEqual(ORC.version, "3.0.0"));
+t("φ² = φ + 1", () => assert.ok(Math.abs(ORC.PHI * ORC.PHI - (ORC.PHI + 1)) < 1e-9));
+t("1/φ = φ - 1", () => assert.ok(Math.abs(ORC.INV_PHI - (ORC.PHI - 1)) < 1e-9));
+t("golden angle ≈ 137.5°", () => assert.ok(Math.abs(ORC.GOLDEN_ANGLE - 137.507764) < 1e-3));
+
+// Mod9
+t("digitalRoot", () => {
+  assert.strictEqual(ORC.digitalRoot(0), 0);
+  assert.strictEqual(ORC.digitalRoot(9), 9);
+  assert.strictEqual(ORC.digitalRoot(18), 9);
+  assert.strictEqual(ORC.digitalRoot(1998), 9);
+  assert.strictEqual(ORC.digitalRoot(528), 6);
+});
+t("mirror pairs", () => {
+  assert.st
