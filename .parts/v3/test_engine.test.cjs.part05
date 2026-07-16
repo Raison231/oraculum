@@ -1,0 +1,35 @@
+10"}, 30);
+  assert.ok(m.ok);
+  assert.ok(m.bestMoneyDR >= 1 && m.bestMoneyDR <= 9);
+});
+t("healthRhythm", () => {
+  const h = ORC.healthRhythm({date: "1998-04-10"}, "2026-07-16");
+  assert.ok(h.ok);
+  assert.ok(h.physical >= 0 && h.physical <= 100);
+});
+t("chronobiology", () => {
+  const c = ORC.chronobiology({date: "1998-04-10"}, "2026-07-16");
+  assert.ok(c.ok);
+  assert.ok(c.schedule.length > 0);
+});
+t("dreamRead", () => {
+  const d = ORC.dreamRead("я летал над водой и увидел золото");
+  assert.ok(d.ok);
+  assert.ok(d.symbols.length > 0);
+});
+t("ichingDraw", () => {
+  const i = ORC.ichingDraw("что делать?");
+  assert.ok(i.ok);
+  assert.ok(i.hexagram);
+});
+t("tarotSpread", () => {
+  const t = ORC.tarotSpread(123);
+  assert.ok(t.ok);
+  assert.strictEqual(t.cards.length, 3);
+});
+t("routeScore", () => {
+  const r = ORC.routeScore([{name: "A", lat: 41.72, lon: 44.83}, {name: "B", lat: 46.54, lon: 61.17}]);
+  assert.ok(r.ok);
+  assert.ok(r.score >= 0 && r.score <= 100);
+});
+t("manifestat
