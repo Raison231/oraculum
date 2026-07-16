@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ORACULUM ∞ v2 — Deep Unified Field Engine</title>
 <style>
-:root{--bg:#08090d;--surface:#11131b;--raised:#181b27;--panel:#0e1016;--border:rgba(255,255,255,0.08);--text:#f4f1ea;--muted:rgba(244,241,234,0.62);--gold:#d7b05a;--gold-glow:rgba(215,176,90,0.18);--cyan:#62cfdf;--green:#78c693;--orange:#e2985e;--red:#ec7b6e;--purple:#b597e6;--font:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+:root{--bg:#08090d;--surface:#11131b;--raised:#181b27;--panel:#0e1016;--border:rgba(255,255,255,0.08);--text:#f4f1ea;--muted:rgba(244,241,234,0.62);--gold:#d7b05a;--gold-glow:rgba(215,176,90,0.18);--cyan:#62cfdf;--green:#78c693;--orange:#e2985e;--red:#ec7b6e;--font:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 *{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--font)}
-body{min-height:100vh;background:radial-gradient(1400px 700px at 8% -14%,rgba(215,176,90,0.14),transparent 58%),radial-gradient(900px 500px at 110% 0%,rgba(98,207,223,0.10),transparent 52%),radial-gradient(600px 600px at 50% 120%,rgba(181,151,230,0.08),transparent 50%),var(--bg)}
+body{min-height:100vh;background:radial-gradient(1400px 700px at 8% -14%,rgba(215,176,90,0.14),transparent 58%),radial-gradient(900px 500px at 110% 0%,rgba(98,207,223,0.10),transparent 52%),var(--bg)}
 .wrap{max-width:1280px;margin:0 auto;padding:28px 22px 80px}
 header{display:grid;gap:14px;margin-bottom:30px}
 .badge{display:inline-flex;align-items:center;gap:8px;width:fit-content;padding:6px 14px;border:1px solid rgba(215,176,90,0.35);border-radius:999px;background:var(--gold-glow);color:var(--gold);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:700}
@@ -73,4 +73,237 @@ tr:hover td{background:rgba(255,255,255,0.03)}
 .module .num{display:inline-block;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#1a160d;font-weight:800;font-size:12px;line-height:24px;text-align:center;margin-right:8px}
 .spectrum{display:grid;grid-template-columns:repeat(auto-fit,minmax(52px,1fr));gap:6px;margin-top:10px}
 .spectrum .bar{height:80px;background:var(--panel);border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--border)}
-.spectrum .fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,var(--gold),rgba(215,176,90,0.25));border-radius:0 0 8px
+.spectrum .fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,var(--gold),rgba(215,176,90,0.25));border-radius:0 0 8px 8px;transition:height .6s ease}
+.spectrum .num{position:absolute;bottom:6px;left:0;right:0;text-align:center;font-size:12px;font-weight:700;color:var(--text)}
+.spectrum .pct{position:absolute;top:6px;left:0;right:0;text-align:center;font-size:10px;color:var(--muted)}
+footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;line-height:1.6;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer code{color:var(--cyan);font-family:var(--mono)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><div class="badge">Natural Code v2 · MIGI · Deep Engine</div><h1>ORACULUM <span>∞</span> v2</h1><p class="lede">Полный движок поля. Birth Deep · Triple-Ring Event · Predict 27 · Create Design 21.<br>Любой вход проходит ��ерез Mod9 · φ · ИДСЗ · Второй Ключ · Solfeggio · Луну + личный профиль.</p></header>
+<div class="tabs">
+<button class="tab active" data-tab="field">Field Read</button>
+<button class="tab" data-tab="birth">Birth Profile</button>
+<button class="tab" data-tab="event">Triple-Ring Event</button>
+<button class="tab" data-tab="predict">Predict 27</button>
+<button class="tab" data-tab="create">Create Design</button>
+</div>
+<div id="field" class="section active">
+<div class="grid">
+<section class="card">
+<h2>Вход</h2>
+<label>Что считываем</label>
+<div class="input-row"><input id="q" type="text" placeholder="10.04.1998 · 41.72, 44.83 · 528hz · Weeekend"><button class="primary" id="go" type="button">Считать</button></div>
+<div class="chips" id="chips"></div>
+<p class="hint">Дата, координаты, частота, число, имя/бренд. v2 добавляет birth + rings.</p>
+<div class="canvas-wrap" style="margin-top:20px"><h2 style="margin:14px 16px 8px">ИДСЗ · 62 узла</h2><canvas id="globe" width="700" height="400"></canvas></div>
+<div class="map-meta" id="mapMeta"><span>12 icosa</span><span>20 dodeca</span><span>30 mid</span></div>
+</section>
+<section class="card">
+<h2>Поле</h2>
+<div id="verdict" class="verdict" aria-live="polite"></div>
+<div id="out" class="lenses"></div>
+</section>
+</div>
+</div>
+<div id="birth" class="section">
+<div class="grid">
+<section class="card">
+<h2>Deep Birth Profile</h2>
+<div class="input-row">
+<input id="b-name" type="text" placeholder="Имя" value="Максим Мигай">
+<input id="b-date" type="date" value="1998-04-10">
+<input id="b-time" type="time" value="10:00">
+<input id="b-lat" type="number" step="0.01" value="46.54" placeholder="lat">
+<input id="b-lon" type="number" step="0.01" value="61.17" placeholder="lon">
+</div>
+<button class="primary" id="b-go" style="margin-top:14px">Рассчитать профиль</button>
+<div id="b-out" class="result" style="margin-top:18px"></div>
+</section>
+<section class="card">
+<h2>Spectrum · 9 amplitudes</h2>
+<div id="b-spectrum" class="spectrum"></div>
+<h2>Инсайты</h2>
+<div id="b-insight"></div>
+</section>
+</div>
+</div>
+<div id="event" class="section">
+<div class="grid">
+<section class="card">
+<h2>Triple-Ring Event Score</h2>
+<div class="input-row">
+<input id="e-date" type="date" value="2026-07-16">
+<input id="e-birth" type="date" value="1998-04-10">
+<input id="e-lat" type="number" step="0.01" value="46.54" placeholder="lat">
+<input id="e-lon" type="number" step="0.01" value="61.17" placeholder="lon">
+</div>
+<button class="primary" id="e-go" style="margin-top:14px">Оценить событие</button>
+<div id="e-out" class="result" style="margin-top:18px"></div>
+</section>
+<section class="card">
+<h2>Кольца + Деньги</h2>
+<div id="e-rings"></div>
+</section>
+</div>
+</div>
+<div id="predict" class="section">
+<div class="card">
+<h2>Predict · Календарь окон (27 дней)</h2>
+<div class="input-row">
+<input id="p-from" type="date" value="2026-07-16">
+<input id="p-birth" type="date" value="1998-04-10">
+<input id="p-lat" type="number" step="0.01" value="46.54" placeholder="lat">
+<input id="p-lon" type="number" step="0.01" value="61.17" placeholder="lon">
+<button class="primary" id="p-go">Рассчитать</button>
+</div>
+<div id="p-best" style="margin:14px 0;font-size:13px"></div>
+<div class="table-wrap">
+<table id="p-table"><thead><tr><th>Дата</th><th>DR</th><th>PD</th><th>Планета</th><th>Луна</th><th>Score</th><th>Rings</th><th>Деньги</th><th>Действие</th></tr></thead><tbody></tbody></table>
+</div>
+</div>
+</div>
+<div id="create" class="section">
+<div class="grid">
+<section class="card">
+<h2>Create Design · 21-шаговый roadmap</h2>
+<div class="input-row">
+<input id="c-intent" type="text" placeholder="Намерение / проект" value="ORACULUM v2 deep release">
+<input id="c-birth" type="date" value="1998-04-10">
+<button class="primary" id="c-go">Создать дизайн</button>
+</div>
+<div id="c-out" style="margin-top:18px"></div>
+</section>
+<section class="card">
+<h2>9 Modules + Timing</h2>
+<div id="c-modules"></div>
+</section>
+</div>
+</div>
+<footer>
+<div>ORACULUM ∞ v2 · pure Natural Code · zero deps · engine.js</div>
+<div>φ = <code id="phi"></code> · nodes = <code id="ncount"></code> · tests <code>23/23</code></div>
+</footer>
+</div>
+<script src="./engine.js"></script>
+<script>
+(function(){
+  var ORC=window.ORC; if(!ORC){alert('engine.js не загружен');return;}
+  document.getElementById('phi').textContent=ORC.PHI.toFixed(10);
+  document.getElementById('ncount').textContent=String(ORC.NODES.length);
+
+  document.querySelectorAll('.tab').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+  var q=document.getElementById('q'), go=document.getElementById('go'), out=document.getElementById('out'), verdictEl=document.getElementById('verdict'), chips=document.getElementById('chips'), canvas=document.getElementById('globe'), mapMeta=document.getElementById('mapMeta');
+  var PRESETS=[{label:'ДР Макса',value:'10.04.1998'},{label:'Тбилиси',value:'41.72, 44.83'},{label:'528 Гц',value:'528hz'},{label:'Weeekend',value:'Weeekend'},{label:'MIGI',value:'MIGI'},{label:'Сегодня',value:new Date().toISOString().slice(0,10)}];
+  PRESETS.forEach(function(p){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=p.label;b.addEventListener('click',function(){q.value=p.value;runField();});chips.appendChild(b);});
+
+  function renderField(r){
+    if(!r.ok){verdictEl.className='verdict show bad';verdictEl.innerHTML='<div class="row"><span class="tag">ПУСТО</span><span class="meta">'+esc(r.message)+'</span></div>';out.innerHTML='<div class="empty">'+esc(r.message)+'</div>';return;}
+    var cls=r.verdict==='ЗВУЧИТ'?'ok':(r.verdict==='ТРЕБУЕТ НАСТРОЙКИ'?'mid':'bad');
+    verdictEl.className='verdict show '+cls;
+    verdictEl.innerHTML='<div class="row"><span class="tag">'+esc(r.verdict)+'</span><span class="meta">seed '+esc(String(r.seed))+' · DR '+r.dr+' · '+esc(r.input.type)+'</span><span class="score">'+r.overall+'<small>/100</small></span></div>';
+    out.innerHTML=r.lenses.map(function(L){return '<article class="lens"><div class="lens-head"><span class="dot"></span><h3>'+esc(L.title)+'</h3></div><ul>'+L.lines.map(function(line){return '<li>'+esc(line)+'</li>';}).join('')+'</ul></article>';}).join('');
+    drawGlobe(r.input.type==='geo'?r.input:null);
+  }
+  function runField(){renderField(ORC.fieldRead(q.value));}
+  go.addEventListener('click',runField); q.addEventListener('keydown',function(e){if(e.key==='Enter')runField();});
+
+  function project(lat,lon,w,h){return {x:(lon+180)/360*w,y:(90-lat)/180*h};}
+  function drawGlobe(focus){
+    var dpr=Math.min(window.devicePixelRatio||1,2); var rect=canvas.getBoundingClientRect(); var w=Math.max(320,Math.floor(rect.width)); var h=Math.floor(w/ORC.PHI);
+    canvas.width=Math.floor(w*dpr); canvas.height=Math.floor(h*dpr); canvas.style.height=h+'px';
+    var ctx=canvas.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0); ctx.fillStyle='#0b0d12'; ctx.fillRect(0,0,w,h);
+    ctx.strokeStyle='rgba(255,255,255,0.05)'; ctx.lineWidth=1;
+    for(var lon=-180;lon<=180;lon+=30){var p1=project(90,lon,w,h),p2=project(-90,lon,w,h);ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(p2.x,p2.y);ctx.stroke();}
+    for(var lat=-60;lat<=60;lat+=30){var q1=project(lat,-180,w,h),q2=project(lat,180,w,h);ctx.beginPath();ctx.moveTo(q1.x,q1.y);ctx.lineTo(q2.x,q2.y);ctx.stroke();}
+    ctx.strokeStyle='rgba(215,176,90,0.18)';
+    var e1=project(0,-180,w,h),e2=project(0,180,w,h);ctx.beginPath();ctx.moveTo(e1.x,e1.y);ctx.lineTo(e2.x,e2.y);ctx.stroke();
+    var m1=project(90,0,w,h),m2=project(-90,0,w,h);ctx.beginPath();ctx.moveTo(m1.x,m1.y);ctx.lineTo(m2.x,m2.y);ctx.stroke();
+    var colors={icosa:'#62cfdf',dodeca:'#d7b05a',mid:'rgba(244,241,234,0.35)'};
+    ORC.NODES.forEach(function(n){var p=project(n.lat,n.lon,w,h);ctx.fillStyle=colors[n.cls]||'#fff';var r=n.cls==='mid'?1.4:2.6;ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fill();});
+    if(focus&&typeof focus.lat==='number'){
+      var nn=ORC.nearestNode(focus.lat,focus.lon); var fp=project(focus.lat,focus.lon,w,h),np=project(nn.node.lat,nn.node.lon,w,h);
+      ctx.strokeStyle='rgba(120,198,147,0.75)';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(fp.x,fp.y);ctx.lineTo(np.x,np.y);ctx.stroke();
+      ctx.fillStyle='#78c693';ctx.beginPath();ctx.arc(fp.x,fp.y,4,0,Math.PI*2);ctx.fill();
+      ctx.strokeStyle='rgba(120,198,147,0.55)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(np.x,np.y,8,0,Math.PI*2);ctx.stroke();
+      mapMeta.innerHTML='<span>Фокус '+focus.lat.toFixed(2)+', '+focus.lon.toFixed(2)+'</span><span>→ узел '+nn.node.id+'</span><span>'+Math.round(nn.distanceKm)+' км</span>';
+    } else {mapMeta.innerHTML='<span>12 icosa</span><span>20 dodeca</span><span>30 mid</span>';}
+  }
+  drawGlobe(null); window.addEventListener('resize',function(){drawGlobe(null);});
+  q.value='10.04.1998'; runField();
+
+  document.getElementById('b-go').addEventListener('click',function(){
+    var prof=ORC.birthProfile({name:document.getElementById('b-name').value,date:document.getElementById('b-date').value,time:document.getElementById('b-time').value,lat:parseFloat(document.getElementById('b-lat').value),lon:parseFloat(document.getElementById('b-lon').value)});
+    var el=document.getElementById('b-out'); el.className='result show';
+    if(!prof.ok){el.innerHTML='<div class="empty">'+esc(prof.message)+'</div>';return;}
+    el.innerHTML='<div class="kv"><span><strong>DR</strong> '+prof.numbers.dr+'</span><span><strong>LP</strong> '+prof.numbers.lifePath+'</span><span><strong>Soul</strong> '+prof.numbers.soul+'</span><span><strong>Dest</strong> '+prof.numbers.destiny+'</span><span><strong>Axis</strong> '+prof.numbers.axis.id+'</span></div>'+
+      '<div class="insight">'+prof.numbers.meaning+'<br>'+prof.numbers.action+'</div>'+
+      '<div class="kv"><span><strong>Личный год '+new Date().getUTCFullYear()+'</strong> '+prof.cycles.personalYear+' — '+prof.cycles.personalYearMeaning+'</span><span><strong>Личный день</strong> '+prof.cycles.personalDay+'</span><span><strong>9-летняя фаза</strong> '+prof.cycles.nineYearPhase+'/9</span></div>'+
+      '<div class="kv"><span><strong>ИДСЗ</strong> '+prof.field.nearestNode.node.id+' · '+Math.round(prof.field.nearestNode.distanceKm)+' км</span><span><strong>Луна рождения</strong> '+prof.field.lunaBirth.name+'</span><span><strong>Луна сейчас</strong> '+prof.field.lunaNow.name+'</span></div>'+
+      '<div class="meta">'+prof.formula+'</div>';
+    var spec=document.getElementById('b-spectrum'); spec.innerHTML='';
+    for(var k=1;k<=9;k++){var pct=(prof.spectrum[k]*100).toFixed(1); var div=document.createElement('div');div.className='bar';div.innerHTML='<div class="fill" style="height:'+pct+'%"></div><div class="pct">'+pct+'%</div><div class="num">'+k+'</div>';spec.appendChild(div);}
+    document.getElementById('b-insight').innerHTML='<div class="insight">'+prof.insight.slice(0,7).join('<br>')+'</div>';
+  });
+
+  document.getElementById('e-go').addEventListener('click',function(){
+    var ev=ORC.eventScore({date:document.getElementById('e-date').value,birth:document.getElementById('e-birth').value,lat:parseFloat(document.getElementById('e-lat').value),lon:parseFloat(document.getElementById('e-lon').value)});
+    var el=document.getElementById('e-out'); el.className='result show';
+    if(!ev.ok){el.innerHTML='<div class="empty">Ошибка</div>';return;}
+    el.innerHTML='<div class="kv"><span><strong>'+ev.verdict+'</strong></span><span><strong>Overall</strong> '+ev.scores.overall+'</span><span><strong>Кольца</strong> '+ev.rings+'/4</span><span><strong>DR</strong> '+ev.dr+'</span><span><strong>PD</strong> '+ev.personalDay+'</span></div>'+
+      '<div class="meta">'+ev.formula+'</div><div class="insight">Деньги: '+ev.money.label+' ('+ev.money.score+') · Действие: '+ev.action+'</div>';
+    var ring=''; ['DR','Luna','Node','Personal'].forEach(function(k){var v=ev.scores[k.toLowerCase()]; ring+='<div class="ring '+(v>=60?'on':'off')+'">'+k+' '+v+'</div>';});
+    document.getElementById('e-rings').innerHTML='<div class="ring-bar">'+ring+'</div>'+
+      '<div class="kv"><span><strong>Луна</strong> '+ev.luna.name+'</span><span><strong>Узел</strong> '+ev.node.node.id+'</span><span><strong>Фаза узла</strong> '+ev.nodePhase.label+'</span><span><strong>Планета</strong> '+ev.planet+'</span></div>';
+  });
+
+  document.getElementById('p-go').addEventListener('click',function(){
+    var p=ORC.predict({from:document.getElementById('p-from').value,days:27,birth:document.getElementById('p-birth').value,lat:parseFloat(document.getElementById('p-lat').value),lon:parseFloat(document.getElementById('p-lon').value)});
+    var tbody=document.querySelector('#p-table tbody'); tbody.innerHTML='';
+    document.getElementById('p-best').innerHTML='<strong>Best windows:</strong> Launch <span class="pill">'+p.best.launch.date+'</span> · Money <span class="pill">'+p.best.money.date+'</span> · Release <span class="pill">'+p.best.release.date+'</span> · Deal <span class="pill">'+p.best.deal.date+'</span> · Deep Work <span class="pill">'+p.best.deepWork.date+'</span>';
+    p.calendar.forEach(function(row){
+      var tr=document.createElement('tr'); if(row.overall>=78)tr.className='peak'; else if(row.moneyScore>=90)tr.className='money'; else if(row.overall<38)tr.className='bad';
+      tr.innerHTML='<td>'+row.date+'</td><td>'+row.dr+'</td><td>'+row.pd+'</td><td>'+row.planet+'</td><td>'+row.luna+'</td><td>'+row.overall+'</td><td>'+row.rings+'/4</td><td>'+row.money+' ('+row.moneyScore+')</td><td>'+row.action+'</td>';
+      tbody.appendChild(tr);
+    });
+  });
+
+  document.getElementById('c-go').addEventListener('click',function(){
+    var c=ORC.createDesign({intent:document.getElementById('c-intent').value,birth:{date:document.getElementById('c-birth').value}});
+    var el=document.getElementById('c-out');
+    if(!c.ok){el.className='result show'; el.innerHTML='<div class="empty">'+esc(c.message)+'</div>';return;}
+    el.className='result show';
+    el.innerHTML='<h3>'+esc(c.intent)+'</h3>'+
+      '<div class="kv"><span><strong>DR</strong> '+c.dr+'</span><span><strong>Смысл</strong> '+c.meaning+'</span><span><strong>Архетип</strong> '+c.archetype+'</span><span><strong>Axis</strong> '+c.axis.id+'</span></div>'+
+      '<div class="insight">'+c.mantra+'<br><br>Timing: '+c.timing.note+' · Best launch '+c.timing.bestLaunch.date+' · Best money '+c.timing.bestMoney.date+'</div>'+
+      '<div class="insight">'+c.checklist.axis369+'<br>'+c.checklist.ring+'<br>'+c.checklist.mirrors+'<br>'+c.checklist.returns9+'</div>';
+    var modEl=document.getElementById('c-modules');
+    modEl.innerHTML='<div class="kv"><span><strong>21-step roadmap</strong></span><span>'+c.roadmap[0].date+' … '+c.roadmap[20].date+'</span></div>'+
+      c.modules.map(function(m){return '<div class="module"><span class="num">'+m.n+'</span><strong>'+m.role+'</strong> · '+m.layer+'<br>'+m.task+'</div>';}).join('')+
+      '<div style="margin-top:12px;font-size:13px">'+c.roadmap.slice(0,7).map(function(r){return r.step+'. '+r.operation+' <span class="pill">'+r.date+'</span>';}).join('<br>')+'<br>…</div>';
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(e.metaKey&&e.key==='Enter'){
+      var active=document.querySelector('.section.active');
+      if(active.id==='field')runField();
+      else if(active.id==='birth')document.getElementById('b-go').click();
+      else if(active.id==='event')document.getElementById('e-go').click();
+      else if(active.id==='predict')document.getElementById('p-go').click();
+      else if(active.id==='create')document.getElementById('c-go').click();
+    }
+  });
+
+  console.log('%c[ORACULUM v2] Loaded. Cmd
