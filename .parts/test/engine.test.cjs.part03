@@ -1,4 +1,10 @@
- () => {
+> {
+  const b = ORC.brandProfile("ORACULUM");
+  assert.ok(b.ok);
+  assert.ok(b.dr >= 1 && b.dr <= 9);
+  assert.ok(b.score > 0);
+});
+t("colorOfNumber", () => {
   const c = ORC.colorOfNumber(7);
   assert.strictEqual(c.dr, 7);
   assert.ok(c.hex);
@@ -35,10 +41,4 @@ t("healthRhythm", () => {
   assert.ok(h.physical >= 0 && h.physical <= 100);
 });
 t("chronobiology", () => {
-  const c = ORC.chronobiology({date: "1998-04-10"}, "2026-07-16");
-  assert.ok(c.ok);
-  assert.ok(c.schedule.length > 0);
-});
-t("dreamRead", () => {
-  const d = ORC.dreamRead("я летал над водой и увидел золото");
-  assert.ok(d.ok
+  const c = ORC.chronobiology({date: "1998-04-10"}, "202
