@@ -1,41 +1,44 @@
-fieldRead("10.04.1998");
-  assert.ok(r.ok);
-  assert.ok(r.lenses.some(l => l.key === "luna"));
+ () => {
+  const c = ORC.colorOfNumber(7);
+  assert.strictEqual(c.dr, 7);
+  assert.ok(c.hex);
 });
-t("fieldRead: overall 0..100", () => {
-  ["42", "Weeekend", "432hz", "2026-08-12", "41.72, 44.83"].forEach(v => {
-    const r = ORC.fieldRead(v);
-    assert.ok(r.overall >= 0 && r.overall <= 100, v + " => " + r.overall);
-  });
+t("textResonance", () => {
+  const t = ORC.textResonance("ORACULUM v3 release");
+  assert.ok(t.ok);
+  assert.ok(t.words > 0);
 });
-t("fieldRead: empty ok=false", () => assert.strictEqual(ORC.fieldRead("").ok, false));
-
-// v2 Deep Birth
-t("birthProfile returns deep numbers", () => {
-  const b = ORC.birthProfile({name: "Максим Мигай", date: "1998-04-10"});
-  assert.ok(b.ok);
-  assert.strictEqual(b.numbers.dr, 5);
-  assert.strictEqual(b.numbers.lifePath, 5);
-  assert.ok(b.numbers.soul > 0);
-  assert.ok(b.numbers.destiny > 0);
-  assert.ok(b.spectrum && Object.keys(b.spectrum).length === 9);
-  assert.ok(b.dominant >= 1 && b.dominant <= 9);
-  assert.ok(b.insight.length > 5);
-  assert.ok(b.field.nearestNode.node);
+t("headlineScore", () => {
+  const h = ORC.headlineScore("Как удвоить доход за 30 дней");
+  assert.ok(h.ok);
+  assert.ok(h.score >= 0 && h.score <= 100);
 });
-
-// v2 Triple-Ring Event
-t("eventScore returns rings", () => {
-  const e = ORC.eventScore({date: "2026-07-16", birth: "1998-04-10"});
-  assert.ok(e.ok);
-  assert.ok(e.scores.overall >= 0 && e.scores.overall <= 100);
-  assert.ok(e.rings >= 0 && e.rings <= 4);
-  assert.ok(e.money && e.money.score >= 0);
-  assert.ok(e.verdict && typeof e.verdict === "string");
+t("decisionMatrix", () => {
+  const d = ORC.decisionMatrix(["A", "B", "C"], {birth: {date: "1998-04-10"}});
+  assert.ok(d.ok);
+  assert.strictEqual(d.rows.length, 3);
+  assert.ok(d.winner);
 });
-
-// v2 Predict
-t("predict returns 27 days", () => {
-  const p = ORC.predict({from: "2026-07-16", days: 27, birth: "1998-04-10"});
-  assert.ok(p.ok);
-  asse
+t("teamField", () => {
+  const team = ORC.teamField([{date: "1998-04-10"}, {date: "1990-05-15"}, {date: "1985-12-01"}]);
+  assert.ok(team.ok);
+  assert.ok(team.teamDR >= 1 && team.teamDR <= 9);
+});
+t("moneyMap", () => {
+  const m = ORC.moneyMap({date: "1998-04-10"}, 30);
+  assert.ok(m.ok);
+  assert.ok(m.bestMoneyDR >= 1 && m.bestMoneyDR <= 9);
+});
+t("healthRhythm", () => {
+  const h = ORC.healthRhythm({date: "1998-04-10"}, "2026-07-16");
+  assert.ok(h.ok);
+  assert.ok(h.physical >= 0 && h.physical <= 100);
+});
+t("chronobiology", () => {
+  const c = ORC.chronobiology({date: "1998-04-10"}, "2026-07-16");
+  assert.ok(c.ok);
+  assert.ok(c.schedule.length > 0);
+});
+t("dreamRead", () => {
+  const d = ORC.dreamRead("я летал над водой и увидел золото");
+  assert.ok(d.ok
