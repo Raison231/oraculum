@@ -1,0 +1,8 @@
+alDay: personalDay,
+  planetDay: planetDay, ageYears: ageYears, lunarPhase: lunarPhase, haversine: haversine, nearestNode: nearestNode, nodePhase: nodePhase, leyLine: leyLine, nodesInRadius: nodesInRadius,
+  biorhythm: biorhythm, zodiacOf: zodiacOf, chakraOf: chakraOf, elementOf: elementOf, solarYearProgress: solarYearProgress, goldenHour: goldenHour,
+  birthProfile: birthProfile, eventScore: eventScore, predict: predict, createDesign: createDesign, parseInput: parseInput, fieldRead: fieldRead,
+  operatorTable: operatorTable, fibMod9Day: fibMod9Day, retroHint: retroHint, voidOfCourseHint: voidOfCourseHint,
+  synastry: synastry, placeScore: placeScore, relocateChart: relocateChart, brandProfile: brandProfile, colorOfNumber: colorOfNumber, auraPalette: auraPalette,
+  textResonance: textResonance, headlineScore: headlineScore, decisionMatrix: decisionMatrix, teamField: teamField, moneyMap: moneyMap,
+  investmentTiming: investmentTiming, healthRhythm: healthRhythm, chronobiology: chronobio
