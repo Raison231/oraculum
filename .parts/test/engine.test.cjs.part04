@@ -1,4 +1,10 @@
-);
+6-07-16");
+  assert.ok(c.ok);
+  assert.ok(c.schedule.length > 0);
+});
+t("dreamRead", () => {
+  const d = ORC.dreamRead("я летал над водой и увидел золото");
+  assert.ok(d.ok);
   assert.ok(d.symbols.length > 0);
 });
 t("ichingDraw", () => {
@@ -38,13 +44,4 @@ t("commitTiming", () => {
 });
 t("priceResonance", () => {
   const p = ORC.priceResonance(999);
-  assert.ok(p.ok);
-  assert.ok(p.phiFriendly);
-});
-t("yearlyArc", () => {
-  const y = ORC.yearlyArc({date: "1998-04-10"}, 2026);
-  assert.ok(y.ok);
-  assert.ok(y.personalYear >= 1 && y.personalYear <= 9);
-});
-t("soulContract", () => {
-  const s = ORC.soulContract({
+  assert.ok(p.o
