@@ -1,0 +1,9 @@
+x(0, 100 - fibClose * 120));
+  var st = step21(baseN); lenses.push({key: "key21", title: "Второй Ключ", lines: ["Шаг " + st.step + "/21 · " + st.phaseName, "Оп: " + st.operation, OPS_TIPS[st.operation] || ""]}); scores.push(st.step % 7 === 0 ? 90 : 62);
+  var mappedHz = (seed % 900 + 900) % 900 + 60, fr = nearestFreq(p.type === "freq" ? p.hz : mappedHz);
+  lenses.push({key: "freq", title: "Частота", lines: [(p.type === "freq" ? "Ввод: " + p.hz : "seed→ " + mappedHz.toFixed(1)) + " Гц", "Канон: " + fr.hz + " — " + fr.name, "DR: " + digitalRoot(Math.round(fr.hz))]});
+  scores.push(p.type === "freq" ? Math.max(0, 100 - Math.abs(fr.hz - p.hz)) : 62);
+  if (p.type === "geo") { var nn = nearestNode(p.lat, p.lon), nph = nodePhase(nn.node, new Date());
+    lenses.push({key: "geo", title: "ИДСЗ", lines: ["Точка: " + p.lat.toFixed(3) + ", " + p.lon.toFixed(3), "Узел: " + nn.node.id + " · " + Math.round(nn.distanceKm) + " км", "Фаза: " + nph.label + " (" + Math.round(nph.heat * 100) + "%)"]}); scores.push(Math.max(0, 100 - nn.distanceKm / 40)); }
+  if (p.type === "date") { var lp = lunarPhase(p.date), ev = eventScore({date: p.date, birth: opts.birth});
+    lenses.push({key: "luna", title: "Луна", lines: ["Фаза: " + lp.name + " · " + lp.ageDays.toFixed(1) + "д", "φ-окно: " + (lp.isPhiWindow ? "ДА" : "нет"), "Св
