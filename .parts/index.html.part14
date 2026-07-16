@@ -1,0 +1,12 @@
+sight').innerHTML='<div class="insight">'+prof.insight.slice(0,7).join('<br>')+'</div>';
+  });
+
+  document.getElementById('e-go').addEventListener('click',function(){
+    var ev=ORC.eventScore({date:document.getElementById('e-date').value,birth:document.getElementById('e-birth').value,lat:parseFloat(document.getElementById('e-lat').value),lon:parseFloat(document.getElementById('e-lon').value)});
+    var el=document.getElementById('e-out'); el.className='result show';
+    if(!ev.ok){el.innerHTML='<div class="empty">Ошибка</div>';return;}
+    el.innerHTML='<div class="kv"><span><strong>'+ev.verdict+'</strong></span><span><strong>Overall</strong> '+ev.scores.overall+'</span><span><strong>Кольца</strong> '+ev.rings+'/4</span><span><strong>DR</strong> '+ev.dr+'</span><span><strong>PD</strong> '+ev.personalDay+'</span></div>'+
+      '<div class="meta">'+ev.formula+'</div><div class="insight">Деньги: '+ev.money.label+' ('+ev.money.score+') · Действие: '+ev.action+'</div>';
+    var ring=''; ['DR','Luna','Node','Personal'].forEach(function(k){var v=ev.scores[k.toLowerCase()]; ring+='<div class="ring '+(v>=60?'on':'off')+'">'+k+' '+v+'</div>';});
+    document.getElementById('e-rings').innerHTML='<div class="ring-bar">'+ring+'</div>'+
+      '<div class="kv"><span><strong>Луна</strong> '+ev.luna.name+'</span><span><strong>Узел</strong> '+ev.node.node.id+'</span><span><strong>Фаза узла</strong> '+
