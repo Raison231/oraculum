@@ -1,4 +1,8 @@
- 1990-05-15, 1985-12-01">
+input id="sA" type="text" value="1998-04-10">
+      <label>Человек B</label><input id="sB" type="text" value="2000-01-01">
+      <button class="primary" style="margin-top:14px" onclick="runSynastry()">Совместимость</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Команда (даты через запятую)</label><input id="tMembers" type="text" placeholder="1998-04-10, 1990-05-15, 1985-12-01">
       <button class="primary" style="margin-top:10px" onclick="runTeam()">Поле команды</button>
     </div>
     <div class="card"><h2>📈 Резонанс</h2><div id="synastryResult"></div></div>
@@ -14,10 +18,4 @@
       <button class="primary" style="margin-top:10px" onclick="runBrand()">Профиль бренда</button>
       <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
       <label>Заголовок / текст</label><textarea id="txText" placeholder="Как удвоить доход за 30 дней"></textarea>
-      <button class="primary" style="margin-top:10px" onclick="runText()">Анализ текста</button>
-      <button class="secondary" onclick="runHeadline()">Headline score</button>
-      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
-      <label>Код</label><textarea id="txCode" placeholder="function example() { ... }"></textarea>
-      <button class="primary" style="margin-top:10px" onclick="runCode()">Code Resonance</button>
-    </div>
-    <div class="card"><h2>🎙 Результат</h2><div id="brandResult"></di
+      <button class="primary" style="margin-top:10px" onc
