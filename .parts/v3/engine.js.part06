@@ -1,0 +1,7 @@
+|| k === 7) return "Гармоники"; if (k === 8) return "Инверсия"; if (k === 3 || k === 6) return "Коллапс"; if (k === 9) return "Аннигиляция"; return "?"; }
+function fibUpTo(limit) { var a = 1, b = 1, arr = [1, 1]; while (b <= limit) { var c = a + b; arr.push(c); a = b; b = c; } return arr; }
+function nearestFib(n) { var arr = fibUpTo(Math.max(Math.abs(n), 2) * 2 + 5), best = arr[0]; for (var i = 0; i < arr.length; i++) if (Math.abs(arr[i] - n) < Math.abs(best - n)) best = arr[i]; return best; }
+function isFib(n) { return nearestFib(n) === n; }
+function keplerLadder(base) { return {low: base, mid: base * SQRT_PHI, high: base * PHI}; }
+function nearestFreq(hz) { var best = FREQS[0]; for (var i = 0; i < FREQS.length; i++) if (Math.abs(FREQS[i].hz - hz) < Math.abs(best.hz - hz)) best = FREQS[i]; return best; }
+function step21(n) { var s = ((((Math.trunc(n) - 1) % 21) + 21) % 21) + 1; var phase = Math.ceil(s / 7); var op = ((s - 1) % 7) + 1; return {step: s, phase: phase, phaseName: PHASES21
