@@ -1,12 +1,10 @@
-cls:cls,lat:Math.asin(v[2]/r)*180/Math.PI,lon:Math.atan2(v[1],v[0])*180/Math.PI};}
-    var nodes=[];ico.forEach(function(v,i){nodes.push(toLatLon(v,"A"+(i+1),"icosa"));});dodec.forEach(function(v,i){nodes.push(toLatLon(v,"B"+(i+1),"dodeca"));});mids.forEach(function(v,i){nodes.push(toLatLon(v,"C"+(i+1),"mid"));});return nodes;
-  }
-  var NODES=buildNodes();
-  function haversine(lat1,lon1,lat2,lon2){var R=6371,toR=Math.PI/180,dLat=(lat2-lat1)*toR,dLon=(lon2-lon1)*toR;var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*toR)*Math.cos(lat2*toR)*Math.sin(dLon/2)*Math.sin(dLon/2);return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));}
-  function nearestNode(lat,lon){var best=null,bestD=Infinity;for(var i=0;i<NODES.length;i++){var d=haversine(lat,lon,NODES[i].lat,NODES[i].lon);if(d<bestD){bestD=d;best=NODES[i];}}return{node:best,distanceKm:bestD};}
-  function nodePhase(node,date){var t=date.getTime()/86400000;var seed=(node.lat+90)*17+(node.lon+180)*31;var cycle=12*PHI;var phase=((t/365.2425+seed)%cycle)/cycle;var heat=0.5+0.5*Math.cos(2*Math.PI*phase);return{phase:phase,heat:heat,label:heat>0.7?"ГОРЯЧИЙ":(heat>0.4?"ТЁПЛЫЙ":"ХОЛОДНЫЙ")};}
-
-  // === BIRTH DEEP MODEL ===
-  function birthProfile(opts){opts=opts||{};
-    var name=opts.name||DEFAULT_BIRTH.name,dateStr=opts.date||DEFAULT_BIRTH.date,time=opts.time||DEFAULT_BIRTH.time;
-    var lat=opts.lat!=null?opts.lat:DEFAULT_BIRTH.lat,lon=opts.lon!=null?opts.lon:DEFAUL
+, 1)); return (d.getTime() - s.getTime()) / (e.getTime() - s.getTime()); }
+function zodiacOf(d) { var day = d.getUTCDate(), m = d.getUTCMonth() + 1; var z = ((m - 1) * 2 + Math.floor(day / 15)); z = Math.max(0, Math.min(11, z)); return ZODIAC[z]; }
+function chakraOf(dr) { return CHAKRAS[Math.min(6, Math.max(0, dr - 1))]; }
+function elementOf(dr) { if (dr === 1 || dr === 5 || dr === 9) return ELEMENTS[0]; if (dr === 2 || dr === 6) return ELEMENTS[1]; if (dr === 3 || dr === 7) return ELEMENTS[3]; if (dr === 4 || dr === 8) return ELEMENTS[2]; return ELEMENTS[4]; }
+function letterDR(c) { var v = (c || "").toLowerCase().charCodeAt(0); if (v >= 1072 && v <= 1103) return digitalRoot(v - 1071); if (v >= 97 && v <= 122) return digitalRoot(v - 96); return 0; }
+function parseDate(raw) { if (raw instanceof Date) return raw; var s = String(raw || "").trim();
+  var iso = s.match(/^(\d{4})-(\d{2})-(\d{2})(?:[T\s](\d{2}):(\d{2}))?/); if (iso) return new Date(Date.UTC(+iso[1], +iso[2] - 1, +iso[3], +(iso[4] || 0), +(iso[5] || 0)));
+  var ru = s.match(/^(\d{2})\.(\d{2})\.(\d{4})(?:\s+(\d{2}):(\d{2}))?/); if (ru) return new Date(Date.UTC(+ru[3], +ru[2] - 1, +ru[1], +(ru[4] || 0), +(ru[5] || 0)));
+  var d = new Date(s); return isNaN(d.getTime()) ? null : d; }
+function ymd(d) { return {y: d.getUTCFullYear(), m: d.getUTCMonth() + 1, day: d.getUTCDate(), h: d.getUTCHours(), min: d.getUTCMinutes()}; }
