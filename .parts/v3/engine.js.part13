@@ -1,0 +1,7 @@
+ (a[1] - b[1]) + (a[2] - b[2]) * (a[2] - b[2]); }
+  var mids = [], seenM = {}; for (var i = 0; i < ico.length; i++) for (var j = i + 1; j < ico.length; j++) if (Math.abs(d2(ico[i], ico[j]) - 4) < 1e-6) { var m = [(ico[i][0] + ico[j][0]) / 2, (ico[i][1] + ico[j][1]) / 2, (ico[i][2] + ico[j][2]) / 2]; var key = m.map(function (x) { return x.toFixed(4); }).join(","); if (!seenM[key]) { seenM[key] = 1; mids.push(m); } }
+  function toLatLon(v, id, cls) { var r = Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]); return {id: id, cls: cls, lat: Math.asin(v[2] / r) * 180 / Math.PI, lon: Math.atan2(v[1], v[0]) * 180 / Math.PI}; }
+  var nodes = []; ico.forEach(function (v, i) { nodes.push(toLatLon(v, "A" + (i + 1), "icosa")); }); dodec.forEach(function (v, i) { nodes.push(toLatLon(v, "B" + (i + 1), "dodeca")); }); mids.forEach(function (v, i) { nodes.push(toLatLon(v, "C" + (i + 1), "mid")); }); return nodes;
+}
+var NODES = buildNodes();
+function haversine(lat1, lon1, lat2, lon2) { var R = 6371, 
