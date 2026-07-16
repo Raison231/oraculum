@@ -1,0 +1,9 @@
+.(\d{2})\.(\d{4})(?:\s+(\d{2}):(\d{2}))?/); if (ru) return new Date(Date.UTC(+ru[3], +ru[2] - 1, +ru[1], +(ru[4] || 0), +(ru[5] || 0)));
+  var d = new Date(s); return isNaN(d.getTime()) ? null : d; }
+function ymd(d) { return {y: d.getUTCFullYear(), m: d.getUTCMonth() + 1, day: d.getUTCDate(), h: d.getUTCHours(), min: d.getUTCMinutes()}; }
+function dateDR(d) { var p = ymd(d); return digitalRoot(sumDigits(p.y) + sumDigits(p.m) + sumDigits(p.day)); }
+function lifePath(d) { var p = ymd(d); return digitalRoot(digitalRoot(p.y) + digitalRoot(p.m) + digitalRoot(p.day)); }
+function personalYear(birth, year) { var b = ymd(birth); return digitalRoot(digitalRoot(b.m) + digitalRoot(b.day) + digitalRoot(year)); }
+function personalMonth(birth, year, month) { return digitalRoot(personalYear(birth, year) + digitalRoot(month)); }
+function personalDay(birth, year, month, day) { return digitalRoot(personalMonth(birth, year, month) + digitalRoot(day)); }
+function planetDay(d) { return PLANETS[d.getUTCDay()
