@@ -1,14 +1,14 @@
 {
   "name": "oraculum-infinity",
-  "version": "1.0.0",
-  "description": "ORACULUM ∞ — Unified Field Reader. Natural Code engine that unifies Mod9, φ, ИДСЗ, Second Key, Solfeggio, lunar phase into one field-read of any input.",
+  "version": "2.0.0",
+  "description": "ORACULUM ∞ v2 — Deep Unified Field Engine. Mod9, φ, ИДСЗ, Second Key, Solfeggio, lunar phase + Birth Deep, Triple-Ring Event, Predict, Create Design.",
   "private": false,
   "license": "MIT",
   "main": "engine.js",
   "scripts": {
     "test": "node test/engine.test.cjs",
     "start": "npx --yes serve . -l 4173",
-    "check": "node -e \"const o=require('./engine'); console.log('nodes',o.NODES.length,'phi',o.PHI)\""
+    "check": "node -e \"const o=require('./engine.js'); console.log('v2', o.version, 'nodes', o.NODES.length, 'birth', typeof o.birthProfile, 'event', typeof o.eventScore, 'predict', typeof o.predict, 'create', typeof o.createDesign);\""
   },
   "keywords": [
     "oraculum",
@@ -18,7 +18,10 @@
     "idsz",
     "field-reader",
     "natural-code",
-    "migi"
+    "migi",
+    "birth-profile",
+    "predict",
+    "design"
   ],
   "engines": {
     "node": ">=18"
