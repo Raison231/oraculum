@@ -1,0 +1,6 @@
+: d, birth: birth.date}); var dr = ev.dr;
+  var rituals = ["3 мин тишины + намерение", "2 мин зеркального диалога", "10 мин творчества", "10 мин уборки/структуры", "5 мин нового контакта", "6 мин клиентского сервиса", "15 мин анализа", "2 мин декларации денег", "9 мин благодарности"];
+  return {ok: true, date: d, dr: dr, ritual: rituals[dr - 1], action: DR_ACTION[dr], element: elementOf(dr)}; }
+function astroLocality(birth, lat, lon) { var B = birthProfile(birth); if (!B.ok) return B; var nn = nearestNode(lat, lon), np = nodePhase(nn.node, new Date()); var ax = axisOf(B.numbers.dr);
+  return {ok: true, lat: lat, lon: lon, dr: B.numbers.dr, nearestNode: nn.node, nodeHeat: Math.round(np.heat * 100), axis: ax.id, verdict: np.heat > 0.7 ? "СИЛЬНАЯ ЛОКАЦИЯ" : (np.heat > 0.4 ? "РАБОЧАЯ" : "СЛАБАЯ"), note: "Линии силы с осью " + ax.id}; }
+function eventFlow(birth, startDate, days) { days = days || 9; var map = predict({from: startDate, days: days, birth: birth.date}); var flow = map.calendar.
