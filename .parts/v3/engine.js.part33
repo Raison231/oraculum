@@ -1,0 +1,7 @@
+ if (!B.ok) return B;
+  var nn = nearestNode(newLat, newLon), np = nodePhase(nn.node, new Date()), nnBirth = nearestNode(B.lat, B.lon);
+  var score = Math.round((100 - nn.distanceKm / 40) * 0.5 + np.heat * 25 + (B.numbers.dr === digitalRoot(Math.round(newLat + newLon)) ? 15 : 0));
+  return {ok: true, newLat: newLat, newLon: newLon, birthNode: nnBirth.node, relocatedNode: nn.node, distanceFromBirth: Math.round(haversine(B.lat, B.lon, newLat, newLon)), score: clamp(score, 0, 100), verdict: score >= 80 ? "ПЕРЕЕЗД ЗВУЧИТ" : (score >= 55 ? "ТРЕНИРУЙ МЕСТО" : "ЛУЧШЕ НЕТ"), note: "Новый узел " + nn.node.id + " · " + np.label}; }
+function brandProfile(name) { var seed = nameToNumber(name), dr = digitalRoot(seed), ax = axisOf(dr), fr = nearestFreq(seed % 900 + 60), kl = keplerLadder(seed || 1);
+  var domains = [".com", ".io", ".ai", ".app"]; var suffix = domains[seed % domains.length];
+  var words = []; for (var i = 1; i <= 9; i++) if (i !== dr && digitalRoot(dr * i) === dr) words.push(MEANING_
