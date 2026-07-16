@@ -1,0 +1,34 @@
+le", () => {
+  const b = ORC.brandProfile("ORACULUM");
+  assert.ok(b.ok);
+  assert.ok(b.dr >= 1 && b.dr <= 9);
+  assert.ok(b.score > 0);
+});
+t("colorOfNumber", () => {
+  const c = ORC.colorOfNumber(7);
+  assert.strictEqual(c.dr, 7);
+  assert.ok(c.hex);
+});
+t("textResonance", () => {
+  const t = ORC.textResonance("ORACULUM v3 release");
+  assert.ok(t.ok);
+  assert.ok(t.words > 0);
+});
+t("headlineScore", () => {
+  const h = ORC.headlineScore("Как удвоить доход за 30 дней");
+  assert.ok(h.ok);
+  assert.ok(h.score >= 0 && h.score <= 100);
+});
+t("decisionMatrix", () => {
+  const d = ORC.decisionMatrix(["A", "B", "C"], {birth: {date: "1998-04-10"}});
+  assert.ok(d.ok);
+  assert.strictEqual(d.rows.length, 3);
+  assert.ok(d.winner);
+});
+t("teamField", () => {
+  const team = ORC.teamField([{date: "1998-04-10"}, {date: "1990-05-15"}, {date: "1985-12-01"}]);
+  assert.ok(team.ok);
+  assert.ok(team.teamDR >= 1 && team.teamDR <= 9);
+});
+t("moneyMap", () => {
+  const m = ORC.moneyMap({date: "1998-04-
