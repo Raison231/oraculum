@@ -1,0 +1,6 @@
+]; }
+function daysBetween(a, b) { return Math.floor((b.getTime() - a.getTime()) / 86400000); }
+function ageYears(birth, now) { now = now || new Date(); var days = daysBetween(birth, now); var yf = Math.floor(days / 365.2425); return {days: days, years: days / 365.2425, yearsFloor: yf, nineYearCycle: Math.floor(yf / 9), nineYearPhase: yf % 9 + 1, cycle27: Math.floor(days / 27) % 9 + 1, cycle81: Math.floor(days / 81) % 9 + 1, cycle243: Math.floor(days / 243) % 9 + 1}; }
+function lunarPhase(date) { var days = (date.getTime() - NEW_MOON_REF) / 86400000; var pos = ((days % SYNODIC) + SYNODIC) % SYNODIC; var frac = pos / SYNODIC;
+  var names = ["Новолуние", "Растущий серп", "Первая четверть", "Растущая", "Полнолуние", "Убывающая", "Последняя четверть", "Убывающий серп"]; var idx = Math.floor(frac * 8 + 0.5) % 8;
+  var phiPts = [0, 0.382, 0.5, 0.618, 1], nearestPhi = 0, best = 1; for (var i = 0; i < phiPts.length; i++) { var dd = Math.abs(frac - phiPts[i]); if (dd < best) { best = dd; nearest
