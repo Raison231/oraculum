@@ -1,0 +1,11 @@
+der:1px solid var(--border);background:var(--panel);margin:2px 4px 2px 0}
+.table-wrap{max-height:460px;overflow:auto;border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}
+th{position:sticky;top:0;background:var(--raised);color:var(--muted);font-weight:700;z-index:1}
+tr:hover td{background:rgba(255,255,255,0.03)}
+.peak td{background:rgba(120,198,147,0.08)}.money td{background:rgba(230,196,111,0.08)}.bad td{background:rgba(236,123,110,0.06)}
+.spectrum{display:grid;grid-template-columns:repeat(auto-fit,minmax(48px,1fr));gap:6px;margin-top:10px}
+.spectrum .bar{height:90px;background:var(--panel);border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--border)}
+.spectrum .fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,var(--gold),rgba(230,196,111,0.25));border-radius:0 0 8px 8px;transition:height .6s ease}
+.s
