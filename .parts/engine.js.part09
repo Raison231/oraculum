@@ -1,14 +1,7 @@
-↔"+mirrorPair(dr));
-    insight.push("Личный год "+now.getUTCFullYear()+": "+py+" — "+DR_MEANING[py]);
-    insight.push("Личный день сегодня: "+pd+" — "+DR_ACTION[pd]);
-    insight.push("9-летняя фаза жизни: "+age.nineYearPhase+"/9 — "+DR_MEANING[age.nineYearPhase]);
-    insight.push("Возраст: "+age.yearsFloor+" лет · шаг21: "+st.step+"/"+st.operation);
-    insight.push("ИДСЗ: "+nn.node.id+" · "+Math.round(nn.distanceKm)+" км · "+np.label);
-    insight.push("Луна рождения: "+lunaBirth.name+" · сейчас: "+lunaNow.name);
-    if(dr===5)insight.push("✦ DR5 — оператор перемены/свободы. Дни DR5 = твои зеркальные окна.");
-    if(py===1)insight.push("✦ Личный год 1 — закладка систем. Посеянное растёт 9 лет.");
-    if(py===8)insight.push("✦ Личный год 8 — денежный/масштабный.");
-    if(py===9)insight.push("✦ Личный год 9 — завершение цикла.");
-    return{ok:true,name:name,place:place,birthISO:dateStr,time:time,lat:lat,lon:lon,birth:birth,now:now,
-      numbers:{rawSum:rawSum,dr:dr,lifePath:lp,soul:soul,destiny:destiny,hourDR:hourDR,steps:digitalRootSteps(rawSum),axis:ax,mirror:mirrorPair(dr),meaning:DR_MEANING[dr],action:DR_ACTION[dr],archetype:opArchetype(dr)},
-      cycles:{age:age,personalYear:py
+ущая", "Полнолуние", "Убывающая", "Последняя четверть", "Убывающий серп"]; var idx = Math.floor(frac * 8 + 0.5) % 8;
+  var phiPts = [0, 0.382, 0.5, 0.618, 1], nearestPhi = 0, best = 1; for (var i = 0; i < phiPts.length; i++) { var dd = Math.abs(frac - phiPts[i]); if (dd < best) { best = dd; nearestPhi = phiPts[i]; } }
+  return {fraction: frac, ageDays: pos, name: names[idx], illumination: 0.5 * (1 - Math.cos(2 * Math.PI * frac)), nearestPhiPoint: nearestPhi, phiDistance: best, isPhiWindow: best < 0.04, siderealAge: ((days % SIDEREAL) + SIDEREAL) % SIDEREAL}; }
+function retroHint(d) { var pd = planetDay(d); return pd === "Меркурий" ? "Ретро-тон: проверяй 2x" : pd === "Марс" ? "Марс: прямота" : pd === "Сатурн" ? "Сатурн: структура" : ""; }
+function voidOfCourseHint(d) { var lp = lunarPhase(d); return lp.fraction > 0.48 && lp.fraction < 0.52 ? "Луна в последней четверти — затишье" : ""; }
+function biorhythm(birth, date) { var days = daysBetween(birth, date); return {physical: Math.sin(2 * Math.PI * days / 23), emotional: Math.sin(2 * Math.PI * days / 28), intellectual: Math.sin(2 * Math.PI * days / 33), intuitive: Math.sin(2 * Math.PI * days / 38)}; }
+function goldenHour(birth, date) { var br = biorhythm(birth, date); var score = (br.physi
