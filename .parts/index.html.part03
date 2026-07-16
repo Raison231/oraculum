@@ -1,5 +1,4 @@
-x}
-.verdict.ok .tag{background:rgba(120,198,147,0.16);color:var(--green)}.verdict.mid .tag{background:rgba(226,152,94,0.16);color:var(--orange)}.verdict.bad .tag{background:rgba(236,123,110,0.16);color:var(--red)}
+ound:rgba(226,152,94,0.16);color:var(--orange)}.verdict.bad .tag{background:rgba(236,123,110,0.16);color:var(--red)}
 .meta{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .score{margin-left:auto;font-size:32px;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
 .score small{font-size:14px;color:var(--muted);font-weight:500}
@@ -15,4 +14,4 @@ x}
 canvas{display:block;width:100%;height:auto}
 .map-meta{margin-top:12px;font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
 .map-meta span{padding:4px 8px;background:var(--raised);border-radius:6px}
-.result{display:none;
+.result{display:none;margin-top:16px;background:var(--raised);border:1px solid var(--border);border-radius:12px;paddin
