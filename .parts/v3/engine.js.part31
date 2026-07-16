@@ -1,0 +1,7 @@
+urn rows; }
+function fibMod9Day(hour) { var fib = [0, 1]; for (var i = 2; i < 24; i++) fib.push((fib[i - 1] + fib[i - 2]) % 9); var v = fib[((hour % 24) + 24) % 24]; return v === 0 ? 9 : v; }
+function synastry(a, b) { var A = birthProfile(a), B = birthProfile(b); if (!A.ok || !B.ok) return {ok: false, message: "Невалидные данные"};
+  var drA = A.numbers.dr, drB = B.numbers.dr, comp = drA === drB ? "Прямой резонанс" : (mirrorPair(drA) === drB ? "Зеркальное дополнение" : (axisOf(drA).id === axisOf(drB).id ? "Осевой союз" : "Творческое трение"));
+  var score = Math.round(60 + (drA === drB ? 30 : 0) + (mirrorPair(drA) === drB ? 25 : 0) + (axisOf(drA).id === axisOf(drB).id ? 15 : 0) + (A.numbers.soul === B.numbers.lifePath ? 10 : 0));
+  var lines = [A.name + " DR" + drA + " + " + B.name + " DR" + drB + " = " + comp, "Резонанс: " + score + "/100", "Совместный DR: " + digitalRoot(drA + drB) + " — " + DR_MEANING[digitalRoot(drA + drB)]];
+  if (A.numbers.lifePath === B.numbers.lifePath) lines.p
