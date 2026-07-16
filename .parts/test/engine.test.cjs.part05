@@ -1,4 +1,13 @@
-date: "1998-04-10"});
+k);
+  assert.ok(p.phiFriendly);
+});
+t("yearlyArc", () => {
+  const y = ORC.yearlyArc({date: "1998-04-10"}, 2026);
+  assert.ok(y.ok);
+  assert.ok(y.personalYear >= 1 && y.personalYear <= 9);
+});
+t("soulContract", () => {
+  const s = ORC.soulContract({date: "1998-04-10"});
   assert.ok(s.ok);
   assert.ok(s.coreLesson);
 });
