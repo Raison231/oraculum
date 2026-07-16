@@ -1,39 +1,38 @@
-un() {
-        render(ORC.fieldRead(q.value));
-      }
-
-      go.addEventListener("click", run);
-      q.addEventListener("keydown", function (e) {
-        if (e.key === "Enter") run();
-      });
-
-      function project(lat, lon, w, h) {
-        var x = (lon + 180) / 360 * w;
-        var y = (90 - lat) / 180 * h;
-        return { x: x, y: y };
-      }
-
-      function drawGlobe(focus) {
-        var dpr = Math.min(window.devicePixelRatio || 1, 2);
-        var rect = canvas.getBoundingClientRect();
-        var w = Math.max(320, Math.floor(rect.width));
-        var h = Math.floor(w / ORC.PHI);
-        canvas.width = Math.floor(w * dpr);
-        canvas.height = Math.floor(h * dpr);
-        canvas.style.height = h + "px";
-        var ctx = canvas.getContext("2d");
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-        ctx.fillStyle = "#0d0f16";
-        ctx.fillRect(0, 0, w, h);
-
-        // grid
-        ctx.strokeStyle = "rgba(255,255,255,0.05)";
-        ctx.lineWidth = 1;
-        for (var lon = -180; lon <= 180; lon += 30) {
-          var p1 = project(90, lon, w, h), p2 = project(-90, lon, w, h);
-          ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
-        }
-        for (var lat = -60; lat <= 60; lat += 30) {
-          var q1 = project(lat, -180, w, h), q2 = project(lat, 180, w, h);
-          ctx.beginPath(); ctx.moveTo(q1.x, q1.y); ctx.lineTo(q2
+>
+</div>
+<div id="predict" class="section">
+<div class="card">
+<h2>Predict · Календарь окон (27 дней)</h2>
+<div class="input-row">
+<input id="p-from" type="date" value="2026-07-16">
+<input id="p-birth" type="date" value="1998-04-10">
+<input id="p-lat" type="number" step="0.01" value="46.54" placeholder="lat">
+<input id="p-lon" type="number" step="0.01" value="61.17" placeholder="lon">
+<button class="primary" id="p-go">Рассчитать</button>
+</div>
+<div id="p-best" style="margin:14px 0;font-size:13px"></div>
+<div class="table-wrap">
+<table id="p-table"><thead><tr><th>Дата</th><th>DR</th><th>PD</th><th>Планета</th><th>Луна</th><th>Score</th><th>Rings</th><th>Деньги</th><th>Действие</th></tr></thead><tbody></tbody></table>
+</div>
+</div>
+</div>
+<div id="create" class="section">
+<div class="grid">
+<section class="card">
+<h2>Create Design · 21-шаговый roadmap</h2>
+<div class="input-row">
+<input id="c-intent" type="text" placeholder="Намерение / проект" value="ORACULUM v2 deep release">
+<input id="c-birth" type="date" value="1998-04-10">
+<button class="primary" id="c-go">Создать дизайн</button>
+</div>
+<div id="c-out" style="margin-top:18px"></div>
+</section>
+<section class="card">
+<h2>9 Modules + Timing</h2>
+<div id="c-modules"></div>
+</section>
+</div>
+</div>
+<footer>
+<div>ORACULUM ∞ v2 · pure Natural Code · zero deps · engine.js</div>
+<div
