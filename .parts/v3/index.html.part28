@@ -1,0 +1,9 @@
+pace').value);renderRoute(r);}
+function runFood(){const r=ORC.foodResonance(document.getElementById('rSpace').value);renderRoute(r);}
+function runCommit(){const r=ORC.commitTiming(document.getElementById('rIntent').value,{date:'1998-04-10'});renderRoute(r);}
+function renderRoute(r){const el=document.getElementById('routeResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}if(r.score!=null)renderVerdict(el,r,r.score);else el.innerHTML='<div class="insight">'+h(r.verdict||r.focus||r.tip||r.meaning||r.ritual||r.action||'')+'</div>';if(r.legs){el.innerHTML+=`<div class="kv">${r.legs.map(l=>pill(l.from+'→'+l.to+' '+l.leg.nodeScore,'#62cfdf')).join('')}</div>`;}}
+
+// map of 62 nodes
+const mapCanvas=document.getElementById('map'),mapCtx=mapCanvas.getContext('2d');
+function resizeMap(){const rect=mapCanvas.parentElement.getBoundingClientRect();mapCanvas.width=rect.width;mapCanvas.height=340;drawMap();}
+function drawMap(){const w=mapCanvas.width,h=mapCanvas.height
