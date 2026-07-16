@@ -1,0 +1,6 @@
+учиться воли/старту", "учиться партнёрству", "учиться творчеству", "учиться структуре", "учиться свободе", "учиться сервису", "учиться глубине", "учиться масштабу", "учиться отпусканию"];
+  return {ok: true, dr: dr, lifePath: lp, soul: soul, destiny: dest, coreLesson: tasks[dr - 1], lifePathLesson: tasks[lp - 1], soulLesson: tasks[soul - 1], destinyLesson: tasks[dest - 1], note: "DR=" + dr + " + LP=" + lp + " + Soul=" + soul + " + Dest=" + dest}; }
+function nameOptimize(name, goal) { goal = goal || "бренд"; var base = brandProfile(name); var best = null, bestScore = 0;
+  for (var i = 0; i < 9; i++) { var alt = name + " " + (i + 1); var b = brandProfile(alt); if (b.score > bestScore) { bestScore = b.score; best = alt; } }
+  return {ok: true, name: name, base: base, goal: goal, suggested: best, boost: Math.round(bestScore - base.score)}; }
+function dailyRitual(birth, date) { var B = birthProfile(birth); if (!B.ok) return B; var d = parseDate(date) || new Date(); var ev = eventScore({date
