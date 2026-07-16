@@ -1,0 +1,16 @@
+ev.nodePhase.label+'</span><span><strong>Планета</strong> '+ev.planet+'</span></div>';
+  });
+
+  document.getElementById('p-go').addEventListener('click',function(){
+    var p=ORC.predict({from:document.getElementById('p-from').value,days:27,birth:document.getElementById('p-birth').value,lat:parseFloat(document.getElementById('p-lat').value),lon:parseFloat(document.getElementById('p-lon').value)});
+    var tbody=document.querySelector('#p-table tbody'); tbody.innerHTML='';
+    document.getElementById('p-best').innerHTML='<strong>Best windows:</strong> Launch <span class="pill">'+p.best.launch.date+'</span> · Money <span class="pill">'+p.best.money.date+'</span> · Release <span class="pill">'+p.best.release.date+'</span> · Deal <span class="pill">'+p.best.deal.date+'</span> · Deep Work <span class="pill">'+p.best.deepWork.date+'</span>';
+    p.calendar.forEach(function(row){
+      var tr=document.createElement('tr'); if(row.overall>=78)tr.className='peak'; else if(row.moneyScore>=90)tr.className='money'; else if(row.overall<38)tr.className='bad';
+      tr.innerHTML='<td>'+row.date+'</td><td>'+row.dr+'</td><td>'+row.pd+'</td><td>'+row.planet+'</td><td>'+row.luna+'</td><td>'+row.overall+'</td><td>'+row.rings+'/4</td><td>'+row.money+' ('+row.moneyScore+')</td><td>'+row.action+'</td>';
+      tbody.appendChild(tr);
+    });
+  });
+
+  document.getElementById('c-go').addEventListener('click',function(){
+    var c=ORC.createDes
