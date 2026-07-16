@@ -1,0 +1,9 @@
+te") { var d = p.date; seed = d.getUTCFullYear() + (d.getUTCMonth() + 1) + d.getUTCDate(); }
+  else if (p.type === "geo") seed = Math.round(Math.abs(p.lat) + Math.abs(p.lon));
+  else if (p.type === "color") seed = p.r + p.g + p.b;
+  else if (p.type === "time") seed = p.h * 60 + p.m;
+  var dr = digitalRoot(Math.round(seed)), ax = axisOf(dr);
+  lenses.push({key: "mod9", title: "Mod9", lines: ["DR: " + dr + " — " + DR_MEANING[dr], "Класс: " + mod9Class(dr), "Ось: " + ax.name, "Зеркало: " + dr + "↔" + mirrorPair(dr), "Оператор: " + opArchetype(dr), "Действие: " + DR_ACTION[dr]]});
+  scores.push(AXIS.indexOf(dr) >= 0 ? (dr === 9 ? 100 : 82) : 68);
+  var baseN = Math.round(Math.abs(seed)) || 1, nf = nearestFib(baseN), kl = keplerLadder(Math.abs(seed) || 1), fibClose = nf === 0 ? 1 : Math.abs(nf - baseN) / nf;
+  lenses.push({key: "phi", title: "φ · Fib", lines: ["Fib: " + nf + (isFib(baseN) ? " ✦" : ""), "Кеплер: " + kl.low.toFixed(2) + " : " + kl.mid.toFixed(2) + " : " + kl.high.toFixed(2), 
