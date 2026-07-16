@@ -1,39 +1,28 @@
- var ORC = window.ORC;
-      var q = document.getElementById("q");
-      var go = document.getElementById("go");
-      var out = document.getElementById("out");
-      var verdictEl = document.getElementById("verdict");
-      var chips = document.getElementById("chips");
-      var canvas = document.getElementById("globe");
-      var mapMeta = document.getElementById("mapMeta");
-
-      document.getElementById("phi").textContent = ORC.PHI.toFixed(10);
-      document.getElementById("ncount").textContent = String(ORC.NODES.length);
-
-      var PRESETS = [
-        { label: "ДР Макса", value: "10.04.1998" },
-        { label: "Тбилиси", value: "41.72, 44.83" },
-        { label: "Батуми", value: "41.64, 41.64" },
-        { label: "528 Гц", value: "528hz" },
-        { label: "432 Гц", value: "432hz" },
-        { label: "Weeekend", value: "Weeekend" },
-        { label: "MIGI", value: "MIGI" },
-        { label: "Сегодня", value: new Date().toISOString().slice(0, 10) }
-      ];
-
-      PRESETS.forEach(function (p) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.className = "chip";
-        b.textContent = p.label;
-        b.addEventListener("click", function () {
-          q.value = p.value;
-          run();
-        });
-        chips.appendChild(b);
-      });
-
-      function esc(s) {
-        return String(s)
-          .replace(/&/g, "&amp;")
-          .
+�ерез Mod9 · φ · ИДСЗ · Второй Ключ · Solfeggio · Луну + личный профиль.</p></header>
+<div class="tabs">
+<button class="tab active" data-tab="field">Field Read</button>
+<button class="tab" data-tab="birth">Birth Profile</button>
+<button class="tab" data-tab="event">Triple-Ring Event</button>
+<button class="tab" data-tab="predict">Predict 27</button>
+<button class="tab" data-tab="create">Create Design</button>
+</div>
+<div id="field" class="section active">
+<div class="grid">
+<section class="card">
+<h2>Вход</h2>
+<label>Что считываем</label>
+<div class="input-row"><input id="q" type="text" placeholder="10.04.1998 · 41.72, 44.83 · 528hz · Weeekend"><button class="primary" id="go" type="button">Считать</button></div>
+<div class="chips" id="chips"></div>
+<p class="hint">Дата, координаты, частота, число, имя/бренд. v2 добавляет birth + rings.</p>
+<div class="canvas-wrap" style="margin-top:20px"><h2 style="margin:14px 16px 8px">ИДСЗ · 62 узла</h2><canvas id="globe" width="700" height="400"></canvas></div>
+<div class="map-meta" id="mapMeta"><span>12 icosa</span><span>20 dodeca</span><span>30 mid</span></div>
+</section>
+<section class="card">
+<h2>Поле</h2>
+<div id="verdict" class="verdict" aria-live="polite"></div>
+<div id="out" class="lenses"></div>
+</section>
+</div>
+</div>
+<div id="birth" class="section">
+<div cla
