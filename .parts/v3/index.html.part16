@@ -1,0 +1,21 @@
+econdary" onclick="runManifest()">369 план</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Помещение / еда</label><input id="rSpace" type="text" placeholder="комната с большим окном на восток">
+      <button class="secondary" onclick="runSpace()">Space Plan</button>
+      <button class="secondary" onclick="runFood()">Food</button>
+      <button class="secondary" onclick="runCommit()">Commit Timing</button>
+    </div>
+    <div class="card"><h2>📍 Ре��ультат</h2><div id="routeResult"></div></div>
+  </div>
+</section>
+
+<canvas id="map" class="canvas-wrap" style="margin-top:24px;height:340px"></canvas>
+<div class="map-meta" id="mapMeta"></div>
+
+<footer>ORACULUM ∞ v3.0 — Living Unified Field Engine · zero deps · MIT</footer>
+</div>
+<script src="engine.js"></script>
+<script>
+const tabs = [
+  {id:'field',label:'🔮 Поле'}, {id:'birth',label:'🌙 Birth'}, {id:'predict',label:'📅 Прогноз'}, {id:'create',label:'✨ Create'},
+  {id:'synastry',label:'🔗 Син
