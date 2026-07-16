@@ -1,0 +1,8 @@
+numbers.dr+'</span><span><strong>LP</strong> '+prof.numbers.lifePath+'</span><span><strong>Soul</strong> '+prof.numbers.soul+'</span><span><strong>Dest</strong> '+prof.numbers.destiny+'</span><span><strong>Axis</strong> '+prof.numbers.axis.id+'</span></div>'+
+      '<div class="insight">'+prof.numbers.meaning+'<br>'+prof.numbers.action+'</div>'+
+      '<div class="kv"><span><strong>Личный год '+new Date().getUTCFullYear()+'</strong> '+prof.cycles.personalYear+' — '+prof.cycles.personalYearMeaning+'</span><span><strong>Личный день</strong> '+prof.cycles.personalDay+'</span><span><strong>9-летняя фаза</strong> '+prof.cycles.nineYearPhase+'/9</span></div>'+
+      '<div class="kv"><span><strong>ИДСЗ</strong> '+prof.field.nearestNode.node.id+' · '+Math.round(prof.field.nearestNode.distanceKm)+' км</span><span><strong>Луна рождения</strong> '+prof.field.lunaBirth.name+'</span><span><strong>Луна сейчас</strong> '+prof.field.lunaNow.name+'</span></div>'+
+      '<div class="meta">'+prof.formula+'</div>';
+    var spec=document.getElementById('b-spectrum'); spec.innerHTML='';
+    for(var k=1;k<=9;k++){var pct=(prof.spectrum[k]*100).toFixed(1); var div=document.createElement('div');div.className='bar';div.innerHTML='<div class="fill" style="height:'+pct+'%"></div><div class="pct">'+pct+'%</div><div class="num">'+k+'</div>';spec.appendChild(div);}
+    document.getElementById('b-in
