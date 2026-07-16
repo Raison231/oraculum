@@ -1,0 +1,27 @@
+"></div></div>
+  </div>
+</section>
+
+<!-- HEALTH -->
+<section id="tab-health" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🧘 Тело и время</h2>
+      <label>Дата</label><input id="hDate" type="date">
+      <button class="primary" style="margin-top:14px" onclick="runHealth()">Health Rhythm</button>
+      <button class="secondary" onclick="runBodyClock()">Body Clock</button>
+    </div>
+    <div class="card"><h2>⚡ Биоритмы</h2><div id="healthResult"></div></div>
+  </div>
+</section>
+
+<!-- ORACLE -->
+<section id="tab-oracle" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🎴 Оракул</h2>
+      <label>Вопрос / намерение</label><input id="oQuestion" type="text" placeholder="что делать?">
+      <button class="primary" style="margin-top:10px" onclick="runIChing()">I Ching</button>
+      <button class="secondary" onclick="runTarot()">Tarot 3</button>
+      <button class="secondary" onclick="runRandom()">Random Oracle</button>
+      <button class="seco
