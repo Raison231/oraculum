@@ -1,14 +1,14 @@
 {
   "name": "oraculum-infinity",
-  "version": "2.0.0",
-  "description": "ORACULUM ∞ v2 — Deep Unified Field Engine. Mod9, φ, ИДСЗ, Second Key, Solfeggio, lunar phase + Birth Deep, Triple-Ring Event, Predict, Create Design.",
+  "version": "3.0.0",
+  "description": "ORACULUM ∞ v3 — Living Unified Field Engine. 12 perspectives, 40+ functions, zero deps. Mod9, φ, ИДСЗ, Second Key, Solfeggio, lunar, birth deep, synastry, brand, money, health, code, I Ching, tarot, route, manifestation and more.",
   "private": false,
   "license": "MIT",
   "main": "engine.js",
   "scripts": {
     "test": "node test/engine.test.cjs",
     "start": "npx --yes serve . -l 4173",
-    "check": "node -e \"const o=require('./engine.js'); console.log('v2', o.version, 'nodes', o.NODES.length, 'birth', typeof o.birthProfile, 'event', typeof o.eventScore, 'predict', typeof o.predict, 'create', typeof o.createDesign);\""
+    "check": "node -e \"const o=require('./engine.js'); console.log('v3', o.version, 'nodes', o.NODES.length, 'functions', Object.keys(o).filter(k=>typeof o[k]==='function').length);\""
   },
   "keywords": [
     "oraculum",
@@ -21,7 +21,11 @@
     "migi",
     "birth-profile",
     "predict",
-    "design"
+    "design",
+    "synastry",
+    "brand",
+    "tarot",
+    "iching"
   ],
   "engines": {
     "node": ">=18"

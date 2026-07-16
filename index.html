@@ -3,238 +3,238 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ORACULUM ∞ v2 — Deep Unified Field Engine</title>
+<title>ORACULUM ∞ v3 — Living Field Engine</title>
 <style>
-:root{--bg:#08090d;--surface:#11131b;--raised:#181b27;--panel:#0e1016;--border:rgba(255,255,255,0.08);--text:#f4f1ea;--muted:rgba(244,241,234,0.62);--gold:#d7b05a;--gold-glow:rgba(215,176,90,0.18);--cyan:#62cfdf;--green:#78c693;--orange:#e2985e;--red:#ec7b6e;--font:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--font)}
-body{min-height:100vh;background:radial-gradient(1400px 700px at 8% -14%,rgba(215,176,90,0.14),transparent 58%),radial-gradient(900px 500px at 110% 0%,rgba(98,207,223,0.10),transparent 52%),var(--bg)}
-.wrap{max-width:1280px;margin:0 auto;padding:28px 22px 80px}
-header{display:grid;gap:14px;margin-bottom:30px}
-.badge{display:inline-flex;align-items:center;gap:8px;width:fit-content;padding:6px 14px;border:1px solid rgba(215,176,90,0.35);border-radius:999px;background:var(--gold-glow);color:var(--gold);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:700}
-h1{margin:0;font-size:clamp(34px,5.5vw,56px);line-height:1.05;font-weight:750;letter-spacing:-0.03em}h1 span{color:var(--gold);text-shadow:0 0 40px rgba(215,176,90,0.25)}
-.lede{margin:0;max-width:66ch;color:var(--muted);font-size:17px;line-height:1.6}
-.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.tab{background:var(--raised);border:1px solid var(--border);color:var(--muted);border-radius:999px;padding:10px 18px;font-size:13px;cursor:pointer;transition:all .15s ease;font-weight:600}
-.tab.active{background:var(--gold);color:#14110a;border-color:var(--gold);box-shadow:0 0 22px rgba(215,176,90,0.25)}
-.tab:hover:not(.active){color:var(--text);border-color:rgba(215,176,90,0.45);background:#202434}
+:root{--bg:#06070a;--surface:#0f1118;--raised:#161925;--panel:#0d0f14;--border:rgba(255,255,255,0.08);--text:#f4f1ea;--muted:rgba(244,241,234,0.62);--gold:#e6c46f;--gold-glow:rgba(230,196,111,0.18);--cyan:#62cfdf;--green:#78c693;--orange:#e2985e;--red:#ec7b6e;--violet:#c75aff;--font:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
+body{min-height:100vh;background:radial-gradient(1200px 600px at 0% -10%,rgba(230,196,111,0.16),transparent 55%),radial-gradient(900px 500px at 110% 0%,rgba(98,207,223,0.10),transparent 50%),radial-gradient(700px 400px at 50% 120%,rgba(199,90,255,0.08),transparent 50%),var(--bg)}
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35}
+.wrap{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:26px 18px 90px}
+header{display:grid;gap:12px;margin-bottom:24px}
+.badge{display:inline-flex;align-items:center;gap:8px;width:fit-content;padding:6px 14px;border:1px solid rgba(230,196,111,0.4);border-radius:999px;background:var(--gold-glow);color:var(--gold);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:800}
+h1{margin:0;font-size:clamp(34px,5.5vw,56px);line-height:1.05;font-weight:800;letter-spacing:-0.03em}h1 span{color:var(--gold);text-shadow:0 0 45px rgba(230,196,111,0.3)}
+.lede{margin:0;max-width:70ch;color:var(--muted);font-size:17px;line-height:1.6}
+.pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);animation:pulse 1.6s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.tab{background:var(--raised);border:1px solid var(--border);color:var(--muted);border-radius:999px;padding:9px 16px;font-size:12px;cursor:pointer;transition:all .15s ease;font-weight:700}
+.tab.active{background:var(--gold);color:#14110a;border-color:var(--gold);box-shadow:0 0 22px rgba(230,196,111,0.25)}
+.tab:hover:not(.active){color:var(--text);border-color:rgba(230,196,111,0.45);background:#202434}
 .section{display:none;animation:fadeIn .25s ease}.section.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.grid{display:grid;grid-template-columns:1fr;gap:22px}
-@media(min-width:980px){.grid{grid-template-columns:1fr 1.28fr;align-items:start}}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.04),transparent 40%),var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 18px 60px rgba(0,0,0,0.35)}
-.card h2{margin:0 0 16px;font-size:13px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.card h3{margin:16px 0 10px;font-size:14px;color:var(--text);font-weight:700}
-label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px;font-weight:500}
-.input-row{display:flex;gap:12px;flex-wrap:wrap}
-input[type=text],input[type=date],input[type=time],input[type=number]{flex:1;min-width:130px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:15px;outline:none}
-input:focus{border-color:rgba(215,176,90,0.55);box-shadow:0 0 0 4px rgba(215,176,90,0.10)}
-button.primary{background:linear-gradient(180deg,#e5c26f,#c99a3d);color:#1a160d;border:0;border-radius:12px;padding:0 20px;font-weight:800;font-size:14px;cursor:pointer;white-space:nowrap;min-height:46px;box-shadow:0 4px 16px rgba(215,176,90,0.22)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.grid{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:980px){.grid{grid-template-columns:1fr 1.35fr;align-items:start}}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.04),transparent 40%),var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 20px 70px rgba(0,0,0,0.4)}
+.card h2{margin:0 0 14px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.card h3{margin:14px 0 8px;font-size:14px;color:var(--text);font-weight:700}
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:7px;font-weight:600}
+.input-row{display:flex;gap:10px;flex-wrap:wrap}
+input[type=text],input[type=date],input[type=time],input[type=number],select,textarea{flex:1;min-width:120px;background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:11px 13px;font-size:15px;outline:none;font-family:var(--font)}
+input:focus,select:focus,textarea:focus{border-color:rgba(230,196,111,0.55);box-shadow:0 0 0 4px rgba(230,196,111,0.10)}
+textarea{min-height:72px;resize:vertical;flex-basis:100%}
+button.primary{background:linear-gradient(180deg,#e8c878,#c99a3d);color:#14110a;border:0;border-radius:12px;padding:0 20px;font-weight:800;font-size:14px;cursor:pointer;white-space:nowrap;min-height:44px;box-shadow:0 4px 18px rgba(230,196,111,0.22)}
 button.primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
-.hint{color:var(--muted);font-size:13px;margin-top:10px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.chip{background:var(--panel);border:1px solid var(--border);color:var(--muted);border-radius:999px;padding:7px 13px;font-size:12px;cursor:pointer}
-.chip:hover{color:var(--text);border-color:rgba(215,176,90,0.45);background:var(--raised)}
-.verdict{display:none;margin-bottom:18px;padding:18px 20px;border-radius:14px;border:1px solid var(--border);background:var(--raised)}
+button.secondary{background:var(--panel);border:1px solid var(--border);color:var(--muted);border-radius:10px;padding:8px 14px;font-size:12px;cursor:pointer;margin:4px 4px 0 0}
+button.secondary:hover{color:var(--text);border-color:rgba(230,196,111,0.45)}
+.hint{color:var(--muted);font-size:13px;margin-top:9px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.chip{background:var(--panel);border:1px solid var(--border);color:var(--muted);border-radius:999px;padding:6px 12px;font-size:12px;cursor:pointer}
+.chip:hover{color:var(--text);border-color:rgba(230,196,111,0.45);background:var(--raised)}
+.verdict{display:none;margin-bottom:16px;padding:16px 18px;border-radius:14px;border:1px solid var(--border);background:var(--raised)}
 .verdict.show{display:block}.verdict .row{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:baseline}
-.verdict .tag{font-size:13px;font-weight:900;letter-spacing:0.08em;padding:7px 11px;border-radius:8px}
+.verdict .tag{font-size:12px;font-weight:900;letter-spacing:0.08em;padding:6px 10px;border-radius:8px}
 .verdict.ok .tag{background:rgba(120,198,147,0.16);color:var(--green)}.verdict.mid .tag{background:rgba(226,152,94,0.16);color:var(--orange)}.verdict.bad .tag{background:rgba(236,123,110,0.16);color:var(--red)}
 .meta{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .score{margin-left:auto;font-size:32px;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
-.score small{font-size:14px;color:var(--muted);font-weight:500}
-.lenses{display:grid;gap:14px}
+.lenses{display:grid;gap:12px}
 .lens{border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,0.02);overflow:hidden}
-.lens-head{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02)}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(215,176,90,0.8)}
-.lens-head h3{margin:0;font-size:14px;font-weight:700}
-.lens ul{margin:0;padding:13px 16px 15px 34px;color:var(--muted);font-size:14px;line-height:1.55}
-.lens li{margin:4px 0}
+.lens-head{display:flex;align-items:center;gap:10px;padding:13px 15px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(230,196,111,0.8)}
+.lens-head h3{margin:0;font-size:13px;font-weight:700}
+.lens ul{margin:0;padding:12px 15px 14px 32px;color:var(--muted);font-size:13px;line-height:1.55}
+.lens li{margin:3px 0}
 .empty{color:var(--muted);font-size:15px;line-height:1.55;padding:30px 10px;text-align:center}
 .canvas-wrap{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:#0b0d12}
 canvas{display:block;width:100%;height:auto}
 .map-meta{margin-top:12px;font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
 .map-meta span{padding:4px 8px;background:var(--raised);border-radius:6px}
-.result{display:none;margin-top:16px;background:var(--raised);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.55}
+.result{display:none;margin-top:14px;background:var(--raised);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:14px;line-height:1.55}
 .result.show{display:block}
-.insight{background:var(--gold-glow);border-left:3px solid var(--gold);padding:12px 16px;margin:10px 0;border-radius:0 10px 10px 0;color:var(--text)}
+.insight{background:var(--gold-glow);border-left:3px solid var(--gold);padding:11px 15px;margin:10px 0;border-radius:0 10px 10px 0;color:var(--text)}
 .kv{display:flex;flex-wrap:wrap;gap:8px 18px;margin:8px 0}
 .kv span{font-size:13px;color:var(--muted)}.kv strong{color:var(--text);font-weight:700}
-.pill{display:inline-flex;align-items:center;padding:4px 10px;border-radius:8px;font-size:12px;border:1px solid var(--border);background:var(--panel)}
+.pill{display:inline-flex;align-items:center;padding:4px 10px;border-radius:8px;font-size:12px;border:1px solid var(--border);background:var(--panel);margin:2px 4px 2px 0}
 .table-wrap{max-height:460px;overflow:auto;border:1px solid var(--border);border-radius:12px}
 table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--border)}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}
 th{position:sticky;top:0;background:var(--raised);color:var(--muted);font-weight:700;z-index:1}
 tr:hover td{background:rgba(255,255,255,0.03)}
-.peak td{background:rgba(120,198,147,0.08)}.money td{background:rgba(215,176,90,0.08)}.bad td{background:rgba(236,123,110,0.06)}
-.ring-bar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-.ring{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:8px;font-size:12px;border:1px solid var(--border)}
-.ring.on{background:rgba(120,198,147,0.12);border-color:rgba(120,198,147,0.35);color:var(--green)}
-.ring.off{background:var(--panel);color:var(--muted)}
-.module{padding:12px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;background:rgba(255,255,255,0.01)}
-.module .num{display:inline-block;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#1a160d;font-weight:800;font-size:12px;line-height:24px;text-align:center;margin-right:8px}
-.spectrum{display:grid;grid-template-columns:repeat(auto-fit,minmax(52px,1fr));gap:6px;margin-top:10px}
-.spectrum .bar{height:80px;background:var(--panel);border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--border)}
-.spectrum .fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,var(--gold),rgba(215,176,90,0.25));border-radius:0 0 8px 8px;transition:height .6s ease}
-.spectrum .num{position:absolute;bottom:6px;left:0;right:0;text-align:center;font-size:12px;font-weight:700;color:var(--text)}
-.spectrum .pct{position:absolute;top:6px;left:0;right:0;text-align:center;font-size:10px;color:var(--muted)}
-footer{margin-top:36px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;line-height:1.6;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
-footer code{color:var(--cyan);font-family:var(--mono)}
+.peak td{background:rgba(120,198,147,0.08)}.money td{background:rgba(230,196,111,0.08)}.bad td{background:rgba(236,123,110,0.06)}
+.spectrum{display:grid;grid-template-columns:repeat(auto-fit,minmax(48px,1fr));gap:6px;margin-top:10px}
+.spectrum .bar{height:90px;background:var(--panel);border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--border)}
+.spectrum .fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,var(--gold),rgba(230,196,111,0.25));border-radius:0 0 8px 8px;transition:height .6s ease}
+.spectrum .num{position:absolute;bottom:6px;left:0;right:0;text-align:center;font-size:11px;font-weight:700}
+.color-swatch{display:inline-block;width:26px;height:26px;border-radius:6px;border:1px solid var(--border);vertical-align:middle;margin:2px 4px 2px 0}
+.live-bar{height:6px;border-radius:3px;background:var(--panel);overflow:hidden;margin:8px 0}
+.live-bar>div{height:100%;background:linear-gradient(90deg,var(--gold),var(--cyan));transition:width .6s ease}
+footer{margin-top:50px;text-align:center;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
+<canvas id="particles"></canvas>
 <div class="wrap">
-<header><div class="badge">Natural Code v2 · MIGI · Deep Engine</div><h1>ORACULUM <span>∞</span> v2</h1><p class="lede">Полный движок поля. Birth Deep · Triple-Ring Event · Predict 27 · Create Design 21.<br>Любой вход проходит через Mod9 · φ · ИДСЗ · Второй Ключ · Solfeggio · Луну + личный профиль.</p></header>
-<div class="tabs">
-<button class="tab active" data-tab="field">Field Read</button>
-<button class="tab" data-tab="birth">Birth Profile</button>
-<button class="tab" data-tab="event">Triple-Ring Event</button>
-<button class="tab" data-tab="predict">Predict 27</button>
-<button class="tab" data-tab="create">Create Design</button>
-</div>
-<div id="field" class="section active">
-<div class="grid">
-<section class="card">
-<h2>Вход</h2>
-<label>Что считываем</label>
-<div class="input-row"><input id="q" type="text" placeholder="10.04.1998 · 41.72, 44.83 · 528hz · Weeekend"><button class="primary" id="go" type="button">Считать</button></div>
-<div class="chips" id="chips"></div>
-<p class="hint">Дата, координаты, частота, число, имя/бренд. v2 добавляет birth + rings.</p>
-<div class="canvas-wrap" style="margin-top:20px"><h2 style="margin:14px 16px 8px">ИДСЗ · 62 узла</h2><canvas id="globe" width="700" height="400"></canvas></div>
-<div class="map-meta" id="mapMeta"><span>12 icosa</span><span>20 dodeca</span><span>30 mid</span></div>
-</section>
-<section class="card">
-<h2>Поле</h2>
-<div id="verdict" class="verdict" aria-live="polite"></div>
-<div id="out" class="lenses"></div>
-</section>
-</div>
-</div>
-<div id="birth" class="section">
-<div class="grid">
-<section class="card">
-<h2>Deep Birth Profile</h2>
-<div class="input-row">
-<input id="b-name" type="text" placeholder="Имя" value="Максим Мигай">
-<input id="b-date" type="date" value="1998-04-10">
-<input id="b-time" type="time" value="10:00">
-<input id="b-lat" type="number" step="0.01" value="46.54" placeholder="lat">
-<input id="b-lon" type="number" step="0.01" value="61.17" placeholder="lon">
-</div>
-<button class="primary" id="b-go" style="margin-top:14px">Рассчитать профиль</button>
-<div id="b-out" class="result" style="margin-top:18px"></div>
-</section>
-<section class="card">
-<h2>Spectrum · 9 amplitudes</h2>
-<div id="b-spectrum" class="spectrum"></div>
-<h2>Инсайты</h2>
-<div id="b-insight"></div>
-</section>
-</div>
-</div>
-<div id="event" class="section">
-<div class="grid">
-<section class="card">
-<h2>Triple-Ring Event Score</h2>
-<div class="input-row">
-<input id="e-date" type="date" value="2026-07-16">
-<input id="e-birth" type="date" value="1998-04-10">
-<input id="e-lat" type="number" step="0.01" value="46.54" placeholder="lat">
-<input id="e-lon" type="number" step="0.01" value="61.17" placeholder="lon">
-</div>
-<button class="primary" id="e-go" style="margin-top:14px">Оценить событие</button>
-<div id="e-out" class="result" style="margin-top:18px"></div>
-</section>
-<section class="card">
-<h2>Кольца + Деньги</h2>
-<div id="e-rings"></div>
-</section>
-</div>
-</div>
-<div id="predict" class="section">
-<div class="card">
-<h2>Predict · Календарь окон (27 дней)</h2>
-<div class="input-row">
-<input id="p-from" type="date" value="2026-07-16">
-<input id="p-birth" type="date" value="1998-04-10">
-<input id="p-lat" type="number" step="0.01" value="46.54" placeholder="lat">
-<input id="p-lon" type="number" step="0.01" value="61.17" placeholder="lon">
-<button class="primary" id="p-go">Рассчитать</button>
-</div>
-<div id="p-best" style="margin:14px 0;font-size:13px"></div>
-<div class="table-wrap">
-<table id="p-table"><thead><tr><th>Дата</th><th>DR</th><th>PD</th><th>Планета</th><th>Луна</th><th>Score</th><th>Rings</th><th>Деньги</th><th>Действие</th></tr></thead><tbody></tbody></table>
-</div>
-</div>
-</div>
-<div id="create" class="section">
-<div class="grid">
-<section class="card">
-<h2>Create Design · 21-шаговый roadmap</h2>
-<div class="input-row">
-<input id="c-intent" type="text" placeholder="Намерение / проект" value="ORACULUM v2 deep release">
-<input id="c-birth" type="date" value="1998-04-10">
-<button class="primary" id="c-go">Создать дизайн</button>
-</div>
-<div id="c-out" style="margin-top:18px"></div>
-</section>
-<section class="card">
-<h2>9 Modules + Timing</h2>
-<div id="c-modules"></div>
-</section>
-</div>
-</div>
-<footer>
-<div>ORACULUM ∞ v2 · pure Natural Code · zero deps · engine.js</div>
-<div>φ = <code id="phi"></code> · nodes = <code id="ncount"></code> · tests <code>23/23</code></div>
-</footer>
-</div>
-<script src="./engine.js"></script>
-<script>
-(function(){
-  var ORC=window.ORC; if(!ORC){alert('engine.js не загружен');return;}
-  document.getElementById('phi').textContent=ORC.PHI.toFixed(10);
-  document.getElementById('ncount').textContent=String(ORC.NODES.length);
+<header>
+  <span class="badge"><span class="pulse"></span> ORACULUM ∞ v3.0</span>
+  <h1>Living <span>Field</span> Engine</h1>
+  <p class="lede">12 перспектив. 40+ функций. Введи что угодно — дату, координаты, частоту, цвет, имя, бренд, маршрут, сон, цену — и получи поле, вердикт и действие.</p>
+</header>
+<nav class="tabs" id="tabs"></nav>
 
-  document.querySelectorAll('.tab').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-      document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
-    });
-  });
+<!-- FIELD -->
+<section id="tab-field" class="section active">
+  <div class="grid">
+    <div class="card">
+      <h2>🔮 Универсальный вход</h2>
+      <label>Что считаем?</label>
+      <div class="input-row"><input id="fieldInput" type="text" placeholder="дата, число, координаты, частота, цвет #hex, время, слово..."></div>
+      <div class="chips" id="fieldChips"></div>
+      <button class="primary" style="margin-top:14px" onclick="runField()">Считать поле</button>
+      <p class="hint">Аномалия = вход. Geo, цвет, время, частота открывают дополнительные линзы.</p>
+    </div>
+    <div class="card"><h2>📊 Резонанс</h2><div id="fieldResult"></div></div>
+  </div>
+</section>
 
-  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+<!-- BIRTH -->
+<section id="tab-birth" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🌙 Birth Deep</h2>
+      <label>Имя</label><input id="bName" type="text" value="Максим Мигай">
+      <label>Дата рожде��ия</label><input id="bDate" type="text" value="1998-04-10">
+      <label>Время (опц.)</label><input id="bTime" type="text" value="10:00">
+      <label>Широта, долгота</label><input id="bGeo" type="text" value="46.54, 61.17">
+      <button class="primary" style="margin-top:14px" onclick="runBirth()">Профиль</button>
+    </div>
+    <div class="card"><h2>🧬 Карта</h2><div id="birthResult"></div><div class="spectrum" id="birthSpectrum"></div></div>
+  </div>
+</section>
 
-  var q=document.getElementById('q'), go=document.getElementById('go'), out=document.getElementById('out'), verdictEl=document.getElementById('verdict'), chips=document.getElementById('chips'), canvas=document.getElementById('globe'), mapMeta=document.getElementById('mapMeta');
-  var PRESETS=[{label:'ДР Макса',value:'10.04.1998'},{label:'Тбилиси',value:'41.72, 44.83'},{label:'528 Гц',value:'528hz'},{label:'Weeekend',value:'Weeekend'},{label:'MIGI',value:'MIGI'},{label:'Сегодня',value:new Date().toISOString().slice(0,10)}];
-  PRESETS.forEach(function(p){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=p.label;b.addEventListener('click',function(){q.value=p.value;runField();});chips.appendChild(b);});
+<!-- PREDICT -->
+<section id="tab-predict" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>📅 Прогноз 27 дней</h2>
+      <label>От</label><input id="pFrom" type="date">
+      <label>Дней</label><input id="pDays" type="number" value="27" min="7" max="90">
+      <button class="primary" style="margin-top:14px" onclick="runPredict()">Календарь</button>
+      <div class="result show" id="predictBest" style="margin-top:14px"></div>
+    </div>
+    <div class="card"><h2>🎯 Окна</h2><div class="table-wrap"><table id="predictTable"><thead><tr><th>Дата</th><th>DR</th><th>Луна</th><th>Score</th><th>Кольца</th><th>Деньги</th><th>Вердикт</th></tr></thead><tbody></tbody></table></div></div>
+  </div>
+</section>
 
-  function renderField(r){
-    if(!r.ok){verdictEl.className='verdict show bad';verdictEl.innerHTML='<div class="row"><span class="tag">ПУСТО</span><span class="meta">'+esc(r.message)+'</span></div>';out.innerHTML='<div class="empty">'+esc(r.message)+'</div>';return;}
-    var cls=r.verdict==='ЗВУЧИТ'?'ok':(r.verdict==='ТРЕБУЕТ НАСТРОЙКИ'?'mid':'bad');
-    verdictEl.className='verdict show '+cls;
-    verdictEl.innerHTML='<div class="row"><span class="tag">'+esc(r.verdict)+'</span><span class="meta">seed '+esc(String(r.seed))+' · DR '+r.dr+' · '+esc(r.input.type)+'</span><span class="score">'+r.overall+'<small>/100</small></span></div>';
-    out.innerHTML=r.lenses.map(function(L){return '<article class="lens"><div class="lens-head"><span class="dot"></span><h3>'+esc(L.title)+'</h3></div><ul>'+L.lines.map(function(line){return '<li>'+esc(line)+'</li>';}).join('')+'</ul></article>';}).join('');
-    drawGlobe(r.input.type==='geo'?r.input:null);
-  }
-  function runField(){renderField(ORC.fieldRead(q.value));}
-  go.addEventListener('click',runField); q.addEventListener('keydown',function(e){if(e.key==='Enter')runField();});
+<!-- CREATE -->
+<section id="tab-create" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>✨ Create Design</h2>
+      <label>Намерение / проект</label><textarea id="cIntent" placeholder="ORACULUM v3 release"></textarea>
+      <button class="primary" style="margin-top:14px" onclick="runCreate()">Распаковать</button>
+    </div>
+    <div class="card"><h2>🗺 9 модулей + 21 шаг</h2><div id="createResult"></div></div>
+  </div>
+</section>
 
-  function project(lat,lon,w,h){return {x:(lon+180)/360*w,y:(90-lat)/180*h};}
-  function drawGlobe(focus){
-    var dpr=Math.min(window.devicePixelRatio||1,2); var rect=canvas.getBoundingClientRect(); var w=Math.max(320,Math.floor(rect.width)); var h=Math.floor(w/ORC.PHI);
-    canvas.width=Math.floor(w*dpr); canvas.height=Math.floor(h*dpr); canvas.style.height=h+'px';
-    var ctx=canvas.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0); ctx.fillStyle='#0b0d12'; ctx.fillRect(0,0,w,h);
-    ctx.strokeStyle='rgba(255,255,255,0.05)'; ctx.lineWidth=1;
-    for(var lon=-180;lon<=180;lon+=30){var p1=project(90,lon,w,h),p2=project(-90,lon,w,h);ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(p2.x,p2.y);ctx.stroke();}
-    for(var lat=-60;lat<=60;lat+=30){var q1=project(lat,-180,w,h),q2=project(lat,180,w,h);ctx.beginPath();ctx.moveTo(q1.x,q1.y);ctx.lineTo(q2.x,q2.y);ctx.stroke();}
-    ctx.strokeStyle='rgba(215,176,90,0.18)';
-    var e1=project(0,-180,w,h),e2=project(0,180,w,h);ctx.beginPath();ctx.moveTo(e1.x,e1.y);ctx.lineTo(e2.x,e2.y);ctx.stroke();
-    var m1=project(90,0,w,h),m2=project(-90,0,w,h);ctx.beginPath();ctx.moveTo(m1.x,m1.y);ctx.lineTo(m2.x,m2.y);ctx.stroke();
-    var colors={icosa:'#62cfdf',dodeca:'#d7b05a',mid:'rgba(244,241,234,0.35)'};
-    ORC.NODES.forEach(function(n){var p=project(n.lat,n.lon,w,h);ctx.fillStyle=colors[n.cls]||'#fff';var r=n.cls==='mid'?1.4:2.6;ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);ctx.fill();});
-    if(focus&&typeof focus.lat==='number'){
-      var nn=ORC.nearestNode(focus.lat,focus.lon); var fp=project(focus.lat,focus.lon,w,h),np=project(nn.node.lat,nn.node.lon,w,h);
+<!-- SYNASTRY -->
+<section id="tab-synastry" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🔗 Синастрия / Команда</h2>
+      <label>Человек A</label><input id="sA" type="text" value="1998-04-10">
+      <label>Человек B</label><input id="sB" type="text" value="2000-01-01">
+      <button class="primary" style="margin-top:14px" onclick="runSynastry()">Совместимость</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Команда (даты через запятую)</label><input id="tMembers" type="text" placeholder="1998-04-10, 1990-05-15, 1985-12-01">
+      <button class="primary" style="margin-top:10px" onclick="runTeam()">Поле команды</button>
+    </div>
+    <div class="card"><h2>📈 Резонанс</h2><div id="synastryResult"></div></div>
+  </div>
+</section>
+
+<!-- BRAND / TEXT -->
+<section id="tab-brand" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🏷 Бренд / Текст / Код</h2>
+      <label>Бренд / имя</label><input id="brName" type="text" value="ORACULUM">
+      <button class="primary" style="margin-top:10px" onclick="runBrand()">Профиль бренда</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Заголовок / текст</label><textarea id="txText" placeholder="Как удвоить доход за 30 дней"></textarea>
+      <button class="primary" style="margin-top:10px" onclick="runText()">Анализ текста</button>
+      <button class="secondary" onclick="runHeadline()">Headline score</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Код</label><textarea id="txCode" placeholder="function example() { ... }"></textarea>
+      <button class="primary" style="margin-top:10px" onclick="runCode()">Code Resonance</button>
+    </div>
+    <div class="card"><h2>🎙 Результат</h2><div id="brandResult"></div></div>
+  </div>
+</section>
+
+<!-- MONEY -->
+<section id="tab-money" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>💰 Деньги × Время</h2>
+      <label>Сумма</label><input id="mAmount" type="number" value="10000">
+      <label>Дата</label><input id="mDate" type="date">
+      <button class="primary" style="margin-top:14px" onclick="runMoney()">Вход / Ждать</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <button class="secondary" onclick="runMoneyMap()">Карта денег 30 дней</button>
+    </div>
+    <div class="card"><h2>📊 Результат</h2><div id="moneyResult"></div></div>
+  </div>
+</section>
+
+<!-- HEALTH -->
+<section id="tab-health" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🧘 Тело и время</h2>
+      <label>Дата</label><input id="hDate" type="date">
+      <button class="primary" style="margin-top:14px" onclick="runHealth()">Health Rhythm</button>
+      <button class="secondary" onclick="runBodyClock()">Body Clock</button>
+    </div>
+    <div class="card"><h2>⚡ Биоритмы</h2><div id="healthResult"></div></div>
+  </div>
+</section>
+
+<!-- ORACLE -->
+<section id="tab-oracle" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🎴 Оракул</h2>
+      <label>Вопрос / намерени��</label><input id="oQuestion" type="text" placeholder="что делать?">
+      <button class="primary" style="margin-top:10px" onclick="runIChing()">I Ching</button>
+      <button class="secondary" onclick="runTarot()">Tarot 3</button>
+      <button class="secondary" onclick="runRandom()">Random Oracle</button>
+      <button class="secondary" onclick="runRune()">Rune</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Сон</label><textarea id="oDream" placeholder="я летал над водо�� и увидел золото"></textarea>
+      <button class="primary" style="margin-top:10px" onclick="runDream()">Расшифровать сон</button>
+    </div>
+    <div class="card"><h2>🔮 Ответ</h2><div id="oracleResult"></div></div>
+  </div>
+</section>
+
+<!-- ROUTE / MANIFEST -->
+<section id="tab-route" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🗺 Маршрут / Манифест / Пространство</h2>
+      <label>Маршрут (lat,lon;lat,lon)</label><input id="rRoute" type="text" placeholder="41.72,44.83;46.54,61.17">
+      <button class="primary" style="margin-top:10px" onclick="runRoute()">Route Score</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Намерение (369)</label><input id="rIntent" type="text" plade(focus.lat,focus.lon); var fp=project(focus.lat,focus.lon,w,h),np=project(nn.node.lat,nn.node.lon,w,h);
       ctx.strokeStyle='rgba(120,198,147,0.75)';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(fp.x,fp.y);ctx.lineTo(np.x,np.y);ctx.stroke();
       ctx.fillStyle='#78c693';ctx.beginPath();ctx.arc(fp.x,fp.y,4,0,Math.PI*2);ctx.fill();
       ctx.strokeStyle='rgba(120,198,147,0.55)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(np.x,np.y,8,0,Math.PI*2);ctx.stroke();
@@ -248,66 +248,48 @@ footer code{color:var(--cyan);font-family:var(--mono)}
     var prof=ORC.birthProfile({name:document.getElementById('b-name').value,date:document.getElementById('b-date').value,time:document.getElementById('b-time').value,lat:parseFloat(document.getElementById('b-lat').value),lon:parseFloat(document.getElementById('b-lon').value)});
     var el=document.getElementById('b-out'); el.className='result show';
     if(!prof.ok){el.innerHTML='<div class="empty">'+esc(prof.message)+'</div>';return;}
-    el.innerHTML='<div class="kv"><span><strong>DR</strong> '+prof.numbers.dr+'</span><span><strong>LP</strong> '+prof.numbers.lifePath+'</span><span><strong>Soul</strong> '+prof.numbers.soul+'</span><span><strong>Dest</strong> '+prof.numbers.destiny+'</span><span><strong>Axis</strong> '+prof.numbers.axis.id+'</span></div>'+
-      '<div class="insight">'+prof.numbers.meaning+'<br>'+prof.numbers.action+'</div>'+
-      '<div class="kv"><span><strong>Личный год '+new Date().getUTCFullYear()+'</strong> '+prof.cycles.personalYear+' — '+prof.cycles.personalYearMeaning+'</span><span><strong>Личный день</strong> '+prof.cycles.personalDay+'</span><span><strong>9-летняя фаза</strong> '+prof.cycles.nineYearPhase+'/9</span></div>'+
-      '<div class="kv"><span><strong>ИДСЗ</strong> '+prof.field.nearestNode.node.id+' · '+Math.round(prof.field.nearestNode.distanceKm)+' км</span><span><strong>Луна рождения</strong> '+prof.field.lunaBirth.name+'</span><span><strong>Луна сейчас</strong> '+prof.field.lunaNow.name+'</span></div>'+
-      '<div class="meta">'+prof.formula+'</div>';
-    var spec=document.getElementById('b-spectrum'); spec.innerHTML='';
-    for(var k=1;k<=9;k++){var pct=(prof.spectrum[k]*100).toFixed(1); var div=document.createElement('div');div.className='bar';div.innerHTML='<div class="fill" style="height:'+pct+'%"></div><div class="pct">'+pct+'%</div><div class="num">'+k+'</div>';spec.appendChild(div);}
-    document.getElementById('b-insight').innerHTML='<div class="insight">'+prof.insight.slice(0,7).join('<br>')+'</div>';
-  });
+    el.innerHTML='<div class="kv"><span><strong>DR</strong> '+prof.tById('tabs');
+tabs.forEach((t,i)=>{const b=document.createElement('button');b.className='tab'+(i===0?' active':'');b.textContent=t.label;b.onclick=()=>switchTab(t.id);tabsEl.appendChild(b);});
+function switchTab(id){document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('active',tabs[i].id===id));document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id==='tab-'+id));}
+function h(html){return html.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function kv(k,v){return `<span><strong>${h(k)}</strong> ${h(String(v))}</span>`;}
+function pill(v,c){return `<span class="pill" style="border-color:${c}33;background:${c}11">${h(v)}</span>`;}
+function renderVerdict(el, r, score){let cls='bad';if(score>=61.8)cls='ok';else if(score>=38.2)cls='mid';el.innerHTML=`<div class="verdict show ${cls}"><div class="row"><span class="tag">${h(r.verdict)}</span><span class="score">${score!=null?Math.round(score):''}</span></div><div class="meta">${h(r.action||'')}</div></div>`;}
+function renderLenses(el, r){let html='<div class="lenses">';r.lenses.forEach(l=>{html+=`<div class="lens"><div class="lens-head"><span class="dot"></span><h3>${h(l.title)}</h3></div><ul>`;l.lines.forEach(line=>html+=`<li>${h(line)}</li>`);html+='</ul></div>';});html+='</div>';el.innerHTML+=html;}
+function runField(){const raw=document.getElementById('fieldInput').value;const r=ORC.fieldRead(raw);const el=document.getElementById('fieldResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}renderVerdict(el,r,r.overall);renderLenses(el,r);}
+function runBirth(){const opts={name:document.getElementById('bName').value,date:document.getElementById('bDate').value,time:document.getElementById('bTime').value};const geo=document.getElementById('bGeo').value.match(/^(-?\d+(?:\.\d+)?)\s*[,;]\s*(-?\d+(?:\.\d+)?)$/);if(geo){opts.lat=parseFloat(geo[1]);opts.lon=parseFloat(geo[2]);}const b=ORC.birthProfile(opts);const el=document.getElementById('birthResult');if(!b.ok){el.innerHTML='<div class="empty">'+h(b.message)+'</div>';return;}el.innerHTML=`<div class="kv">${kv('DR',b.numbers.dr)}${kv('LP',b.numbers.lifePath)}${kv('Soul',b.numbers.soul)}${kv('Destiny',b.numbers.destiny)}${kv('Личный год',b.cycles.personalYear)}${kv('9-лет фаза',b.cycles.nineYearPhase)}${kv('Ось',b.numbers.axis.name)}</div><div class="insight">${b.insight.map(x=>h(x)).join('<br>')}</div>`;const sp=document.getElementById('birthSpectrum');sp.innerHTML='';for(let i=1;i<=9;i++){const pct=b.spectrum[i]*100;sp.innerHTML+=`<div class="bar"><div class="fill" style="height:${pct}%"></div><div class="num">${i}</div></div>`;}}
+function runPredict(){const from=document.getElementById('pFrom').value;const days=+document.getElementById('pDays').value;const p=ORC.predict({from:from||new Date(),days:days,birth:'1998-04-10'});const tb=document.querySelector('#predictTable tbody');tb.innerHTML='';p.calendar.forEach(r=>{const cls=r.overall>=78?'peak':(r.moneyScore>=90?'money':'');tb.innerHTML+=`<tr class="${cls}"><td>${h(r.date)}</td><td>${r.dr}</td><td>${h(r.luna)}</td><td>${r.overall}</td><td>${r.rings}</td><td>${h(r.money)}</td><td>${h(r.verdict)}</td></tr>`;});document.getElementById('predictBest').innerHTML=`<div class="kv">${kv('Запуск',p.best.launch.date)}${kv('Деньги',p.best.money.date)}${kv('Релиз',p.best.release.date)}${kv('Сделка',p.best.deal.date)}${kv('Deep Work',p.best.deepWork.date)}</div>`;document.getElementById('predictBest').className='result show';}
+function runCreate(){const i=document.getElementById('cIntent').value;const c=ORC.createDesign({intent:i});const el=document.getElementById('createResult');if(!c.ok){el.innerHTML='<div class="empty">'+h(c.message)+'</div>';return;}el.innerHTML=`<div class="kv">${kv('DR',c.dr)}${kv('Ось',c.axis.name)}${kv('Частота',c.frequency.hz+' '+c.frequency.name)}${kv('Действие',c.action)}</div><div class="insight">${h(c.mantra)}</div><h3>9 модулей</h3>`+c.modules.map(m=>`<div class="module"><span class="num">${m.n}</span><strong>${h(m.role)}</strong> — ${h(m.layer)}: ${h(m.task)}</div>`).join('')+`<h3>21 шаг</h3><div class="table-wrap"><table><thead><tr><th>Шаг</th><th>Дата</th><th>Оп</th><th>Совет</th></tr></thead><tbody>${c.roadmap.slice(0,21).map(s=>`<tr><td>${s.step}</td><td>${h(s.date)}</td><td>${h(s.operation)}</td><td>${h(s.tip)}</td></tr>`).join('')}</tbody></table></div>`;}
+function runSynastry(){const a=document.getElementById('sA').value,b=document.getElementById('sB').value;const s=ORC.synastry({date:a},{date:b});const el=document.getElementById('synastryResult');if(!s.ok){el.innerHTML='<div class="empty">'+h(s.message)+'</div>';return;}el.innerHTML=`<div class="verdict show ${s.score>=85?'ok':(s.score>=60?'mid':'bad')}"><div class="row"><span class="tag">${h(s.verdict)}</span><span class="score">${s.score}</span></div></div><div class="kv">${kv('A DR',s.drA)}${kv('B DR',s.drB)}${kv('Совмес��имость',s.compatibility)}</div><div class="insight">${s.lines.map(x=>h(x)).join('<br>')}</div>`;}
+function runTeam(){const raw=document.getElementById('tMembers').value;const members=raw.split(',').map(d=>({date:d.trim()})).filter(x=>x.date);const t=ORC.teamField(members);const el=document.getElementById('synastryResult');if(!t.ok){el.innerHTML='<div class="empty">'+h(t.message)+'</div>';return;}el.innerHTML=`<div class="verdict show ${t.missing.length<=2?'ok':'mid'}"><div class="row"><span class="tag">${h(t.verdict)}</span></div></div><div class="kv">${kv('Team DR',t.teamDR)}${kv('Размер',t.size)}</div><div class="insight">Команда: ${t.drProfile.map(d=>pill('DR'+d,COLORS[d-1].hex)).join('')}<br>Недостаёт: ${t.missing.map(d=>pill('DR'+d,COLORS[d-1].hex)).join('')}</div>`;}
+function runBrand(){const n=document.getElementById('brName').value;const b=ORC.brandProfile(n);renderBrandText(b);}
+function runText(){const t=ORC.textResonance(document.getElementById('txText').value);renderBrandText(t);}
+function runHeadline(){const h2=ORC.headlineScore(document.getElementById('txText').value);renderBrandText(h2);}
+function runCode(){const c=ORC.codeResonance(document.getElementById('txCode').value);renderBrandText(c);}
+function renderBrandText(r){const el=document.getElementById('brandResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}if(r.score!=null)renderVerdict(el,r,r.score);else el.innerHTML='';let html='<div class="kv">';if(r.dr!=null)html+=kv('DR',r.dr);if(r.words!=null)html+=kv('Слов',r.words);if(r.lines!=null)html+=kv('Строк',r.lines);if(r.functions!=null)html+=kv('Функций',r.functions);if(r.frequency)html+=kv('Частота',r.frequency.hz+' '+r.frequency.name);if(r.suggestedDomain)html+=kv('Домен',r.suggestedDomain);if(r.verdict)html+=kv('Вердикт',r.verdict);html+='</div>';if(r.meaning)html+=`<div class="insight">${h(r.meaning)}</div>`;if(r.action)html+=`<div class="insight">${h(r.action)}</div>`;if(r.tips)html+=`<div class="kv">${r.tips.map(x=>pill(x,'#62cfdf')).join('')}</div>`;if(r.color)html+=`<div class="kv"><span class="color-swatch" style="background:${h(r.color.hex)}"></span>${h(r.color.name)}</div>`;if(r.cards)html+=`<div class="kv">${r.cards.map(c=>pill(c.position+': '+c.card,'#c75aff')).join('')}</div>`;if(r.symbols)html+=`<div class="kv">${r.symbols.map(s=>pill(s,'#e2985e')).join('')}</div>`;el.innerHTML+=html;}
+function runMoney(){const amount=+document.getElementById('mAmount').value;const date=document.getElementById('mDate').value;const r=ORC.investmentTiming(amount,{date:'1998-04-10'},date||new Date());const el=document.getElementById('moneyResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}renderVerdict(el,r,r.score);el.innerHTML+=`<div class="kv">${kv('Сумма',r.amount)}${kv('Риск',r.risk)}${kv('DR ��обытия',r.dr)}${kv('DR денег',r.moneyDR)}${kv('Совет',r.action)}</div>`;}
+function runMoneyMap(){const m=ORC.moneyMap({date:'1998-04-10'},30);const el=document.getElementById('moneyResult');if(!m.ok){el.innerHTML='<div class="empty">'+h(m.message)+'</div>';return;}el.innerHTML=`<div class="insight">${h(m.verdict)}</div><div class="kv">${kv('Best DR',m.bestMoneyDR)}${kv('Дней',m.days)}</div><div class="spectrum">${m.buckets.map((v,i)=>`<div class="bar"><div class="fill" style="height:${v/3}%"></div><div class="num">${i+1}</div></div>`).join('')}</div>`;}
+function runHealth(){const r=ORC.healthRhythm({date:'1998-04-10'},document.getElementById('hDate').value||new Date());renderHealth(r);}
+function runBodyClock(){const r=ORC.bodyClock({date:'1998-04-10'},document.getElementById('hDate').value||new Date());renderHealth(r);}
+function renderHealth(r){const el=document.getElementById('healthResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}if(r.health){el.innerHTML=`<div class="kv">${kv('Физ',r.health.physical)}${kv('Эмо',r.health.emotional)}${kv('Интел',r.health.intellectual)}${kv('Инту',r.health.intuitive)}</div><div class="insight">${h(r.health.verdict)}<br>${h(r.summary)}</div>`;return;}el.innerHTML=`<div class="verdict show ${r.physical>50?'ok':'mid'}"><div class="row"><span class="tag">${r.verdict}</span></div></div><div class="kv">${kv('Физ',r.physical)}${kv('Эмо',r.emotional)}${kv('Интел',r.intellectual)}${kv('Инту',r.intuitive)}${kv('Береги',r.watch)}</div>`;}
+function runIChing(){const r=ORC.ichingDraw(document.getElementById('oQuestion').value);renderOracle(r);}
+function runTarot(){const r=ORC.tarotSpread(Date.now());renderOracle(r);}
+function runRandom(){const r=ORC.randomOracle(Date.now());renderOracle(r);}
+function runRune(){const r=ORC.runeDraw(Date.now());renderOracle(r);}
+function runDream(){const r=ORC.dreamRead(document.getElementById('oDream').value);renderOracle(r);}
+function renderOracle(r){const el=document.getElementById('oracleResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}el.innerHTML=`<div class="kv">${r.dr!=null?kv('DR',r.dr):''}${r.hexagram!=null?kv('Гексаграмма',r.hexagram):''}${r.rune!=null?kv('Руна',r.rune):''}${r.element!=null?kv('Стихия',r.element):''}</div><div class="insight">${h(r.meaning||r.message||r.advice||'')}</div>${r.cards?`<div class="kv">${r.cards.map(c=>pill(c.position+': '+c.card,'#c75aff')).join('')}</div>`:''}${r.symbols?`<div class="kv">${r.symbols.map(s=>pill(s,'#e2985e')).join('')}</div>`:''}`;}
+function runRoute(){const raw=document.getElementById('rRoute').value;const pts=raw.split(';').map((s,i)=>{const m=s.match(/^(-?\d+(?:\.\d+)?)\s*[,;]\s*(-?\d+(?:\.\d+)?)$/);return m?{name:'T'+(i+1),lat:parseFloat(m[1]),lon:parseFloat(m[2])}:null;}).filter(Boolean);const r=ORC.routeScore(pts);renderRoute(r);}
+function runManifest(){const r=ORC.manifestation369(document.getElementById('rIntent').value,21);renderRoute(r);}
+function runSpace(){const r=ORC.spacePlan(document.getElementById('rSpace').value);renderRoute(r);}
+function runFood(){const r=ORC.foodResonance(document.getElementById('rSpace').value);renderRoute(r);}
+function runCommit(){const r=ORC.commitTiming(document.getElementById('rIntent').value,{date:'1998-04-10'});renderRoute(r);}
+function renderRoute(r){const el=document.getElementById('routeResult');if(!r.ok){el.innerHTML='<div class="empty">'+h(r.message)+'</div>';return;}if(r.score!=null)renderVerdict(el,r,r.score);else el.innerHTML='<div class="insight">'+h(r.verdict||r.focus||r.tip||r.meaning||r.ritual||r.action||'')+'</div>';if(r.legs){el.innerHTML+=`<div class="kv">${r.legs.map(l=>pill(l.from+'→'+l.to+' '+l.leg.nodeScore,'#62cfdf')).join('')}</div>`;}}
 
-  document.getElementById('e-go').addEventListener('click',function(){
-    var ev=ORC.eventScore({date:document.getElementById('e-date').value,birth:document.getElementById('e-birth').value,lat:parseFloat(document.getElementById('e-lat').value),lon:parseFloat(document.getElementById('e-lon').value)});
-    var el=document.getElementById('e-out'); el.className='result show';
-    if(!ev.ok){el.innerHTML='<div class="empty">Ошибка</div>';return;}
-    el.innerHTML='<div class="kv"><span><strong>'+ev.verdict+'</strong></span><span><strong>Overall</strong> '+ev.scores.overall+'</span><span><strong>Кольца</strong> '+ev.rings+'/4</span><span><strong>DR</strong> '+ev.dr+'</span><span><strong>PD</strong> '+ev.personalDay+'</span></div>'+
-      '<div class="meta">'+ev.formula+'</div><div class="insight">Деньги: '+ev.money.label+' ('+ev.money.score+') · Действие: '+ev.action+'</div>';
-    var ring=''; ['DR','Luna','Node','Personal'].forEach(function(k){var v=ev.scores[k.toLowerCase()]; ring+='<div class="ring '+(v>=60?'on':'off')+'">'+k+' '+v+'</div>';});
-    document.getElementById('e-rings').innerHTML='<div class="ring-bar">'+ring+'</div>'+
-      '<div class="kv"><span><strong>Луна</strong> '+ev.luna.name+'</span><span><strong>Узел</strong> '+ev.node.node.id+'</span><span><strong>Фаза узла</strong> '+ev.nodePhase.label+'</span><span><strong>Планета</strong> '+ev.planet+'</span></div>';
-  });
+// map of 62 nodes
+const mapCanvas=document.getElementById('map'),mapCtx=mapCanvas.getContext('2d');
+function resizeMap(){const rect=mapCanvas.parentElement.getBoundingClientRect();mapCanvas.width=rect.width;mapCanvas.height=340;drawMap();}
+function drawMap(){const w=mapCanvas.width,h=mapCanvas.height,ctx=mapCtx;ctx.fillStyle='#0b0d12';ctx.fillRect(0,0,w,h);const cx=w/2,cy=h/2,scale=Math.min(w,h)/3.2;ctx.strokeStyle='rgba(230,196,111,0.15)';ctx.beginPath();for(let i=0;i<ORC.NODES.length;i++){const n=ORC.NODES[i];const x=cx+n.lon/180*scale*1.8;const y=cy-n.lat/90*scale;ctx.moveTo(x,cy);ctx.lineTo(x,y);ctx.stroke();ctx.fillStyle=n.cls==='icosa'?'#e6c46f':(n.cls==='dodeca'?'#62cfdf':'#c75aff');ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fill();}}
+window.addEventListener('resize',resizeMap);setTimeout(resizeMap,100);
 
-  document.getElementById('p-go').addEventListener('click',function(){
-    var p=ORC.predict({from:document.getElementById('p-from').value,days:27,birth:document.getElementById('p-birth').value,lat:parseFloat(document.getElementById('p-lat').value),lon:parseFloat(document.getElementById('p-lon').value)});
-    var tbody=document.querySelector('#p-table tbody'); tbody.innerHTML='';
-    document.getElementById('p-best').innerHTML='<strong>Best windows:</strong> Launch <span class="pill">'+p.best.launch.date+'</span> · Money <span class="pill">'+p.best.money.date+'</span> · Release <span class="pill">'+p.best.release.date+'</span> · Deal <span class="pill">'+p.best.deal.date+'</span> · Deep Work <span class="pill">'+p.best.deepWork.date+'</span>';
-    p.calendar.forEach(function(row){
-      var tr=document.createElement('tr'); if(row.overall>=78)tr.className='peak'; else if(row.moneyScore>=90)tr.className='money'; else if(row.overall<38)tr.className='bad';
-      tr.innerHTML='<td>'+row.date+'</td><td>'+row.dr+'</td><td>'+row.pd+'</td><td>'+row.planet+'</td><td>'+row.luna+'</td><td>'+row.overall+'</td><td>'+row.rings+'/4</td><td>'+row.money+' ('+row.moneyScore+')</td><td>'+row.action+'</td>';
-      tbody.appendChild(tr);
-    });
-  });
-
-  document.getElementById('c-go').addEventListener('click',function(){
-    var c=ORC.createDesign({intent:document.getElementById('c-intent').value,birth:{date:document.getElementById('c-birth').value}});
-    var el=document.getElementById('c-out');
-    if(!c.ok){el.className='result show'; el.innerHTML='<div class="empty">'+esc(c.message)+'</div>';return;}
-    el.className='result show';
-    el.innerHTML='<h3>'+esc(c.intent)+'</h3>'+
-      '<div class="kv"><span><strong>DR</strong> '+c.dr+'</span><span><strong>Смысл</strong> '+c.meaning+'</span><span><strong>Архетип</strong> '+c.archetype+'</span><span><strong>Axis</strong> '+c.axis.id+'</span></div>'+
-      '<div class="insight">'+c.mantra+'<br><br>Timing: '+c.timing.note+' · Best launch '+c.timing.bestLaunch.date+' · Best money '+c.timing.bestMoney.date+'</div>'+
-      '<div class="insight">'+c.checklist.axis369+'<br>'+c.checklist.ring+'<br>'+c.checklist.mirrors+'<br>'+c.checklist.returns9+'</div>';
-    var modEl=document.getElementById('c-modules');
-    modEl.innerHTML='<div class="kv"><span><strong>21-step roadmap</strong></span><span>'+c.roadmap[0].date+' … '+c.roadmap[20].date+'</span></div>'+
-      c.modules.map(function(m){return '<div class="module"><span class="num">'+m.n+'</span><strong>'+m.role+'</strong> · '+m.layer+'<br>'+m.task+'</div>';}).join('')+
-      '<div style="margin-top:12px;font-size:13px">'+c.roadmap.slice(0,7).map(function(r){return r.step+'. '+r.operation+' <span class="pill">'+r.date+'</span>';}).join('<br>')+'<br>…</div>';
-  });
-
-  document.addEventListener('keydown',function(e){
-    if(e.metaKey&&e.key==='Enter'){
-      var active=document.querySelector('.section.active');
-      if(active.id==='field')runField();
-      else if(active.id==='birth')document.getElementById('b-go').click();
-      else if(active.id==='event')document.getElementById('e-go').click();
-      else if(active.id==='predict')document.getElementById('p-go').click();
-      else if(active.id==='create')document.getElementById('c-go').click();
-    }
-  });
-
-  console.log('%c[ORACULUM v2] Loaded. Cmd+Enter to run active tab.', 'color:#78c693');
-})();
-</script>
-</body>
-</html>
+// particles
+const pc=

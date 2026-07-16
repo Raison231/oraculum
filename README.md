@@ -1,37 +1,32 @@
-# ORACULUM ∞
+# ORACULUM ∞ v3
 
-**Unified Field Reader** — одно приложение, которое сшивает весь Natural Code стек MIGI в один вход.
+**Living Unified Field Engine** — одно приложение, которое сшивает весь Natural Code стек MIGI в один вход.
 
-Любой объект (дата, координаты, частота, число, слово/бренд) проходит через шесть линз:
+Любой объект (дата, координаты, частота, число, слово, цвет, время, бренд, маршрут, сон, код, цена) проходит через 12 перспектив:
 
-| Линза | Источник |
+| Перспектива | Что видит |
 | --- | --- |
-| **Mod9** | Resonance Algebra · ось `{3,6,9}` + кольцо `{1,2,4,8,7,5}` |
-| **φ / Fibonacci** | Natural Code · Кеплерова лестница `1 : √φ : φ` |
-| **ИДСЗ** | 62 узла гео-кристалла (12+20+30) |
-| **Второй Ключ** | 21 шаг = 3 фазы × 7 операций (Эмблема 21) |
-| **Solfeggio / Шуман** | канонические частоты MIGI |
-| **Луна** | Селено-кристалл · фаза цикла |
+| **Mod9** | DR, ось 147/258/369, зеркала, операторы |
+| **φ / Fibonacci** | Кеплерова лестница, φ-окна, золотое деление |
+| **ИДСЗ** | 62 узла гео-кристалла, ближайший узел, лей-линии |
+| **Второй Ключ** | 21 шаг = 3 фазы × 7 операций |
+| **Solfeggio / Шуман** | Канонические частоты, ближайший резонанс |
+| **Луна** | Фаза, φ-окно, освещённость |
+| **Birth Deep** | DR, LP, Soul, Destiny, личный год/день, спектр 9 |
+| **Triple-Ring** | DR × Луна × Узел × Личный день = score |
+| **Деньги×Время** | Денежный DR, окна сделок, инвестиции |
+| **Синастрия / Команда** | Совместимость, командное поле |
+| **Цвет / Звук** | Персональная палитра, тон подписи |
+| **Оракул / Текст** | I Ching, таро, сны, заголовки, текст, код |
 
-На выходе — вердикт **ЗВУЧИТ / ТРЕБУЕТ НАСТРОЙКИ / НЕ ЗВУЧИТ** и score 0–100.
-
-## Зачем это существует
-
-В Notion у Макса разложены десятки протоколов и открытий (Mod9, Earth Crystal, Second Key, TRE, Longevity, Weeekend-экосистема…).  
-**ORACULUM** — точка, где они перестают быть «разными документами» и становятся **одним рабочим инструментом**: ввёл → считал поле → понял, звучит ли.
+На выходе — вердикт **ЗВУЧИТ / ТРЕБУЕТ НАСТРОЙКИ / НЕ ЗВУЧИТ** и конкретное действие.
 
 ## Запуск
 
 ```bash
-# тесты (zero deps)
-npm test
-
-# sanity
-npm run check
-
-# UI — открой index.html в браузере
-# или
-npx serve . -l 4173
+npm test        # 43/43 теста, zero deps
+npm run check   # sanity check
+npx serve . -l 4173   # UI
 ```
 
 Никаких зависимостей. `engine.js` работает и в Node, и в браузере (UMD).
@@ -39,41 +34,13 @@ npx serve . -l 4173
 ## Структура
 
 ```
-engine.js              # pure Natural Code core
-index.html             # dark φ-UI + canvas map of 62 nodes
-test/engine.test.cjs   # unit tests (assert)
-package.json
-.github/workflows/ci.yml
+engine.js              # v3 core — 12 перспектив, 40+ функций
+index.html             # living UI — 12+ вкладок
+package.json           # v3.0.0
+test/engine.test.cjs    # 43 теста
 ```
 
-## API (engine)
+## v3 — что нового
 
-```js
-const ORC = require('./engine.js');
-
-ORC.fieldRead('10.04.1998');
-// → { ok, seed, dr, overall, verdict, lenses[] }
-
-ORC.fieldRead('41.72, 44.83'); // Тбилиси → nearest ИДСЗ node
-ORC.fieldRead('528hz');
-ORC.fieldRead('Weeekend');
-
-ORC.digitalRoot(1998);        // 9
-ORC.nearestNode(41.72, 44.83);
-ORC.step21(13);               // { step, phase, phaseName, operation }
-ORC.keplerLadder(1);          // { low, mid, high }
-```
-
-## Принципы
-
-1. **Суть выше формы** — сначала поле, потом UI.
-2. **Тройная архитектура** — Data (`engine`) / Logic (`fieldRead`) / Interface (`index.html`).
-3. **Аномалия = вход** — неожиданный тип ввода не сглаживается, а открывает доп. линзу.
-4. **Малая окружность** — каждый reading заве��шается вердиктом и seed'ом следующей октавы.
-
-## Рождение
-
-Собрано MIG AI в Notion-песочнице 15–16.07.2026  
-из живого контекста memories + ATHANOR ∞ + MIG Coder Hub.
-
-MIT
+- **12 перспектив** вместо 6 линз
+- **40+ функций**: `fieldRead`, `birthProfile`, `eventScore`, `predict`, `createDesign`, `synastry`, `placeScore`, `brandProfile`, `auraPalette`, `textResonance`, `headlineScore`, `decisionMatrix`, `teamField`, `moneyMap`, `investmentTiming`, `healthRhythm`, `chronobiology`, `codeResonance`, `dreamRead`, `ichingDraw`, `tarotSpread`, `randomOracle`, `routeScore`, `manifestation369`, `foodResonance`, `spacePlan`, `learningWindow`, `commitTiming`, `dateCompatibility`, `wordPower`, `priceResona
