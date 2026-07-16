@@ -1,0 +1,37 @@
+ion369", () => {
+  const m = ORC.manifestation369("рост дохода", 21);
+  assert.ok(m.ok);
+  assert.strictEqual(m.plan.length, 21);
+});
+t("foodResonance", () => {
+  const f = ORC.foodResonance("чай");
+  assert.ok(f.ok);
+  assert.ok(f.type);
+});
+t("learningWindow", () => {
+  const l = ORC.learningWindow("JavaScript", {date: "1998-04-10"});
+  assert.ok(l.ok);
+  assert.ok(l.dr >= 1 && l.dr <= 9);
+});
+t("commitTiming", () => {
+  const c = ORC.commitTiming("v3 release", {date: "1998-04-10"});
+  assert.ok(c.ok);
+  assert.ok(c.score >= 0 && c.score <= 100);
+});
+t("priceResonance", () => {
+  const p = ORC.priceResonance(999);
+  assert.ok(p.ok);
+  assert.ok(p.phiFriendly);
+});
+t("yearlyArc", () => {
+  const y = ORC.yearlyArc({date: "1998-04-10"}, 2026);
+  assert.ok(y.ok);
+  assert.ok(y.personalYear >= 1 && y.personalYear <= 9);
+});
+t("soulContract", () => {
+  const s = ORC.soulContract({date: "1998-04-10"});
+  assert.ok(s.ok);
+  assert.ok(s.coreLesson);
+});
+t("dailyRitual", () => {
+  const d = OR
