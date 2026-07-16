@@ -1,8 +1,7 @@
-el: "Отбой", score: (br.physical + br.emotional + 2) / 4 * 100}];
-  schedule.forEach(function (x) { x.score = Math.round(x.score); });
-  return {ok: true, date: d, schedule: schedule, best: schedule.reduce(function (a, b) { return a.score > b.score ? a : b; }), worst: schedule.reduce(function (a, b) { return a.score < b.score ? a : b; })}; }
-function codeResonance(code) { var t = textResonance(code); if (!t.ok) return t; var lines = code.split("\n").length, funcs = (code.match(/function\s+/g) || []).length, loops = (code.match(/(for|while|forEach)/g) || []).length;
-  var dr = t.dr; var verdict = dr === 4 || dr === 7 ? "СТРУКТУРНЫЙ" : (dr === 5 || dr === 3 ? "ГИБКИЙ" : (dr === 8 ? "МАСШТАБИРУЕМЫЙ" : "БАЛАНСИРОВАННЫЙ"));
-  return {ok: true, dr: dr, meaning: DR_MEANING[dr], lines: lines, functions: funcs, loops: loops, entropy: Math.round(t.words / ((lines || 1)) * 10), verdict: verdict, tips: funcs > loops ? ["Модульность хороша", "Проверь тесты"] : ["Добавь функций", "Упрости циклы"]}; }
-function dreamRead(text) { var t = textResonance(text); if (!t.ok) return t; var seed = nameToNumber(text), dr = digitalRoot(seed), st = step21(seed);
-  var symbols = {"вода": "эмоции", "огонь": "страсть", "дом": "архетип себя", "дорога": "путь", 
+ount, date: date, dr: ev.dr, moneyDR: dr, eventScore: ev.scores.overall, risk: risk, score: score, verdict: score >= 75 ? "ВХОДИ" : (score >= 50 ? "МАЛАЯ ПОЗИЦИЯ" : "ЖДИ"), action: DR_ACTION[ev.dr]}; }
+function healthRhythm(birth, date) { var B = birthProfile(birth); if (!B.ok) return B; var br = biorhythm(B.birth, parseDate(date) || new Date()), dr = B.numbers.dr;
+  var systems = {}; for (var i = 0; i < 9; i++) { systems[BODY_SYSTEMS[i]] = Math.round((Math.sin((br.physical + i) * Math.PI / 4.5) + 1) * 50); }
+  var weak = BODY_SYSTEMS[8 - ((dr - 1) % 9)];
+  return {ok: true, dr: dr, physical: Math.round((br.physical + 1) * 50), emotional: Math.round((br.emotional + 1) * 50), intellectual: Math.round((br.intellectual + 1) * 50), intuitive: Math.round((br.intuitive + 1) * 50), systems: systems, watch: weak, verdict: br.physical > 0.3 ? "ТЕЛО В ПОТОКЕ" : "БЕРЕГИ " + weak}; }
+function chronobiology(birth, date) { var B = birthProfile(birth); if (!B.ok) return B; var d = parseDate(date) || new Date(), br = biorhythm(B.birth, d);
+  var schedule = [{t: 6, label: "Подъём", score: (br.physical + br.emotional + 2) / 4 * 100}, {t: 9, label: "Глубокая работа", score: (br.physical + br.intellectual + 2) / 4 * 100}, {t: 12, label: "Коммуникации", score: (br.emotional + 1) * 
