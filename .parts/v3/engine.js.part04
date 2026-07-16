@@ -1,0 +1,6 @@
+лектрик"}, {n: 6, hex: "#c75aff", name: "Аметист"}, {n: 7, hex: "#5a5aff", name: "Синий"}, {n: 8, hex: "#ff5ad7", name: "Малиновый"}, {n: 9, hex: "#ffffff", name: "Белый"}];
+var FOOD = {1: {type: "огненная", examples: "перец, им��ирь"}, 2: {type: "вода-земля", examples: "мёд, курага"}, 3: {type: "воздух-огонь", examples: "цитрусы, кофе"}, 4: {type: "земля", examples: "корнеплоды"}, 5: {type: "воздух", examples: "зерно, чай"}, 6: {type: "вода", examples: "супы, рыба"}, 7: {type: "эфир", examples: "грибы, водоросли"}, 8: {type: "металл", examples: "мясо, яйца"}, 9: {type: "свет", examples: "пост, вода"}};
+var DEFAULT_BIRTH = {name: "Максим Мигай", date: "1998-04-10", time: "10:00", lat: 46.54, lon: 61.17, place: "Светлогорск, Казахстан"};
+var MEANING_WORDS = {1: "старт", 2: "пара", 3: "творчество", 4: "фундамент", 5: "свобода", 6: "сервис", 7: "глубина", 8: "масштаб", 9: "завершение"};
+
+function digitalRoot(n) { n = Math.abs(Math.trunc(Number(n) || 0)); if (n === 0) return 0; var r = n %
