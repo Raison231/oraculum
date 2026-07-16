@@ -1,0 +1,7 @@
+? b.numbers.soul : 0); total += b.ok ? b.numbers.dr : 0; }
+  var teamDR = digitalRoot(total), missing = [];
+  for (var k = 1; k <= 9; k++) if (drs.indexOf(k) < 0 && k !== mirrorPair(teamDR)) missing.push(k);
+  var dupes = {}; drs.forEach(function (d) { dupes[d] = (dupes[d] || 0) + 1; }); var resonance = Object.keys(dupes).filter(function (k) { return dupes[k] > 1; }).map(function (k) { return "DR" + k + "×" + dupes[k]; });
+  return {ok: true, teamDR: teamDR, meaning: DR_MEANING[teamDR], action: DR_ACTION[teamDR], size: members.length, drProfile: drs, soulProfile: souls, resonances: resonance, missing: missing, verdict: missing.length <= 2 ? "КОМАНДА ЗВУЧИТ" : "ДОБАВЬ ТИПЫ: " + missing.slice(0, 3).join(",")}; }
+function moneyMap(birth, days) { days = days || 30; var B = birthProfile(birth); if (!B.ok) return B; var map = predict({days: days, birth: birth.date, lat: birth.lat, lon: birth.lon});
+  var buckets = [0, 0, 0, 0, 0, 0, 0, 0, 0]; for (var i = 0; i < map.calendar.length; i++) buc
