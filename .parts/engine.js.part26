@@ -1,6 +1,9 @@
- birthNode: nnBirth.node, relocatedNode: nn.node, distanceFromBirth: Math.round(haversine(B.lat, B.lon, newLat, newLon)), score: clamp(score, 0, 100), verdict: score >= 80 ? "ПЕРЕЕЗД ЗВУЧИТ" : (score >= 55 ? "ТРЕНИРУЙ МЕСТО" : "ЛУЧШЕ НЕТ"), note: "Новый узел " + nn.node.id + " · " + np.label}; }
-function brandProfile(name) { var seed = nameToNumber(name), dr = digitalRoot(seed), ax = axisOf(dr), fr = nearestFreq(seed % 900 + 60), kl = keplerLadder(seed || 1);
-  var domains = [".com", ".io", ".ai", ".app"]; var suffix = domains[seed % domains.length];
-  var words = []; for (var i = 1; i <= 9; i++) if (i !== dr && digitalRoot(dr * i) === dr) words.push(MEANING_WORDS[i]);
-  return {ok: true, name: name, dr: dr, meaning: DR_MEANING[dr], action: DR_ACTION[dr], axis: ax, archetype: opArchetype(dr), frequency: fr, kepler: kl, vibe: [elementOf(dr), chakraOf(dr)], powerWords: words, suggestedDomain: name.toLowerCase().replace(/\s+/g, "") + suffix, money: MONEY_DR[dr], score: MONEY_DR[dr].score, verdict: dr === 8 || dr === 5 ? "БРЕНД-ДЕНЬГИ" : (dr === 1 || dr === 9 ? "БРЕНД-СИГНАЛ" : "БРЕНД-РАБОТА")}; }
-function colorOfNumber(n) { n = Math.round(Number(n) || 1); var dr = digitalRoot(n); return {ok: true, n: n, dr: dr, hex: COLORS[dr - 1].hex, name: COLORS[dr - 1].name, element: elementOf(dr), chakra: chakraOf(dr
+ение Soul");
+  return {ok: true, a: A.name, b: B.name, drA: drA, drB: drB, score: score, compatibility: comp, verdict: score >= 85 ? "РЕЗОНАНС" : (score >= 60 ? "ГАРМОНИЯ" : "ТРЕНИЕ"), lines: lines}; }
+function placeScore(lat, lon, name) { name = String(name || ""); var nn = nearestNode(lat, lon), np = nodePhase(nn.node, new Date()), dr = digitalRoot(nameToNumber(name) + Math.round(lat * 100 + lon * 100));
+  var score = Math.round((100 - nn.distanceKm / 40) * 0.4 + np.heat * 30 + MONEY_DR[dr].score * 0.2 + 10);
+  return {ok: true, name: name, lat: lat, lon: lon, dr: dr, meaning: DR_MEANING[dr], nearestNode: nn.node, distanceKm: Math.round(nn.distanceKm), nodeHeat: Math.round(np.heat * 100), element: elementOf(dr), score: clamp(score, 0, 100), verdict: score >= 75 ? "МЕСТО СИЛЫ" : (score >= 50 ? "РАБОЧАЯ ТОЧКА" : "ТРЕНИЕ")}; }
+function relocateChart(birth, newLat, newLon) { var B = birthProfile(birth); if (!B.ok) return B;
+  var nn = nearestNode(newLat, newLon), np = nodePhase(nn.node, new Date()), nnBirth = nearestNode(B.lat, B.lon);
+  var score = Math.round((100 - nn.distanceKm / 40) * 0.5 + np.heat * 25 + (B.numbers.dr === digitalRoot(Math.round(newLat + newLon)) ? 15 : 0));
+  return {ok: true, newLat: newLat, newLon: newLon, birthNode: nnBirth.node, relocatedNode: nn.node, 
