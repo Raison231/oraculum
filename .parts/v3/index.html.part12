@@ -1,0 +1,18 @@
+el>Команда (даты через запятую)</label><input id="tMembers" type="text" placeholder="1998-04-10, 1990-05-15, 1985-12-01">
+      <button class="primary" style="margin-top:10px" onclick="runTeam()">Поле команды</button>
+    </div>
+    <div class="card"><h2>📈 Резонанс</h2><div id="synastryResult"></div></div>
+  </div>
+</section>
+
+<!-- BRAND / TEXT -->
+<section id="tab-brand" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🏷 Бренд / Текст / Код</h2>
+      <label>Бренд / имя</label><input id="brName" type="text" value="ORACULUM">
+      <button class="primary" style="margin-top:10px" onclick="runBrand()">Профиль бренда</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Заголовок / текст</label><textarea id="txText" placeholder="Как удвоить доход за 30 дней"></textarea>
+      <button class="primary" style="margin-top:10px" onclick="runText()">Анализ текста</button>
+      <button class="secondary" onclick="runHeadline()">He
