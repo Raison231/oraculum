@@ -1,0 +1,5 @@
+.phaseName + " · действуй: " + DR_ACTION[dr], color: COLORS[dr - 1]}; }
+function ichingDraw(question) { var seed = hash32(String(question || "").trim() + Date.now()); var hex = HEXAGRAMS[seed % HEXAGRAMS.length]; var dr = digitalRoot(seed); var lines = ["Гексаграмма: " + hex, "DR: " + dr + " — " + DR_MEANING[dr], "Вектор: " + DR_ACTION[dr]]; return {ok: true, question: question, hexagram: hex, dr: dr, meaning: DR_MEANING[dr], action: DR_ACTION[dr], lines: lines}; }
+function tarotSpread(seed) { seed = seed != null ? seed : Math.floor(Date.now() / 1000); var rng = seededRandom(seed); var cards = []; for (var i = 0; i < 3; i++) { cards.push({position: ["Прошлое", "Настоящее", "Будущее"][i], card: TAROT_MAJOR[Math.floor(rng * 100000 * (i + 1)) % TAROT_MAJOR.length], runes: RUNES[Math.floor(rng * 100000 * (i + 3)) % RUNES.length]}); }
+  var dr = digitalRoot(seed); return {ok: true, seed: seed, cards: cards, dr: dr, meaning: DR_MEANING[dr], action: DR_ACTION[dr]}; }
+function randomOracle(see
