@@ -1,4 +1,7 @@
-
+so[4] || 0), +(iso[5] || 0)));
+  var ru = s.match(/^(\d{2})\.(\d{2})\.(\d{4})(?:\s+(\d{2}):(\d{2}))?/); if (ru) return new Date(Date.UTC(+ru[3], +ru[2] - 1, +ru[1], +(ru[4] || 0), +(ru[5] || 0)));
+  var d = new Date(s); return isNaN(d.getTime()) ? null : d; }
+function ymd(d) { return {y: d.getUTCFullYear(), m: d.getUTCMonth() + 1, day: d.getUTCDate(), h: d.getUTCHours(), min: d.getUTCMinutes()}; }
 function dateDR(d) { var p = ymd(d); return digitalRoot(sumDigits(p.y) + sumDigits(p.m) + sumDigits(p.day)); }
 function lifePath(d) { var p = ymd(d); return digitalRoot(digitalRoot(p.y) + digitalRoot(p.m) + digitalRoot(p.day)); }
 function personalYear(birth, year) { var b = ymd(birth); return digitalRoot(digitalRoot(b.m) + digitalRoot(b.day) + digitalRoot(year)); }
@@ -6,6 +9,4 @@ function personalMonth(birth, year, month) { return digitalRoot(personalYear(bir
 function personalDay(birth, year, month, day) { return digitalRoot(personalMonth(birth, year, month) + digitalRoot(day)); }
 function planetDay(d) { return PLANETS[d.getUTCDay()]; }
 function daysBetween(a, b) { return Math.floor((b.getTime() - a.getTime()) / 86400000); }
-function ageYears(birth, now) { now = now || new Date(); var days = daysBetween(birth, now); var yf = Math.floor(days / 365.2425); return {days: days, years: days / 365.2425, yearsFloor: yf, nineYearCycle: Math.floor(yf / 9), nineYearPhase: yf % 9 + 1, cycle27: Math.floor(days / 27) % 9 + 1, cycle81: Math.floor(days / 81) % 9 + 1, cycle243: Math.floor(days / 243) % 9 + 1}; }
-function lunarPhase(date) { var days = (date.getTime() - NEW_MOON_REF) / 86400000; var pos = ((days % SYNODIC) + SYNODIC) % SYNODIC; var frac = pos / SYNODIC;
-  var names = ["Новолуние", "Растущий серп", "Первая четверть", "Раст
+function ageYears(birth, now) { now = now || new Date(); var days = daysBetween(birth, now); var yf = Math.floor(days / 365.2425); return {days: days, years: days / 365.2425, yearsFloor: yf, nine
