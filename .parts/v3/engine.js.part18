@@ -1,0 +1,7 @@
+ак: " + zodiacOf(birth));
+  insight.push("Золотой час: " + gh + "/100 · бодрость " + Math.round((br.physical + 1) * 50) + "%");
+  if (dr === 5) insight.push("DR5 — оператор перемен."); if (py === 1) insight.push("Личный год 1 — закладка систем."); if (py === 8) insight.push("Личный год 8 — масштаб."); if (py === 9) insight.push("Личный год 9 — завершение цикла.");
+  return {ok: true, name: name, place: place, birthISO: dateStr, time: time, lat: lat, lon: lon, birth: birth, now: now,
+    numbers: {rawSum: rawSum, dr: dr, lifePath: lp, soul: soul, destiny: destiny, hourDR: hourDR, steps: digitalRootSteps(rawSum), axis: ax, mirror: mirrorPair(dr), meaning: DR_MEANING[dr], action: DR_ACTION[dr], archetype: opArchetype(dr)},
+    cycles: {age: age, personalYear: py, personalMonth: pm, personalDay: pd, personalYearMeaning: DR_MEANING[py], nineYearPhase: age.nineYearPhase, nineYearMeaning: DR_MEANING[age.nineYearPhase], step21: st, planetToday: planetDay(now), zodiac: zodiacOf(birth)},
+    fie
