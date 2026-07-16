@@ -1,4 +1,5 @@
-| Персональная палитра, тон подписи |
+андное поле |
+| **Цвет / Звук** | Персональная палитра, тон подписи |
 | **Оракул / Текст** | I Ching, таро, сны, заголовки, текст, код |
 
 На выходе — вердикт **ЗВУЧИТ / ТРЕБУЕТ НАСТРОЙКИ / НЕ ЗВУЧИТ** и конкретное действие.
@@ -25,4 +26,4 @@ test/engine.test.cjs    # 43 теста
 ## v3 — что нового
 
 - **12 перспектив** вместо 6 линз
-- **40+ функций**: `fieldRead`, `birthProfile`, `eventScore`, `predict`, `createDesign`, `synastry`, `placeScore`, `brandProfile`, `auraPalette`, `textResonance`, `headlineScore`, `decisionMatrix`, `teamField`, `moneyMap`, `investmentTiming`, `healthRhythm`, `chronobiology`, `codeResonance`, `dreamRead`, `ichingDraw`, `tarotSpread`, `randomOracle`, `routeScore`, `manifestation369`, `foodResonance`, `spacePlan`, `learningWindow`, `commitTiming`, `dateCompatibility`, `wordPower`, `priceResona
+- **40+ функций**: `fieldRead`, `birthProfile`, `eventScore`, `predict`, `createDesign`, `synastry`, `placeScore`, `brandProfile`, `auraPalette`, `textResonance`, `headlineScore`, `decisionMatrix`, `teamField`, `moneyMap`, `investmentTiming`, `healthRhythm`, `chronobiology`, `codeResonance`, `dreamRead`, `ichingDraw`, `tarotSpread`, `randomOracle`, `routeScore`, `manifestation369`, `foodReson
