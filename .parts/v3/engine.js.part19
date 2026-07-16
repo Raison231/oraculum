@@ -1,0 +1,10 @@
+ld: {nearestNode: nn, nodePhase: np, lunaBirth: lunaBirth, lunaNow: lunaNow}, spectrum: amps, dominant: dominant, biorhythm: br, goldenHour: gh,
+    formula: "DR=" + dr + " · LP=" + lp + " · Soul=" + soul + " · Dest=" + destiny + " · Axis=" + ax.id + " · PY" + now.getUTCFullYear() + "=" + py, insight: insight};
+}
+function eventScore(opts) { opts = opts || {}; var date = parseDate(opts.date) || new Date();
+  var lat = opts.lat != null ? opts.lat : DEFAULT_BIRTH.lat, lon = opts.lon != null ? opts.lon : DEFAULT_BIRTH.lon;
+  var birth = parseDate(opts.birth || DEFAULT_BIRTH.date);
+  var dr = dateDR(date), luna = lunarPhase(date), nn = nearestNode(lat, lon), np = nodePhase(nn.node, date);
+  var pd = birth ? personalDay(birth, date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()) : dr;
+  var sDR = AXIS.indexOf(dr) >= 0 ? (dr === 9 ? 92 : 78) : (RING.indexOf(dr) >= 0 ? 70 : 50); if (dr === 5 || dr === 8) sDR = 90;
+  var sLuna = Math.round(40 + 60 * (1 - Math.min(1, luna.phiDistanc
