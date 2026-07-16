@@ -1,0 +1,9 @@
+Т" : "ДОБАВЬ ТИПЫ: " + missing.slice(0, 3).join(",")}; }
+function moneyMap(birth, days) { days = days || 30; var B = birthProfile(birth); if (!B.ok) return B; var map = predict({days: days, birth: birth.date, lat: birth.lat, lon: birth.lon});
+  var buckets = [0, 0, 0, 0, 0, 0, 0, 0, 0]; for (var i = 0; i < map.calendar.length; i++) buckets[map.calendar[i].dr - 1] += map.calendar[i].moneyScore;
+  var bestDR = buckets.indexOf(Math.max.apply(null, buckets)) + 1;
+  return {ok: true, days: days, birthDR: B.numbers.dr, bestMoneyDR: bestDR, buckets: buckets, highDays: map.moneyDays, plan: map.best.money, verdict: "Деньги пульсируют в DR" + bestDR + " — " + DR_MEANING[bestDR]}; }
+function investmentTiming(amount, birth, date) { var B = birthProfile(birth); if (!B.ok) return B; var ev = eventScore({date: date, birth: birth.date, lat: birth.lat, lon: birth.lon});
+  var dr = digitalRoot(Math.round(amount)); var risk = ([1, 5, 8].indexOf(ev.dr) >= 0 ? "умеренный" : ([4, 7].indexOf(ev.dr) >= 0 ? "низкий" : "высокий"));
+  var score = Math.round((ev.scores.overall + MONEY_DR[ev.dr].score + MONEY_DR[dr].score) / 3);
+  return {ok: true, amount: amount, date: date, dr: ev.dr, moneyDR: dr, eventScore: ev.scores.overall, risk: risk, score: score, verdict: score >= 75 ? "ВХОДИ" : (score >= 50 ? "МАЛАЯ ПОЗИЦИЯ" : "ЖДИ"), action:
