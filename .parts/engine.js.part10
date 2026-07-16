@@ -1,16 +1,8 @@
-,personalMonth:pm,personalDay:pd,personalYearMeaning:DR_MEANING[py],nineYearPhase:age.nineYearPhase,nineYearMeaning:DR_MEANING[age.nineYearPhase],step21:st,planetToday:planetDay(now)},
-      field:{nearestNode:nn,nodePhase:np,lunaBirth:lunaBirth,lunaNow:lunaNow},spectrum:amps,dominant:dominant,
-      formula:"DR="+dr+" · LP="+lp+" · Soul="+soul+" · Dest="+destiny+" · Axis="+ax.id+" · PY"+now.getUTCFullYear()+"="+py,insight:insight};
-  }
-
-  // === TRIPLE-RING EVENT ===
-  function eventScore(opts){opts=opts||{};var date=parseDate(opts.date)||new Date();
-    var lat=opts.lat!=null?opts.lat:DEFAULT_BIRTH.lat,lon=opts.lon!=null?opts.lon:DEFAULT_BIRTH.lon;
-    var birth=parseDate(opts.birth||DEFAULT_BIRTH.date);
-    var dr=dateDR(date),luna=lunarPhase(date),nn=nearestNode(lat,lon),np=nodePhase(nn.node,date);
-    var pd=birth?personalDay(birth,date.getUTCFullYear(),date.getUTCMonth()+1,date.getUTCDate()):dr;
-    var sDR=AXIS.indexOf(dr)>=0?(dr===9?92:78):(RING.indexOf(dr)>=0?70:50);if(dr===5||dr===8)sDR=90;
-    var sLuna=Math.round(40+60*(1-Math.min(1,luna.phiDistance*8)));if(luna.name==="Новолуние"||luna.name==="Полнолуние")sLuna=Math.max(sLuna,88);
-    var sNode=Math.round(np.heat*100);var sPersonal=(pd===dr)?95:(mirrorPair(pd)===dr?82:60);var sMoney=MONEY_DR[dr].score;
-    var rings=0;if(sDR>=70)rings++;if(sLuna>=70)rings++;if(sNode>=55)rings++;if(sPersonal>=80)rings++;
-    var overall=Math.round(sDR*0.25+s
+cal + br.emotional + br.intellectual + 3) / 6 * 100; return Math.round(score); }
+function buildNodes() { var p = PHI, ip = INV_PHI;
+  function perms(a, b, c) { return [[a, b, c], [c, a, b], [b, c, a]]; }
+  function signs(base) { var out = [], idx = []; for (var i = 0; i < 3; i++) if (base[i] !== 0) idx.push(i); var combos = 1 << idx.length; for (var m = 0; m < combos; m++) { var v = base.slice(); for (var k = 0; k < idx.length; k++) if (m & (1 << k)) v[idx[k]] = -v[idx[k]]; out.push(v); } return out; }
+  function expand(triples) { var out = []; triples.forEach(function (t) { perms(t[0], t[1], t[2]).forEach(function (pp) { signs(pp).forEach(function (s) { out.push(s); }); }); }); var seen = {}, res = []; out.forEach(function (v) { var key = v.map(function (x) { return x.toFixed(6); }).join(","); if (!seen[key]) { seen[key] = 1; res.push(v); } }); return res; }
+  var ico = expand([[0, 1, p]]); var dodec = expand([[1, 1, 1]]).concat(expand([[0, ip, p]]));
+  function d2(a, b) { return (a[0] - b[0]) * (a[0] - b[0]) + (a[1] - b[1]) * (a[1] - b[1]) + (a[2] - b[2]) * (a[2] - b[2]); }
+  var mids = [], seenM = {}; for (var i = 0; i < ico.length; i++) for (var j = i + 1; j < ico.length; j++) if (Math.abs(d2(ico[i], ico[j]) - 4) < 1e-6) { var m = [(ico[i][0] + ico[j][0]) / 2, (ico[i][1] + ico[j][1]) / 2, (ico[i][2] + ico[j][2]) / 2]; var key = m.map(function (x) { return x.toFixed(4); }).j
