@@ -1,0 +1,7 @@
+), meaning: DR_MEANING[dr]}; }
+function auraPalette(birth) { var B = birthProfile(birth); if (!B.ok) return B; var dr = B.numbers.dr, lp = B.numbers.lifePath, soul = B.numbers.soul, dest = B.numbers.destiny;
+  return {ok: true, core: COLORS[dr - 1], life: COLORS[lp - 1], soul: COLORS[soul - 1], destiny: COLORS[dest - 1], mirror: COLORS[mirrorPair(dr) - 1], element: elementOf(dr), chakra: chakraOf(dr), palette: [COLORS[dr - 1].hex, COLORS[lp - 1].hex, COLORS[soul - 1].hex, COLORS[mirrorPair(dr) - 1].hex, COLORS[8].hex]}; }
+function textResonance(text) { var s = String(text || "").trim(); if (!s) return {ok: false, message: "Пустой текст"}; var words = s.split(/\s+/).length, chars = s.length, seed = nameToNumber(s), dr = digitalRoot(seed), sentiment = chars % 9 >= 6 ? "подъём" : (chars % 9 >= 3 ? "нейтрал" : "спад");
+  var sentences = s.split(/[.!?]+/).filter(function (x) { return x.trim(); }); var long = sentences.length > 0 ? Math.max.apply(null, sentences.map(function (x) { return x.length; })) : 0;
+  var rhythm = Math.round(words / (sentences.length || 1) * 10) / 10;
+  return {ok: true, seed: seed, dr: dr, meaning: DR_MEANING[dr], words: words, chars: chars, sentences: sentences.length, avgSentence: Math.round(chars / (sentences.length || 1)), longest: long, rhythmScore: rhythm, sentiment: sentiment, element: elementOf(dr), archetype: opArchetype(d
