@@ -11,4 +11,4 @@ body{min-height:100vh;background:radial-gradient(1200px 600px at 0% -10%,rgba(23
 #particles{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35}
 .wrap{position:relative;z-index:1;max-width:1320px;margin:0 auto;padding:26px 18px 90px}
 header{display:grid;gap:12px;margin-bottom:24px}
-.badge{display:inline-flex;align-items:center;gap:8px;width:fit-content;padding:6px 14px;border:1px solid rgba(230,196,1
+.badge{display:inline-flex;align-items:center;gap:8px;width:fit-conten
