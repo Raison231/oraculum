@@ -1,0 +1,18 @@
+      <label>Широта, долгота</label><input id="bGeo" type="text" value="46.54, 61.17">
+      <button class="primary" style="margin-top:14px" onclick="runBirth()">Профиль</button>
+    </div>
+    <div class="card"><h2>🧬 Карта</h2><div id="birthResult"></div><div class="spectrum" id="birthSpectrum"></div></div>
+  </div>
+</section>
+
+<!-- PREDICT -->
+<section id="tab-predict" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>📅 Прогноз 27 дней</h2>
+      <label>От</label><input id="pFrom" type="date">
+      <label>Дней</label><input id="pDays" type="number" value="27" min="7" max="90">
+      <button class="primary" style="margin-top:14px" onclick="runPredict()">Календарь</button>
+      <div class="result show" id="predictBest" style="margin-top:14px"></div>
+    </div>
+    <div class="card"><h2>🎯 Окна</h2><div class="table-wrap"><table id="predictTable"><thead><tr><th>Дата</th><th>DR</th><th>Луна</th><th>Score</th><th>Кольца</th><th>Деньги</th><th>Вердикт</th></tr></thead
