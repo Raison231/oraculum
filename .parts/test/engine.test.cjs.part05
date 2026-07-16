@@ -1,0 +1,26 @@
+date: "1998-04-10"});
+  assert.ok(s.ok);
+  assert.ok(s.coreLesson);
+});
+t("dailyRitual", () => {
+  const d = ORC.dailyRitual({date: "1998-04-10"}, "2026-07-16");
+  assert.ok(d.ok);
+  assert.ok(d.ritual);
+});
+t("astroLocality", () => {
+  const a = ORC.astroLocality({date: "1998-04-10"}, 41.72, 44.83);
+  assert.ok(a.ok);
+  assert.ok(a.verdict);
+});
+t("eventFlow", () => {
+  const e = ORC.eventFlow({date: "1998-04-10"}, "2026-07-16", 9);
+  assert.ok(e.ok);
+  assert.ok(e.flow.length > 0);
+});
+t("crystalOf", () => {
+  const c = ORC.crystalOf(7);
+  assert.ok(c.crystal);
+});
+
+console.log("\n" + passed + " passed, " + failed + " failed\n");
+process.exit(failed ? 1 : 0);
