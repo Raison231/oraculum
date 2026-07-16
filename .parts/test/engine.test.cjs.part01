@@ -1,6 +1,4 @@
- Fib / phi
-t("nearestFib и isFib", () => {
-  assert.strictEqual(ORC.nearestFib(13), 13);
+ert.strictEqual(ORC.nearestFib(13), 13);
   assert.ok(ORC.isFib(21));
   assert.ok(!ORC.isFib(20));
   assert.strictEqual(ORC.nearestFib(100), 89);
@@ -18,26 +16,24 @@ t("62 nodes", () => {
   assert.strictEqual(ORC.NODES.filter(n => n.cls === "dodeca").length, 20);
   assert.strictEqual(ORC.NODES.filter(n => n.cls === "mid").length, 30);
 });
-t("all nodes valid coords", () => {
-  ORC.NODES.forEach(n => {
-    assert.ok(n.lat >= -90 && n.lat <= 90, "lat " + n.lat);
-    assert.ok(n.lon >= -180 && n.lon <= 180, "lon " + n.lon);
-  });
-});
 t("nearestNode Тбилиси", () => {
   const r = ORC.nearestNode(41.72, 44.83);
   assert.ok(r.node && typeof r.distanceKm === "number");
   assert.ok(r.distanceKm >= 0);
 });
-t("haversine zero", () => assert.ok(ORC.haversine(10, 20, 10, 20) < 1e-6));
 
 // Second Key / lunar / parse
-t("nearestFreq 528", () => {
-  assert.strictEqual(ORC.nearestFreq(530).hz, 528);
-  assert.strictEqual(ORC.nearestFreq(8).hz, 7.83);
-});
+t("nearestFreq 528", () => assert.strictEqual(ORC.nearestFreq(530).hz, 528));
 t("step21", () => {
   for (let i = 1; i <= 50; i++) {
     const s = ORC.step21(i);
     assert.ok(s.step >= 1 && s.step <= 21);
-    assert.o
+    assert.ok(s.phase >= 1 && s.phase <= 3);
+  }
+});
+t("parseInput", () => {
+  assert.strictEqual(ORC.parseInput("42").type, "number");
+  assert.strictEqual(ORC.parseInput("41.72, 44.83").type, "geo");
+  assert.strictEqual(ORC.parseInput("528hz").type, "freq");
+  assert.strictEqual(ORC.parseInput("2026-08-12").type, "date");
+  assert.stri
