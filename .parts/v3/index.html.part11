@@ -1,0 +1,26 @@
+><tbody></tbody></table></div></div>
+  </div>
+</section>
+
+<!-- CREATE -->
+<section id="tab-create" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>✨ Create Design</h2>
+      <label>Намерение / проект</label><textarea id="cIntent" placeholder="ORACULUM v3 release"></textarea>
+      <button class="primary" style="margin-top:14px" onclick="runCreate()">Распаковать</button>
+    </div>
+    <div class="card"><h2>🗺 9 модулей + 21 шаг</h2><div id="createResult"></div></div>
+  </div>
+</section>
+
+<!-- SYNASTRY -->
+<section id="tab-synastry" class="section">
+  <div class="grid">
+    <div class="card">
+      <h2>🔗 Синастрия / Команда</h2>
+      <label>Человек A</label><input id="sA" type="text" value="1998-04-10">
+      <label>Человек B</label><input id="sB" type="text" value="2000-01-01">
+      <button class="primary" style="margin-top:14px" onclick="runSynastry()">Совместимость</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <lab
