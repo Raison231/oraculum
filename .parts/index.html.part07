@@ -1,34 +1,39 @@
-replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
-      }
-
-      function render(r) {
-        if (!r.ok) {
-          verdictEl.className = "verdict show bad";
-          verdictEl.innerHTML = "<div class=\"row\"><span class=\"tag\">ПУСТО</span><span class=\"meta\">" + esc(r.message) + "</span></div>";
-          out.innerHTML = "<div class=\"empty\">" + esc(r.message) + "</div>";
-          return;
-        }
-
-        var cls = r.verdict === "ЗВУЧИТ" ? "ok" : (r.verdict === "ТРЕБУЕТ НАСТРОЙКИ" ? "mid" : "bad");
-        verdictEl.className = "verdict show " + cls;
-        verdictEl.innerHTML =
-          "<div class=\"row\">" +
-          "<span class=\"tag\">" + esc(r.verdict) + "</span>" +
-          "<span class=\"meta\">seed " + esc(String(r.seed)) + " · DR " + r.dr + " · type " + esc(r.input.type) + "</span>" +
-          "<span class=\"score\">" + r.overall + "<small>/100</small></span>" +
-          "</div>";
-
-        out.innerHTML = r.lenses.map(function (L) {
-          return (
-            "<article class=\"lens\">" +
-            "<div class=\"lens-head\"><span class=\"dot\"></span><h3>" + esc(L.title) + "</h3></div>" +
-            "<ul>" + L.lines.map(function (line) { return "<li>" + esc(line) + "</li>"; }).join("") + "</ul>" +
-            "</article>"
-          );
-        }).join("");
-
-        drawGlobe(r.input.type === "geo" ? r.input : null);
-      }
-
-      function r
+ss="grid">
+<section class="card">
+<h2>Deep Birth Profile</h2>
+<div class="input-row">
+<input id="b-name" type="text" placeholder="Имя" value="Максим Мигай">
+<input id="b-date" type="date" value="1998-04-10">
+<input id="b-time" type="time" value="10:00">
+<input id="b-lat" type="number" step="0.01" value="46.54" placeholder="lat">
+<input id="b-lon" type="number" step="0.01" value="61.17" placeholder="lon">
+</div>
+<button class="primary" id="b-go" style="margin-top:14px">Рассчитать профиль</button>
+<div id="b-out" class="result" style="margin-top:18px"></div>
+</section>
+<section class="card">
+<h2>Spectrum · 9 amplitudes</h2>
+<div id="b-spectrum" class="spectrum"></div>
+<h2>Инсайты</h2>
+<div id="b-insight"></div>
+</section>
+</div>
+</div>
+<div id="event" class="section">
+<div class="grid">
+<section class="card">
+<h2>Triple-Ring Event Score</h2>
+<div class="input-row">
+<input id="e-date" type="date" value="2026-07-16">
+<input id="e-birth" type="date" value="1998-04-10">
+<input id="e-lat" type="number" step="0.01" value="46.54" placeholder="lat">
+<input id="e-lon" type="number" step="0.01" value="61.17" placeholder="lon">
+</div>
+<button class="primary" id="e-go" style="margin-top:14px">Оценить событие</button>
+<div id="e-out" class="result" style="margin-top:18px"></div>
+</section>
+<section class="card">
+<h2>Кольца + Деньги</h2>
+<div id="e-rings"></div>
+</section>
+</div
