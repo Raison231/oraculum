@@ -1,0 +1,7 @@
+lat2) / 2, midLon = (lon1 + lon2) / 2; var nn = nearestNode(midLat, midLon); var score = Math.max(0, 100 - d / 50); return {distanceKm: d, nearestNode: nn.node, nodeScore: Math.round(score), dr: digitalRoot(Math.round(d))}; }
+function nodesInRadius(lat, lon, km) { var out = []; for (var i = 0; i < NODES.length; i++) { var d = haversine(lat, lon, NODES[i].lat, NODES[i].lon); if (d <= km) out.push({node: NODES[i], distanceKm: d}); } out.sort(function (a, b) { return a.distanceKm - b.distanceKm; }); return out; }
+function birthProfile(opts) { opts = opts || {};
+  var name = opts.name || DEFAULT_BIRTH.name, dateStr = opts.date || DEFAULT_BIRTH.date, time = opts.time || DEFAULT_BIRTH.time;
+  var lat = opts.lat != null ? opts.lat : DEFAULT_BIRTH.lat, lon = opts.lon != null ? opts.lon : DEFAULT_BIRTH.lon, place = opts.place || DEFAULT_BIRTH.place;
+  var now = opts.now ? parseDate(opts.now) : new Date();
+  var birth = parseDate(dateStr + (time ? " " + time : "")); if (!birth) return {ok: false
