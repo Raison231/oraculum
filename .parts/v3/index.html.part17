@@ -1,0 +1,10 @@
+астрия'}, {id:'brand',label:'🏷 Текст'}, {id:'money',label:'💰 Деньги'}, {id:'health',label:'🧘 Тело'},
+  {id:'oracle',label:'🎴 Оракул'}, {id:'route',label:'🗺 Маршрут'}
+];
+const tabsEl = document.getElementById('tabs');
+tabs.forEach((t,i)=>{const b=document.createElement('button');b.className='tab'+(i===0?' active':'');b.textContent=t.label;b.onclick=()=>switchTab(t.id);tabsEl.appendChild(b);});
+function switchTab(id){document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('active',tabs[i].id===id));document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id==='tab-'+id));}
+function h(html){return html.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function kv(k,v){return `<span><strong>${h(k)}</strong> ${h(String(v))}</span>`;}
+function pill(v,c){return `<span class="pill" style="border-color:${c}33;background:${c}11">${h(v)}</span>`;}
+function renderVerdict(el, r, score){let cls='bad';if(score>=61.8)cls='ok';else if(score>=38.2)cls='m
