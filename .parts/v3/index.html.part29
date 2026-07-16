@@ -1,0 +1,7 @@
+,ctx=mapCtx;ctx.fillStyle='#0b0d12';ctx.fillRect(0,0,w,h);const cx=w/2,cy=h/2,scale=Math.min(w,h)/3.2;ctx.strokeStyle='rgba(230,196,111,0.15)';ctx.beginPath();for(let i=0;i<ORC.NODES.length;i++){const n=ORC.NODES[i];const x=cx+n.lon/180*scale*1.8;const y=cy-n.lat/90*scale;ctx.moveTo(x,cy);ctx.lineTo(x,y);ctx.stroke();ctx.fillStyle=n.cls==='icosa'?'#e6c46f':(n.cls==='dodeca'?'#62cfdf':'#c75aff');ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fill();}}
+window.addEventListener('resize',resizeMap);setTimeout(resizeMap,100);
+
+// particles
+const pc=document.getElementById('particles'),pctx=pc.getContext('2d');let pW,pH,particles=[];
+function resizeParticles(){pW=pc.width=window.innerWidth;pH=pc.height=window.innerHeight;particles=[];for(let i=0;i<60;i++)particles.push({x:Math.random()*pW,y:Math.random()*pH,r:Math.random()*2+0.5,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3});}
+function drawParticles(){pctx.clearRect(0,0,pW,pH);pctx.fillStyle='rgba(230,196,111,0.45)';particles.forEa
