@@ -1,0 +1,7 @@
+ 6 * 100; return Math.round(score); }
+function buildNodes() { var p = PHI, ip = INV_PHI;
+  function perms(a, b, c) { return [[a, b, c], [c, a, b], [b, c, a]]; }
+  function signs(base) { var out = [], idx = []; for (var i = 0; i < 3; i++) if (base[i] !== 0) idx.push(i); var combos = 1 << idx.length; for (var m = 0; m < combos; m++) { var v = base.slice(); for (var k = 0; k < idx.length; k++) if (m & (1 << k)) v[idx[k]] = -v[idx[k]]; out.push(v); } return out; }
+  function expand(triples) { var out = []; triples.forEach(function (t) { perms(t[0], t[1], t[2]).forEach(function (pp) { signs(pp).forEach(function (s) { out.push(s); }); }); }); var seen = {}, res = []; out.forEach(function (v) { var key = v.map(function (x) { return x.toFixed(6); }).join(","); if (!seen[key]) { seen[key] = 1; res.push(v); } }); return res; }
+  var ico = expand([[0, 1, p]]); var dodec = expand([[1, 1, 1]]).concat(expand([[0, ip, p]]));
+  function d2(a, b) { return (a[0] - b[0]) * (a[0] - b[0]) + (a[1] - b[1]) *
