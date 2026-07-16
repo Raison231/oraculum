@@ -213,7 +213,7 @@ footer{margin-top:50px;text-align:center;color:var(--muted);font-size:13px}
   <div class="grid">
     <div class="card">
       <h2>🎴 Оракул</h2>
-      <label>Вопрос / намерени��</label><input id="oQuestion" type="text" placeholder="что делать?">
+      <label>Вопрос / намерение</label><input id="oQuestion" type="text" placeholder="что делать?">
       <button class="primary" style="margin-top:10px" onclick="runIChing()">I Ching</button>
       <button class="secondary" onclick="runTarot()">Tarot 3</button>
       <button class="secondary" onclick="runRandom()">Random Oracle</button>
@@ -234,21 +234,31 @@ footer{margin-top:50px;text-align:center;color:var(--muted);font-size:13px}
       <label>Маршрут (lat,lon;lat,lon)</label><input id="rRoute" type="text" placeholder="41.72,44.83;46.54,61.17">
       <button class="primary" style="margin-top:10px" onclick="runRoute()">Route Score</button>
       <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
-      <label>Намерение (369)</label><input id="rIntent" type="text" plade(focus.lat,focus.lon); var fp=project(focus.lat,focus.lon,w,h),np=project(nn.node.lat,nn.node.lon,w,h);
-      ctx.strokeStyle='rgba(120,198,147,0.75)';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(fp.x,fp.y);ctx.lineTo(np.x,np.y);ctx.stroke();
-      ctx.fillStyle='#78c693';ctx.beginPath();ctx.arc(fp.x,fp.y,4,0,Math.PI*2);ctx.fill();
-      ctx.strokeStyle='rgba(120,198,147,0.55)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(np.x,np.y,8,0,Math.PI*2);ctx.stroke();
-      mapMeta.innerHTML='<span>Фокус '+focus.lat.toFixed(2)+', '+focus.lon.toFixed(2)+'</span><span>→ узел '+nn.node.id+'</span><span>'+Math.round(nn.distanceKm)+' км</span>';
-    } else {mapMeta.innerHTML='<span>12 icosa</span><span>20 dodeca</span><span>30 mid</span>';}
-  }
-  drawGlobe(null); window.addEventListener('resize',function(){drawGlobe(null);});
-  q.value='10.04.1998'; runField();
+      <label>Намерение (369)</label><input id="rIntent" type="text" placeholder="рост дохода">
+      <button class="secondary" onclick="runManifest()">369 план</button>
+      <hr style="border:0;border-top:1px solid var(--border);margin:18px 0">
+      <label>Помещение / еда</label><input id="rSpace" type="text" placeholder="комната с большим окном на восток">
+      <button class="secondary" onclick="runSpace()">Space Plan</button>
+      <button class="secondary" onclick="runFood()">Food</button>
+      <button class="secondary" onclick="runCommit()">Commit Timing</button>
+    </div>
+    <div class="card"><h2>📍 Ре��ультат</h2><div id="routeResult"></div></div>
+  </div>
+</section>
 
-  document.getElementById('b-go').addEventListener('click',function(){
-    var prof=ORC.birthProfile({name:document.getElementById('b-name').value,date:document.getElementById('b-date').value,time:document.getElementById('b-time').value,lat:parseFloat(document.getElementById('b-lat').value),lon:parseFloat(document.getElementById('b-lon').value)});
-    var el=document.getElementById('b-out'); el.className='result show';
-    if(!prof.ok){el.innerHTML='<div class="empty">'+esc(prof.message)+'</div>';return;}
-    el.innerHTML='<div class="kv"><span><strong>DR</strong> '+prof.tById('tabs');
+<canvas id="map" class="canvas-wrap" style="margin-top:24px;height:340px"></canvas>
+<div class="map-meta" id="mapMeta"></div>
+
+<footer>ORACULUM ∞ v3.0 — Living Unified Field Engine · zero deps · MIT</footer>
+</div>
+<script src="engine.js"></script>
+<script>
+const tabs = [
+  {id:'field',label:'🔮 Поле'}, {id:'birth',label:'🌙 Birth'}, {id:'predict',label:'📅 Прогноз'}, {id:'create',label:'✨ Create'},
+  {id:'synastry',label:'🔗 Синастрия'}, {id:'brand',label:'🏷 Текст'}, {id:'money',label:'💰 Деньги'}, {id:'health',label:'🧘 Тело'},
+  {id:'oracle',label:'🎴 Оракул'}, {id:'route',label:'🗺 Маршрут'}
+];
+const tabsEl = document.getElementById('tabs');
 tabs.forEach((t,i)=>{const b=document.createElement('button');b.className='tab'+(i===0?' active':'');b.textContent=t.label;b.onclick=()=>switchTab(t.id);tabsEl.appendChild(b);});
 function switchTab(id){document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('active',tabs[i].id===id));document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id==='tab-'+id));}
 function h(html){return html.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
@@ -292,4 +302,14 @@ function drawMap(){const w=mapCanvas.width,h=mapCanvas.height,ctx=mapCtx;ctx.fil
 window.addEventListener('resize',resizeMap);setTimeout(resizeMap,100);
 
 // particles
-const pc=
+const pc=document.getElementById('particles'),pctx=pc.getContext('2d');let pW,pH,particles=[];
+function resizeParticles(){pW=pc.width=window.innerWidth;pH=pc.height=window.innerHeight;particles=[];for(let i=0;i<60;i++)particles.push({x:Math.random()*pW,y:Math.random()*pH,r:Math.random()*2+0.5,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3});}
+function drawParticles(){pctx.clearRect(0,0,pW,pH);pctx.fillStyle='rgba(230,196,111,0.45)';particles.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>pW)p.vx*=-1;if(p.y<0||p.y>pH)p.vy*=-1;pctx.beginPath();pctx.arc(p.x,p.y,p.r,0,Math.PI*2);pctx.fill();});requestAnimationFrame(drawParticles);}
+window.addEventListener('resize',resizeParticles);resizeParticles();drawParticles();
+
+// chips
+const chips=['10.04.1998','41.72, 44.83','528hz','#ff5a5a','Weeekend','1998'];
+const fc=document.getElementById('fieldChips');chips.forEach(c=>{const b=document.createElement('span');b.className='chip';b.textContent=c;b.onclick=()=>{document.getElementById('fieldInput').value=c;runField();};fc.appendChild(b);});
+</script>
+</body>
+</html>

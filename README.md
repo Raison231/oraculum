@@ -43,4 +43,13 @@ test/engine.test.cjs    # 43 теста
 ## v3 — что нового
 
 - **12 перспектив** вместо 6 линз
-- **40+ функций**: `fieldRead`, `birthProfile`, `eventScore`, `predict`, `createDesign`, `synastry`, `placeScore`, `brandProfile`, `auraPalette`, `textResonance`, `headlineScore`, `decisionMatrix`, `teamField`, `moneyMap`, `investmentTiming`, `healthRhythm`, `chronobiology`, `codeResonance`, `dreamRead`, `ichingDraw`, `tarotSpread`, `randomOracle`, `routeScore`, `manifestation369`, `foodResonance`, `spacePlan`, `learningWindow`, `commitTiming`, `dateCompatibility`, `wordPower`, `priceResona
+- **40+ функций**: `fieldRead`, `birthProfile`, `eventScore`, `predict`, `createDesign`, `synastry`, `placeScore`, `brandProfile`, `auraPalette`, `textResonance`, `headlineScore`, `decisionMatrix`, `teamField`, `moneyMap`, `investmentTiming`, `healthRhythm`, `chronobiology`, `codeResonance`, `dreamRead`, `ichingDraw`, `tarotSpread`, `randomOracle`, `routeScore`, `manifestation369`, `foodResonance`, `spacePlan`, `learningWindow`, `commitTiming`, `dateCompatibility`, `wordPower`, `priceResonance`, `yearlyArc`, `bodyClock`, `soulContract`, `nameOptimize`, `dailyRitual`, `astroLocality`, `eventFlow`, `signatureTone`, `crystalOf`.
+
+## Принципы
+
+1. Суть выше формы — сначала поле, потом UI.
+2. Аномалия = вход — любой необычный тип данных открывает дополнительную линзу.
+3. Живой интерфейс — цвет, анимация, звуковая шкала, интерактивная карта.
+4. Действие выше прогноза — каждый reading заканчивается конкретным шагом.
+
+MIT
