@@ -1,9 +1,7 @@
-r), color: COLORS[dr - 1], verdict: dr === 3 || dr === 5 ? "ТЕКСТ ДВИЖЕТ" : (dr === 7 || dr === 4 ? "ТЕКСТ КОПАЕТ" : "ТЕКСТ БАЛАНСИРУЕТ")}; }
-function headlineScore(text) { var t = textResonance(text); if (!t.ok) return t; var len = text.length, power = 0;
-  if (len >= 40 && len <= 90) power += 30; else if (len < 40) power += 15; else power += 10;
-  if (/\d/.test(text)) power += 15; if (/[—:;]/.test(text)) power += 10;
-  var dr = t.dr; if ([1, 5, 8].indexOf(dr) >= 0) power += 25; else if ([3, 9].indexOf(dr) >= 0) power += 20; else power += 10;
-  return {ok: true, text: text, dr: t.dr, score: clamp(power + t.rhythmScore * 5, 0, 100), verdict: power >= 70 ? "ЦЕПЛЯЕТ" : (power >= 45 ? "РАБОТАЕТ" : "ДОПИЛИТЬ"), tips: power >= 70 ? ["Делай A/B", "Запускай"] : ["Короче", "Добавь цифру", "Усиль глагол"]}; }
-function decisionMatrix(options, opts) { opts = opts || {}; var birth = opts.birth ? birthProfile(opts.birth) : null; var rows = [];
-  for (var i = 0; i < options.length; i++) { var opt = options[i]; var seed = nameToNumber(opt), dr = digitalRoot(seed); var ev = eventScore({date: opts.date || new Date(), birth: birth && birth.birthISO || DEFAULT_BIRTH.date, lat: opts.lat, lon: opts.lon});
-    var score = Math.round((MONEY_DR[dr].score + ev.scores.overall + (birth && birth.numbers
+), meaning: DR_MEANING[dr]}; }
+function auraPalette(birth) { var B = birthProfile(birth); if (!B.ok) return B; var dr = B.numbers.dr, lp = B.numbers.lifePath, soul = B.numbers.soul, dest = B.numbers.destiny;
+  return {ok: true, core: COLORS[dr - 1], life: COLORS[lp - 1], soul: COLORS[soul - 1], destiny: COLORS[dest - 1], mirror: COLORS[mirrorPair(dr) - 1], element: elementOf(dr), chakra: chakraOf(dr), palette: [COLORS[dr - 1].hex, COLORS[lp - 1].hex, COLORS[soul - 1].hex, COLORS[mirrorPair(dr) - 1].hex, COLORS[8].hex]}; }
+function textResonance(text) { var s = String(text || "").trim(); if (!s) return {ok: false, message: "Пустой текст"}; var words = s.split(/\s+/).length, chars = s.length, seed = nameToNumber(s), dr = digitalRoot(seed), sentiment = chars % 9 >= 6 ? "подъём" : (chars % 9 >= 3 ? "нейтрал" : "спад");
+  var sentences = s.split(/[.!?]+/).filter(function (x) { return x.trim(); }); var long = sentences.length > 0 ? Math.max.apply(null, sentences.map(function (x) { return x.length; })) : 0;
+  var rhythm = Math.round(words / (sentences.length || 1) * 10) / 10;
+  return {ok: true, seed: seed, dr: dr, meaning: DR_MEANING[dr], words: words, chars: chars, sentences: sentences.length, avgSentence: Math.round(chars / (sentences.length || 1)), longest: long, rhythmScore: rhythm, sentiment: sentiment
